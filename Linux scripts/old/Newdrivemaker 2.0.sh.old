@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+# Written by Kent DuBack at Pima Community College on 8/7/2020
+
+# GNU Parallel must be installed!
+
+# This is an improved version of Drivemaker using GNU parralel and dd which by default are installed on most distributions and can function easier than my previous script Drivemaker.sh
+
+# First we get a list of all the drives in the system that are usb by searching for them
+udevadm | pee "udevadm info --query=all --name=sd"{a..z} | grep -E \(S=usb\|\ sd\) > usbdriveslist.temp
+
+# We read out the list, and remove the unneccesary characters with tr and make a sorted list
+cat usbdriveslist.temp | tr -d 'N: ' | tr -d 'E: ID_BUS=' | grep -B1 usb | grep sd > usbfinallist.temp
+
+# Now we run sed and have it append the command to each of the usb drives we've found. This is unusused perhaps handy in the future? We used |'s because ddcommand the variable originally had / in it and you can't have that with the syntax of sed, which is strange.
+# sed -i "s|^|${ddcommand}|" usbfinallist.temp
+
+# Lastly it's time to pipe this into gnu parralel and get the job done:
+cat usbfinallist.temp | time parallel -j+0 --progress 'dd if=/home/kduback/Downloads/SCCMstick.img of=/dev/{}'
+
+#Lets clean up after ourselves!
+rm usbdriveslist.temp usbfinallist.temp

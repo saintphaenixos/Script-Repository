@@ -1,0 +1,11 @@
+Select disk 0
+Clean
+Convert gpt
+Create partition efi size=200
+Assign letter=s
+Format quick fs=FAT32
+Create partition msr size=128
+Create partition primary
+Assign letter=c
+Format quick fs=NTFS
+Exit
