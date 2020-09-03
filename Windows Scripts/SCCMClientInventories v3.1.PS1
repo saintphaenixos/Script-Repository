@@ -40,8 +40,8 @@ for ($timer=1; $timer -le 500; $timer++) {
         write-host "working on" $Cycle[1]
         Invoke-WMIMethod -ComputerName $env:COMPUTERNAME -Namespace root\ccm -Class SMS_CLIENT -Name TriggerSchedule $Cycle[0] > $null
         }
-            echo ""
-            echo "We are on Cycle: $timer"
+
+            echo "`nWe are on Cycle: $timer"
             Write-Host "Ctrl+C to return to Powershell, or just close the window." -ForegroundColor Cyan -BackgroundColor Darkcyan `n
             # Thank you DrakharD
             [int]$countdown = 20
