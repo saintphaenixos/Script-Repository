@@ -75,14 +75,14 @@ else {
 
     if ($PCCAssetTag -match '\d{6}') {
 
-        $NewComputerName = ("PCC-STU" + $PCCAssetTag + "SN")
+        $NewComputerName = ("PCC-EMP" + $PCCAssetTag + "LL")
 
         $VerifyName = [System.Windows.Forms.MessageBox]::Show($THIS, "Computer Name: $NewComputerName", 'Verify Computer Name', 'YesNo')
 
         if ($VerifyName -eq 'Yes') {
             if ($env:COMPUTERNAME -ne $NewComputerName) {
                 try {
-                    Add-Computer -DomainName 'pcc-domain.pima.edu' -Credential $Credentials -NewName $NewComputerName -OUPath 'OU=EDU_DellLaptops,DC=pcc-domain,DC=pima,DC=pcc' -Restart -Force -ErrorAction Stop
+                    Add-Computer -DomainName 'pcc-domain.pima.edu' -Credential $Credentials -NewName $NewComputerName -OUPath 'OU=COVID-19 Laptops,OU=Computers,OU=IT Services,OU=West,OU=PCC,DC=PCC-Domain,DC=pima,DC=edu' -Restart -Force -ErrorAction Stop
                 }
                 catch {
                     [System.Windows.Forms.MessageBox]::Show($_.Exception.Message, 'Error', 'OK', 'Error')
@@ -90,7 +90,7 @@ else {
             }
             elseif ($env:COMPUTERNAME -eq $NewComputerName) {
                 try {
-                    Add-Computer -DomainName 'pcc-domain.pima.edu' -Credential $Credentials -OUPath 'OU=EDU_DellLaptops,DC=pcc-domain,DC=pima,DC=pcc' -Restart -Force -ErrorAction Stop
+                    Add-Computer -DomainName 'pcc-domain.pima.edu' -Credential $Credentials -OUPath 'OU=COVID-19 Laptops,OU=Computers,OU=IT Services,OU=West,OU=PCC,DC=PCC-Domain,DC=pima,DC=edu' -Restart -Force -ErrorAction Stop
                 }
                 catch {
                     [System.Windows.Forms.MessageBox]::Show($_.Exception.Message, 'Error', 'OK', 'Error')
