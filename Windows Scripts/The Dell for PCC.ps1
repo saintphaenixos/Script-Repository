@@ -82,7 +82,7 @@ else {
         if ($VerifyName -eq 'Yes') {
             if ($env:COMPUTERNAME -ne $NewComputerName) {
                 try {
-                    Add-Computer -DomainName 'pcc-domain.pima.edu' -Credential $Credentials -NewName $NewComputerName -OUPath 'OU=COVID-19 Laptops,OU=Computers,OU=IT Services,OU=West,OU=PCC,DC=PCC-Domain,DC=pima,DC=edu' -Restart -Force -ErrorAction Stop
+                    Add-Computer -DomainName 'pcc-domain.pima.edu' -Credential $Credentials -NewName $NewComputerName -OUPath 'OU=CARES Laptops,OU=Computers,OU=IT Services,OU=West,OU=PCC,DC=PCC-Domain,DC=pima,DC=edu' -Restart -Force -ErrorAction Stop
                 }
                 catch {
                     [System.Windows.Forms.MessageBox]::Show($_.Exception.Message, 'Error', 'OK', 'Error')
@@ -90,7 +90,7 @@ else {
             }
             elseif ($env:COMPUTERNAME -eq $NewComputerName) {
                 try {
-                    Add-Computer -DomainName 'pcc-domain.pima.edu' -Credential $Credentials -OUPath 'OU=COVID-19 Laptops,OU=Computers,OU=IT Services,OU=West,OU=PCC,DC=PCC-Domain,DC=pima,DC=edu' -Restart -Force -ErrorAction Stop
+                    Add-Computer -DomainName 'pcc-domain.pima.edu' -Credential $Credentials -OUPath 'OU=CARES Laptops,OU=Computers,OU=IT Services,OU=West,OU=PCC,DC=PCC-Domain,DC=pima,DC=edu' -Restart -Force -ErrorAction Stop
                 }
                 catch {
                     [System.Windows.Forms.MessageBox]::Show($_.Exception.Message, 'Error', 'OK', 'Error')
