@@ -40,6 +40,9 @@ sudo /opt/pbis/bin/config PCC-DOMAIN
 
 #Lets restart lsass
 sudo /opt/pbis/bin/lwsm restart lsass
+echo "Sleeping for 10 seconds before we enumerate users"
+sleep 10
 
 #Lastly lets have PBIS download a list of all the users in Active directory so others can login!:
 pbis enum-users
+echo "Done!"
