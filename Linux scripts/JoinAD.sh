@@ -1,9 +1,11 @@
-#!/bin/zsh
+#!/bin/bash
 
 #This is a script to automate the process of joining my computer to my Active Directory server.
 
+# required software for this is: Curl, bash, and wget.
+
 #Lets set some variables:
-PBISdirectory=/home/kduback/Git/PBIS
+PBISdirectory=/home/$USER/Git/PBIS
 URL=PIMA.EDU
 
 #Lets read which domain we want to join:
@@ -14,8 +16,9 @@ read DOMAIN
 echo -e "Please Enter a domain user that can join devices to this domain:"
 read USER
 
-#First lets clear the directory of any extra files, we only ever need one in it:
+#First lets clear the directory of any extra files, we only ever need one in it, and create it if neccesary:
 rm -r $PBISdirectory/pbis*
+mkdir /home/$USER/Git/PBIS
 
 #Now lets get a fresh copy of the installation script from BeyondTrust, we'll get a list of the lastest releases parse out to our needed installer which is for 64 bit linux with .deb repositories.
 curl -s https://api.github.com/repos/BeyondTrust/pbis-open/releases/latest | grep "browser_download_url.*x86_64.deb" | cut -d : -f 2,3 | tr -d \" | wget -i - -P $PBISdirectory
@@ -24,7 +27,7 @@ curl -s https://api.github.com/repos/BeyondTrust/pbis-open/releases/latest | gre
 PBISinstaller=$(ls $PBISdirectory)
 
 #Now we'll make it executable and execute it:
-chmod +x $PBISdirectory/$PBISinstaller && sudo /bin/zsh $PBISdirectory/$PBISinstaller
+chmod +x $PBISdirectory/$PBISinstaller && sudo /bin/bash $PBISdirectory/$PBISinstaller
 
 #Now we'll join the domain, it'll ask for user input here:
 sudo /opt/pbis/bin/domainjoin-cli join $DOMAIN.$URL $USER
