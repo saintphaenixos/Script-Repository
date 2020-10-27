@@ -8,7 +8,7 @@ then
     echo ""
 else
     echo "curl not found installing..."
-    sudo apt install curl
+    sudo apt update && sudo apt install curl
 fi
 
 if ! command -v zsh &> /dev/null
@@ -16,7 +16,7 @@ then
     echo ""
 else
     echo "zsh not found installing..."
-    sudo apt install zsh
+    sudo apt update && sudo apt install zsh
 fi
 
 if ! command -v wget &> /dev/null
@@ -24,7 +24,7 @@ then
     echo ""
 else
     echo "wget not found installing..."
-    sudo apt install wget
+    sudo apt update && sudo apt install wget
 fi
 
 #Lets set some variables:
