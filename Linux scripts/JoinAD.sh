@@ -2,8 +2,7 @@
 
 #This is a script to automate the process of joining my computer to my Active Directory server.
 
-# required software for this is: Curl, zsh, and wget.
-
+# required software for this is: Curl, zsh, and wget, lets check for them and get them installed.
 for program in curl zsh wget; do
     command -v "$program" &> /dev/null $$ echo "$program has been detected" ||
     echo "$program is not installed" && sudo apt update && sudo apt install $program
@@ -44,7 +43,6 @@ sudo /opt/pbis/bin/config AssumeDefaultDomain True
 sudo /opt/pbis/bin/config LoginShellTemplate /bin/zsh
 sudo /opt/pbis/bin/config HomeDirTemplate %H/%D/%U
 sudo /opt/pbis/bin/config PCC-DOMAIN
-
 
 #Lets restart lsass
 sudo /opt/pbis/bin/lwsm restart lsass
