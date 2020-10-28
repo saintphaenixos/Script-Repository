@@ -3,29 +3,11 @@
 #This is a script to automate the process of joining my computer to my Active Directory server.
 
 # required software for this is: Curl, zsh, and wget.
-if ! command -v curl &> /dev/null
-then
-    echo ""
-else
-    echo "curl not found installing..."
-    sudo apt update && sudo apt install curl
-fi
 
-if ! command -v zsh &> /dev/null
-then
-    echo ""
-else
-    echo "zsh not found installing..."
-    sudo apt update && sudo apt install zsh
-fi
-
-if ! command -v wget &> /dev/null
-then
-    echo ""
-else
-    echo "wget not found installing..."
-    sudo apt update && sudo apt install wget
-fi
+for program in curl zsh wget; do
+    command -v "$program" &> /dev/null $$ echo "$program has been detected" ||
+    echo "$program is not installed" && sudo apt update && sudo apt install $program
+done
 
 #Lets set some variables:
 PBISdirectory=/home/$USER/Git/PBIS
