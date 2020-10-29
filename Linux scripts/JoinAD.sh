@@ -4,8 +4,8 @@
 
 # required software for this is: Curl, zsh, and wget, lets check for them and get them installed.
 for program in curl zsh wget; do
-    command -v "$program" &> /dev/null $$ echo "$program has been detected" ||
-    echo "$program is not installed" && sudo apt update && sudo apt install $program
+  installed=$(command -v $program)
+  [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt update && sudo apt install $program || echo "$program is installed"
 done
 
 #Lets set some variables:

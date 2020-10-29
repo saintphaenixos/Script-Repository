@@ -54,7 +54,7 @@ fi
 
 echo "" >> responsetemp.fil
 
-echo "-Kent in IT" >> responsetemp.fil
+echo "-Kent @ West IT" >> responsetemp.fil
 
 #you need to install xclip and specify the handle here.
 
