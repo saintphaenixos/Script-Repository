@@ -20,7 +20,7 @@ read DOMAIN
 echo -e "Please Enter a domain user that can join devices to this domain:"
 read USER
 
-#First lets clear the directory of any extra files, we only ever need one in it, and create it if neccesary:
+#First lets clear the directory of any extra files, we only ever need one in it, and will create it if neccesary:
 rm -r $PBISdirectory/pbis*
 mkdir /home/$USER/Git/PBIS
 
@@ -31,7 +31,7 @@ curl -s https://api.github.com/repos/BeyondTrust/pbis-open/releases/latest | gre
 PBISinstaller=$(ls $PBISdirectory)
 
 #Now we'll make it executable and execute it:
-chmod +x $PBISdirectory/$PBISinstaller && sudo /bin/bash $PBISdirectory/$PBISinstaller
+chmod +x $PBISdirectory/$PBISinstaller && sudo /bin/zsh $PBISdirectory/$PBISinstaller
 
 #Now we'll join the domain, it'll ask for user input here:
 sudo /opt/pbis/bin/domainjoin-cli join $DOMAIN.$URL $USER
@@ -42,7 +42,7 @@ sudo /opt/pbis/bin/config UserDomainPrefix $DOMAIN
 sudo /opt/pbis/bin/config AssumeDefaultDomain True
 sudo /opt/pbis/bin/config LoginShellTemplate /bin/zsh
 sudo /opt/pbis/bin/config HomeDirTemplate %H/%D/%U
-sudo /opt/pbis/bin/config PCC-DOMAIN
+sudo /opt/pbis/bin/config $DOMAIN
 
 #Lets restart lsass
 sudo /opt/pbis/bin/lwsm restart lsass
@@ -51,4 +51,4 @@ sleep 10
 
 #Lastly lets have PBIS download a list of all the users in Active directory so others can login!:
 pbis enum-users
-echo "Done!"
+echo "Done! Welcome to the $DOMAIN, you may now login using a standard $DOMAIN account, but you may need to have root add permissions to that account."

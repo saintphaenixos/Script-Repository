@@ -1,4 +1,4 @@
-# This script run the SCCM task sequences 4 times, over 20 minutes, it partially automates SCCM software installation of new machines.
+# This script automatically runs the SCCM task sequences 500 times every 20 seconds.
 # It was originally written by Kent DuBack II on 12/5/2019 for Pima Community College.
 
 # With many additions by Will Crabtree on 8/7/2020
