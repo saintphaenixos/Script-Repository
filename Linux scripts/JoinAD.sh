@@ -24,7 +24,7 @@ read USER
 rm -r $PBISdirectory/pbis*
 mkdir /home/$USER/Git/PBIS
 
-#Now lets get a fresh copy of the installation script from BeyondTrust, we'll get a list of the lastest releases parse out to our needed installer which is for 64 bit linux with .deb repositories.
+#Now lets get a fresh copy of the installation script from BeyondTrust, we'll get a list of the latest releases and parse out our needed installer which is for 64 bit linux with .deb repositories.
 curl -s https://api.github.com/repos/BeyondTrust/pbis-open/releases/latest | grep "browser_download_url.*x86_64.deb" | cut -d : -f 2,3 | tr -d \" | wget -i - -P $PBISdirectory
 
 #Set a variable from the output of the previous command:
@@ -37,14 +37,14 @@ chmod +x $PBISdirectory/$PBISinstaller && sudo /bin/zsh $PBISdirectory/$PBISinst
 sudo /opt/pbis/bin/domainjoin-cli join $DOMAIN.$URL $USER
 
 #lets check the status and set some configurations:
-sudo pbis status
+sudo pbis status > /home/$USER/Downloads/DOMAINJOIN.log
 sudo /opt/pbis/bin/config UserDomainPrefix $DOMAIN
 sudo /opt/pbis/bin/config AssumeDefaultDomain True
 sudo /opt/pbis/bin/config LoginShellTemplate /bin/zsh
 sudo /opt/pbis/bin/config HomeDirTemplate %H/%D/%U
 sudo /opt/pbis/bin/config $DOMAIN
 
-#Lets restart lsass
+#Lets restart lsass before we enumerate the users.
 sudo /opt/pbis/bin/lwsm restart lsass
 echo "Sleeping for 10 seconds before we enumerate users"
 sleep 10

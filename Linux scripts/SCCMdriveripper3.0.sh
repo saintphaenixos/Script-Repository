@@ -26,6 +26,6 @@ echo "you've selected partition $partition"
 
 sudo umount /dev/sd$drive$partition
 
-sudo fatresize -s 1G -p /dev/sd$drive$partition
+sudo fatresize -s 2G -p /dev/sd$drive$partition
 
-sudo dd if=/dev/sd$drive bs=512 count=2000000 status=progress | pigz -c > /home/kduback/Downloads/SCCMstick.img.gz
+sudo dd if=/dev/sd$drive bs=512 count=4000000 status=progress | pigz -c > /home/kduback/Downloads/SCCMstick.img.gz
