@@ -21,4 +21,4 @@ echo "Select drive letter to backup e.g sdA or sdB in lowercase."
 
 read drive
 
-pv </dev/sd$drive | pigz -c >/home/fenix/Downloads/$date$backupname.img.gz
+pv </dev/sd$drive | pigz -c >/home/$USER/Downloads/$date$backupname.img.gz
