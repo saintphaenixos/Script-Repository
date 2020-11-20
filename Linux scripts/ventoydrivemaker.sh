@@ -17,6 +17,5 @@ sed '195,215d' -i "/home/$USER/Scripts/Programs_for_scripts/Ventoy/$Ventscript/t
 udevadm | pee "udevadm info --query=all --name=sd"{a..z} "udevadm info --query=all --name=sd"{a..z}{a..z} | grep -E \(S=usb\|\ sd\) | tr -d 'N: ' | tr -d 'E: ID_BUS=' | grep -B1 usb | grep sd > drivelist.temp
 
 < drivelist.temp xargs -I{} -d'\n' umount /dev/{}1
-#< drivelist.temp xargs -o -I{} -d'\n' zsh ./Ventoy2Disk.sh -I /dev/{} -L SCCMDrive
-yes | xargs -a drivelist.temp -I{} -d'\n' zsh ./Ventoy2Disk.sh -I /dev/{} -L SCCMDrive
+yes | xargs -a drivelist.temp -I{} -d'\n' zsh ./Ventoy2Disk.sh -I /dev/{} -s -g -L SCCMDrive
 rm drivelist.temp
