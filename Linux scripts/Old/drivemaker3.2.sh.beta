@@ -11,8 +11,8 @@ udevadm | pee "udevadm info --query=all --name=sd"{a..z} "udevadm info --query=a
 
 cat drivelist.temp | time parallel -j+0 --progress 'gunzip </home/kduback/Downloads/SCCMstick.img.gz >/dev/{}'
 
-cat drivelist.temp | time parallel -j+0 --progress 'fatresize -q -s max /dev/hd{}1'
+cat drivelist.temp | time parallel -j+0 --progress 'fatresize -q -s 15GB /dev/{}1 '
 
-cat drivelist.temp | time parallel -j+0 --progress 'dosfsck -p -t -w -v
+cat drivelist.temp | time parallel -j+0 --progress 'dosfsck -p -t -w -v'
 
 rm drivelist.temp
