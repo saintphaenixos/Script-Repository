@@ -24,6 +24,10 @@ read partition
 
 echo "you've selected partition $partition"
 
+#Next we're gonna copy over the scripts we need: Currently not working.
+#echo "Writing West Scripts to Drive before compression:"
+#rsync --info=progress2 -r /home/kduback/Downloads/Ventoy.Export/West\ Scripts/* /media/kduback/{}/West\ Scripts/
+
 #Now we're going to unmount, shrink and make our gzipped image:
 sudo umount /dev/sd$drive$partition
 

@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+USR=kduback
+
 Ventdirectory=/home/$USER/Scripts/Programs_for_scripts/Ventoy
 
 rm -r $Ventdirectory*
@@ -12,10 +14,15 @@ cd $Ventdirectory && tar -xzf $Ventscript && rm $Ventscript
 Ventscript=$(ls $Ventdirectory)
 cd $Ventscript
 
-sed '195,215d' -i "/home/$USER/Scripts/Programs_for_scripts/Ventoy/$Ventscript/tool/VentoyWorker.sh"
+# sed '195,215d' -i "/home/$USER/Scripts/Programs_for_scripts/Ventoy/$Ventscript/tool/VentoyWorker.sh"
 
 udevadm | pee "udevadm info --query=all --name=sd"{a..z} "udevadm info --query=all --name=sd"{a..z}{a..z} | grep -E \(S=usb\|\ sd\) | tr -d 'N: ' | tr -d 'E: ID_BUS=' | grep -B1 usb | grep sd > drivelist.temp
 
-< drivelist.temp xargs -I{} -d'\n' umount /dev/{}1
 yes | xargs -a drivelist.temp -I{} -d'\n' zsh ./Ventoy2Disk.sh -I /dev/{} -s -g -L SCCMDrive
 rm drivelist.temp
+
+ls /media/$USR | grep SCCM > mountlist.temp
+#cat mountlist.temp | time parallel -j+0 --progress "cp -R /home/$USR/Downloads/Ventoy.Export/* /media/$USR/{}/"
+cat mountlist.temp | time parallel -j+0 --progress "rsync --info=progress2 -r /home/$USR/Downloads/Ventoy.Export/* /media/$USR/{}/"
+#xargs -a mountlist.temp -I{} -d'\n' cp -R /home/kduback/Downloads/Ventoy.Export/* /media/kduback/{}/
+rm mountlist.temp
