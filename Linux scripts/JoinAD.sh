@@ -33,16 +33,19 @@ PBISinstaller=$(ls $PBISdirectory)
 #Now we'll make it executable and execute it:
 chmod +x $PBISdirectory/$PBISinstaller && sudo /bin/zsh $PBISdirectory/$PBISinstaller
 
-#Now we'll join the domain, it'll ask for user input here:
+#Now we'll join the domain, it'll ask for user input here, which we'll pull from :
 sudo /opt/pbis/bin/domainjoin-cli join $DOMAIN.$URL $USER
 
-#lets check the status and set some configurations:
+#lets check the status and write it to a log and then run PBIS configurations into an array:
 sudo pbis status > /home/$USER/Downloads/DOMAINJOIN.log
-sudo /opt/pbis/bin/config UserDomainPrefix $DOMAIN
-sudo /opt/pbis/bin/config AssumeDefaultDomain True
-sudo /opt/pbis/bin/config LoginShellTemplate /bin/zsh
-sudo /opt/pbis/bin/config HomeDirTemplate %H/%D/%U
-sudo /opt/pbis/bin/config $DOMAIN
+
+PBISCONFIGS=("UserDomainPrefix $DOMAIN"
+"AssumeDefaultDomain True"
+"LoginShellTemplate /bin/zsh"
+"HomeDirTemplate %H/%D/%U"
+"$DOMAIN")
+
+sudo printf '%s\n' $PBISCONFIGS | xargs -I{} -d'\n' /opt/pbis/bin/config {}
 
 #Lets restart lsass before we enumerate the users.
 sudo /opt/pbis/bin/lwsm restart lsass
