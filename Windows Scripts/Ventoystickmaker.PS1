@@ -1,18 +1,23 @@
-#!/bin/zsh
-
 #This is a script that automatically downloads and installed the Ventoy drive creation script's latest version, and then uses it to create ventoy drives out of all connected USB block devices on my machine.
 
 # Due to writing partition information, this script needs to be run as the super user.
 
 #Lets set the Variable for my user directory, and where I want Ventoy to install itself:
-USR=kduback
-Ventdirectory=/home/$USER/Scripts/Programs_for_scripts/Ventoy
+$Ventdirectory = "$HOME\Documents\Scripts\Programs_for_scripts\Ventoy"
 
 #First we'll clear out the install directory and re-create it.
-rm -r $Ventdirectory*
-mkdir $Ventdirectory
+Remove-Item $Ventdirectory -Recurse -Force
+New-Item -Path $Ventdirectory -ItemType Directory -Force
 
 #Now lets download it set a variable named off the .tar.gz.
+$Ventdownloadraw = (Invoke-WebRequest -Uri https://api.github.com/repos/ventoy/Ventoy/releases/latest -UseBasicParsing).Content -split "," | Select-String windows.zip -AllMatches | Select-String download
+$Ventdownloadfix = $Ventdownloadraw -replace ".*https" -replace "`"}.*"
+$Ventdownload = ("https") + $Ventdownloadfix
+Write-host $Ventdownload
+#Github doesn't support standard: Start-bitstransfer, you need to use this sort of command to allow a download from Github.com
+bitsadmin /transfer mydownload /dynamic /download /priority FOREGROUND $Ventdownload $Ventdirectory\Ventoy.zip
+
+
 curl -s https://api.github.com/repos/ventoy/Ventoy/releases/latest | grep "browser_download_url.*linux.tar.gz*" | cut -d : -f 2,3 | tr -d \" | wget -i - -P $Ventdirectory
 Ventscript=$(ls $Ventdirectory)
 
@@ -20,9 +25,6 @@ Ventscript=$(ls $Ventdirectory)
 cd $Ventdirectory && tar -xzf $Ventscript && rm $Ventscript
 Ventscript=$(ls $Ventdirectory)
 cd $Ventscript
-
-#Keep this code in case you ever need to remove the y/n prompt in the Ventoy Script
-# sed '195,215d' -i "/home/$USER/Scripts/Programs_for_scripts/Ventoy/$Ventscript/tool/VentoyWorker.sh"
 
 #Now we'll get a list of all USB devices and place that into a temp file.
 udevadm | pee "udevadm info --query=all --name=sd"{a..z} "udevadm info --query=all --name=sd"{a..z}{a..z} | grep -E \(S=usb\|\ sd\) | tr -d 'N: ' | tr -d 'E: ID_BUS=' | grep -B1 usb | grep sd > drivelist.temp

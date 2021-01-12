@@ -34,7 +34,7 @@ Set-Location "$($SiteCode):\"
 }
 
 catch {
-  Write-Host "SCCM is not installed on this machine, please install SCCM before running this script again"
+  Write-Host "SCCM is not installed on this machine or you don't have correct permissions, please install SCCM before running this script again"
   start-sleep 5
   exit
 }
@@ -66,7 +66,7 @@ $PIMACAMPUS = @(
 #Old way of doing the campus view.
 #Write-Host "`nAdult Education: 1 `nAviation Technologies: 2 `nDowntown Campus: 3 `nDistrict Office: 4 `nDesert Vista Campus: 5 `nEast Campus: 6 `nEl Pueblo: 7 `nEl Rio: 8 `nNorthwest Campus: 9 `nWest Campus: 10"
 
-#Lets go ahead and list out the campuses so the user can choose which one they wish to get a Distribution point from, and we'll set that variable here:
+#Lets go ahead and list out the campuses so the user can choose which one they wish to get a Distribution point from, in addition to visually showing the campuses from the earlier array in a neat and tidy table.
 Out-String -InputObject $PIMACAMPUS
 $SELECTDISTPOINT = Read-Host "Select Campus According to the Previous Numbers"
 Switch ($SELECTDISTPOINT)
@@ -83,11 +83,13 @@ Switch ($SELECTDISTPOINT)
     10 { "$DISTPOINT = Get-CMDistributionPoint -SiteSystemServerName WC-SCCM-DP2.EDU-DOMAIN.PIMA.EDU" > $null ; Write-Host "You've Chosen: WC-SCCM-DP2.EDU-DOMAIN.PIMA.EDU"        }
 }
 
-Start-Sleep 2
+#In case the Temp Folder doesn't exist:
+New-Item -Path $env:homedrive\Temp -ItemType Directory
 
-#Now lets go ahead and run this thing!
+#This combines all of our previously set variables we can now run the SCCM Command to download the SCCM.iso
 New-CMBootableMedia -MediaMode Dynamic -MediaType CdDvd -Path "$env:homedrive\Temp\SCCM.iso" -AllowUnknownMachine -BootImage $BootImage -DistributionPoint $DISTPOINT -ManagementPoint $ManagementPoint -AllowUacPrompt -CertificateStartTime "$DATE" -CertificateExpireTime "$DATEPLUSYEAR" -UserDeviceAffinity DoNotAllow
 
+# Now we will get a list of all the File System Volumes with the name: SCCMDrive and format it appropriately and then for each of them copy the file to the drive. And then lastly clean up after ourselves.
 [array] $DRIVELIST = (Get-Volume -Friendlyname SCCMDrive).DriveLetter + {:\}
 
 Foreach ($DRIVE in $DRIVELIST) {
