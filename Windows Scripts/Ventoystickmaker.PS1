@@ -13,9 +13,23 @@ New-Item -Path $Ventdirectory -ItemType Directory -Force
 $Ventdownloadraw = (Invoke-WebRequest -Uri https://api.github.com/repos/ventoy/Ventoy/releases/latest -UseBasicParsing).Content -split "," | Select-String windows.zip -AllMatches | Select-String download
 $Ventdownloadfix = $Ventdownloadraw -replace ".*https" -replace "`"}.*"
 $Ventdownload = ("https") + $Ventdownloadfix
-Write-host $Ventdownload
-#Github doesn't support standard: Start-bitstransfer, you need to use this sort of command to allow a download from Github.com
+
+#Github doesn't support standard: Start-bitstransfer, you need to use this sort of command to allow a download from Github.com, we then unzip and clean up, We then re-set the Vendirectory variable to accomodate the current versioning of Ventoy.
 bitsadmin /transfer mydownload /dynamic /download /priority FOREGROUND $Ventdownload $Ventdirectory\Ventoy.zip
+Expand-Archive -Path $Ventdirectory\Ventoy.zip -DestinationPath $Ventdirectory -Force
+Remove-Item $Ventdirectory\Ventoy.zip -Force
+$Ventversion = (Get-ChildItem $HOME\Documents\Scripts\Programs_for_scripts\Ventoy\).Name
+$Ventdirectory = $Ventdirectory + "\$Ventversion"
+
+#Now lets create a list of all drives in the Machine that are USB and run the command for each of them.
+[array] $DRIVELIST = Get-Volume | Where-Object {$_.DriveType -eq 'removable'} | Select-Object -ExpandProperty DriveLetter | % { $_ + ":\" }
+
+foreach ($DRIVE in $DRIVELIST) {
+Start-Process $Ventdirectory\Ventoy2Disk.exe -i $DRIVE -s -g -L SCCMDrive
+}
+
+Write-Host "We're done! press a key to close this window. :)"
+$Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") > $null
 
 
 curl -s https://api.github.com/repos/ventoy/Ventoy/releases/latest | grep "browser_download_url.*linux.tar.gz*" | cut -d : -f 2,3 | tr -d \" | wget -i - -P $Ventdirectory

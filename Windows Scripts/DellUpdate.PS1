@@ -9,7 +9,7 @@ Copy-Item -Path $PSScriptRoot\DellDrivers -Destination C:\Users\Public\Downloads
 Write-Host "Done!"
 
 # Now we'll pull a list of drivers in the DellDrivers folder on the computer and run each in a separate script.
-Get-ChildItem -path C:\Users\Public\Downloads\DellDrivers -Name | % { "& C:\Users\Public\Downloads\DellDrivers\" + $_ } | % { $_ + " /s /f /r"} > C:\Users\Public\Downloads\DellDrivers\DellDriverExecution.Ps1
+Get-ChildItem -path C:\Users\Public\Downloads\DellDrivers -Name | % { "& C:\Users\Public\Downloads\DellDrivers\" + $_ } | % { $_ + " /s /f /r" } > C:\Users\Public\Downloads\DellDrivers\DellDriverExecution.Ps1
 
 #Now we execute that script.
 Write-Host "Beginning Installation of the Drivers, This may take awhile."

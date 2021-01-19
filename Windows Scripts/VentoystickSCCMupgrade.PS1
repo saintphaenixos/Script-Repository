@@ -97,3 +97,6 @@ Copy-Item -Path $env:homedrive\Temp\SCCM.iso -Destination "$DRIVE"
 }
 
 rm "$env:homedrive\Temp\SCCM.iso"
+
+Write-Host "We're done! press a key to close this window. :)"
+$Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") > $null
