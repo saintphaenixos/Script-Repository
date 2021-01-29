@@ -1,16 +1,29 @@
 #!/bin/zsh
 
+#Lets add some color!
+red() {
+    echo "\e[31m${1}\e[0m"
+}
+
+green() {
+    echo "\e[32m${1}\e[0m"
+}
+
+yellow() {
+    echo "\e[33m${1}\e[0m"
+}
+
 #here are your variables!
-echo "What is their name?"
+red "What is their name?"
 read name
 
-echo "What was the issue on the machine?"
+yellow "What was the issue on the machine?"
 read issue
 
-echo "What did I do to fix the issue?"
+green "What did I do to fix the issue?"
 read fix
 
-echo "Was there any miscellaeous info to say?"
+yellow "Was there any miscellaneous info to say?"
 read extra
 
 h=`date +%H`

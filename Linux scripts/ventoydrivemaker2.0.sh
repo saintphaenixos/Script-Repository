@@ -4,6 +4,13 @@
 
 # Due to writing partition information, this script needs to be run as the super user.
 
+#First lets make sure the user is running as root:
+if [ "$UID" -gt 0 ]; then
+     echo "user is not root, exiting..."
+     sleep 3
+     exit 1
+fi
+
 #Lets set the Variable for my user directory, and where I want Ventoy to install itself:
 USR=kduback
 Ventdirectory=/home/$USER/Scripts/Programs_for_scripts/Ventoy

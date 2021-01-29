@@ -27,6 +27,6 @@ echo "you've selected partition $partition"
 #Now we're going to unmount, shrink and make our gzipped image:
 sudo umount /dev/sd$drive$partition
 
-sudo fatresize -s 2G -p /dev/sd$drive$partition
+sudo fatresize -s 3G -p /dev/sd$drive$partition
 
 sudo dd if=/dev/sd$drive bs=512 count=4000000 status=progress | pigz -c > /home/kduback/Downloads/SCCMstick.img.gz

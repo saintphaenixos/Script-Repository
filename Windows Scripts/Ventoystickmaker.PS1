@@ -1,5 +1,7 @@
 #This is a script that automatically downloads and installed the Ventoy drive creation script's latest version, and then uses it to create ventoy drives out of all connected USB block devices on my machine.
 
+# CURRENTLY THIS DOESNT FUNCTION BECAUSE VENTOY HAS NO WINDOWS COMMAND LINE OPTIONS. :sob:
+
 # Due to writing partition information, this script needs to be run as the super user.
 
 #Lets set the Variable for my user directory, and where I want Ventoy to install itself:
