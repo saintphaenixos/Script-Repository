@@ -162,6 +162,10 @@ whitebg() {
     echo -e "\e[107m${1}\e[0m"
 }
 
+#A neat little trick with an if statement to block out a bunch of lines in a script.
+if false
+then
+
 #Now lets demo all of them:
 
 white "Here are all the formats!"
@@ -257,3 +261,5 @@ lightcyanbg "Here is a light cyan background."
 whitebg "Here is a white background."
 
 for i in {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
+
+fi
