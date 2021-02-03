@@ -4,6 +4,13 @@
 
 # This script asks for the location of a disk and a partition of an SCCM install drive, automatically unmounts and then shrinks the partition in order to create an image file that is compressed to use with the Drivemaker.sh script.
 
+#First lets make sure the user is running as root:
+if [ "$UID" -gt 0 ]; then
+     echo "user is not root, exiting..."
+     sleep 3
+     exit 1
+fi
+
 #We'll check if we have our needed programs:
 for program in pigz pv; do
   installed=$(command -v $program)

@@ -6,6 +6,21 @@
 
 # This is an improved version of Drivemaker using GNU parralel and dd which by default are installed on most distributions and can function more universally and across more drives than my previous script Drivemaker.sh. It searches for all usb drives and then writes the image to them, and parralelizes them.
 
+#Lets check if you are root first, as you need to be root for this:
+
+if [ "$UID" -gt 0 ]; then
+     echo "This script must be run as root!"
+     echo "exiting..."
+     exit
+fi
+
+#Lets check to make sure we have all the software installed that we need:
+
+for program in parallel dosfstools fatresize; do
+  installed=$(command -v $program)
+  [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt update && sudo apt install $program || echo "$program is installed"
+done
+
 # First we get a list of all the drives in the system that are usb by searching for them
 udevadm | pee "udevadm info --query=all --name=sd"{a..z} "udevadm info --query=all --name=sd"{a..z}{a..z} | grep -E \(S=usb\|\ sd\) | tr -d 'N: ' | tr -d 'E: ID_BUS=' | grep -B1 usb | grep sd > drivelist.temp
 
