@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#This is an example of creating a function that you can use to change text or background of text colors to one of the 256 colors.
+#This is a sourceable library of functions for changing the text or background of text colors to one of the 256 colors using ANSI/VT100 Control sequences.
 
 black() {
     echo -e "\e[38;5;0m${1}\e[0m"

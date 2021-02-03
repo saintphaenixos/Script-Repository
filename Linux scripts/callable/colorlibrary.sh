@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#This is an example of creating a function that you can use to change text colors and formatting such as bolding dimming, underlining and etc.
+#This is a sourceable library of functions for changing the text or background of text colors to one of the 16 basic colors using ANSI/VT100 Control sequences. As well as changing the formatting of text.
+
 #Changing Formatting:
 bold() {
     echo -e "\e[1m${1}\e[0m"
