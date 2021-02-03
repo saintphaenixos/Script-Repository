@@ -1,3 +1,6 @@
+#!/bin/bash
+
+#This is an example of creating a function that you can use to change text or background of text colors to one of the 256 colors.
 
 black() {
     echo -e "\e[38;5;0m${1}\e[0m"
@@ -2047,7 +2050,7 @@ grey93bg() {
     echo -e "\e[48;5;255m${1}\e[0m"
 }
 
-#A neat little trick with an if statement to block out a bunch of lines in a script.
+#A neat little trick with an if statement to block out a bunch of lines in a script. If you want the demo, comment out the if false statement, the attached then, and lastly the fi at the bottom of the script.
 if false
 then
 
