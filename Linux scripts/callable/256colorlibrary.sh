@@ -3,2051 +3,4099 @@
 #This is a sourceable library of functions for changing the text or background of text colors to one of the 256 colors using ANSI/VT100 Control sequences.
 
 black() {
-    echo -e "\e[38;5;0m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;0m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;0m${1}\e[0m"
+    fi
 }
 
 maroon() {
-    echo -e "\e[38;5;1m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;1m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;1m${1}\e[0m"
+    fi
 }
 
 green() {
-    echo -e "\e[38;5;2m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;2m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;2m${1}\e[0m"
+    fi
 }
 
 olive() {
-    echo -e "\e[38;5;3m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;3m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;3m${1}\e[0m"
+    fi
 }
 
 navy() {
-    echo -e "\e[38;5;4m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;4m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;4m${1}\e[0m"
+    fi
 }
 
 purple() {
-    echo -e "\e[38;5;5m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;5m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;5m${1}\e[0m"
+    fi
 }
 
 teal() {
-    echo -e "\e[38;5;6m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;6m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;6m${1}\e[0m"
+    fi
 }
 
 silver() {
-    echo -e "\e[38;5;7m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;7m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;7m${1}\e[0m"
+    fi
 }
 
 grey() {
-    echo -e "\e[38;5;8m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;8m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;8m${1}\e[0m"
+    fi
 }
 
 red() {
-    echo -e "\e[38;5;9m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;9m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;9m${1}\e[0m"
+    fi
 }
 
 lime() {
-    echo -e "\e[38;5;10m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;10m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;10m${1}\e[0m"
+    fi
 }
 
 yellow() {
-    echo -e "\e[38;5;11m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;11m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;11m${1}\e[0m"
+    fi
 }
 
 blue() {
-    echo -e "\e[38;5;12m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;12m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;12m${1}\e[0m"
+    fi
 }
 
 fuchsia() {
-    echo -e "\e[38;5;13m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;13m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;13m${1}\e[0m"
+    fi
 }
 
 aqua() {
-    echo -e "\e[38;5;14m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;14m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;14m${1}\e[0m"
+    fi
 }
 
 white() {
-    echo -e "\e[38;5;15m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;15m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;15m${1}\e[0m"
+    fi
 }
 
 grey0() {
-    echo -e "\e[38;5;16m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;16m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;16m${1}\e[0m"
+    fi
 }
 
 navyblue() {
-    echo -e "\e[38;5;17m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;17m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;17m${1}\e[0m"
+    fi
 }
 
 darkblue() {
-    echo -e "\e[38;5;18m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;18m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;18m${1}\e[0m"
+    fi
 }
 
 blue3() {
-    echo -e "\e[38;5;19m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;19m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;19m${1}\e[0m"
+    fi
 }
 
 blue3() {
-    echo -e "\e[38;5;20m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;20m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;20m${1}\e[0m"
+    fi
 }
 
 blue1() {
-    echo -e "\e[38;5;21m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;21m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;21m${1}\e[0m"
+    fi
 }
 
 darkgreen() {
-    echo -e "\e[38;5;22m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;22m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;22m${1}\e[0m"
+    fi
 }
 
 deepskyblue4() {
-    echo -e "\e[38;5;23m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;23m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;23m${1}\e[0m"
+    fi
 }
 
 deepskyblue4() {
-    echo -e "\e[38;5;24m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;24m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;24m${1}\e[0m"
+    fi
 }
 
 deepskyblue4() {
-    echo -e "\e[38;5;25m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;25m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;25m${1}\e[0m"
+    fi
 }
 
 dodgerblue3() {
-    echo -e "\e[38;5;26m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;26m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;26m${1}\e[0m"
+    fi
 }
 
 dodgerblue2() {
-    echo -e "\e[38;5;27m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;27m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;27m${1}\e[0m"
+    fi
 }
 
 green4() {
-    echo -e "\e[38;5;28m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;28m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;28m${1}\e[0m"
+    fi
 }
 
 springgreen4() {
-    echo -e "\e[38;5;29m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;29m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;29m${1}\e[0m"
+    fi
 }
 
 turquoise4() {
-    echo -e "\e[38;5;30m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;30m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;30m${1}\e[0m"
+    fi
 }
 
 deepskyblue3() {
-    echo -e "\e[38;5;31m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;31m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;31m${1}\e[0m"
+    fi
 }
 
 deepskyblue3() {
-    echo -e "\e[38;5;32m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;32m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;32m${1}\e[0m"
+    fi
 }
 
 dodgerblue1() {
-    echo -e "\e[38;5;33m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;33m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;33m${1}\e[0m"
+    fi
 }
 
 green3() {
-    echo -e "\e[38;5;34m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;34m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;34m${1}\e[0m"
+    fi
 }
 
 springgreen3() {
-    echo -e "\e[38;5;35m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;35m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;35m${1}\e[0m"
+    fi
 }
 
 darkcyan() {
-    echo -e "\e[38;5;36m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;36m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;36m${1}\e[0m"
+    fi
 }
 
 lightseagreen() {
-    echo -e "\e[38;5;37m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;37m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;37m${1}\e[0m"
+    fi
 }
 
 deepskyblue2() {
-    echo -e "\e[38;5;38m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;38m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;38m${1}\e[0m"
+    fi
 }
 
 deepskyblue1() {
-    echo -e "\e[38;5;39m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;39m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;39m${1}\e[0m"
+    fi
 }
 
 green3() {
-    echo -e "\e[38;5;40m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;40m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;40m${1}\e[0m"
+    fi
 }
 
 springgreen3() {
-    echo -e "\e[38;5;41m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;41m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;41m${1}\e[0m"
+    fi
 }
 
 springgreen2() {
-    echo -e "\e[38;5;42m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;42m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;42m${1}\e[0m"
+    fi
 }
 
 cyan3() {
-    echo -e "\e[38;5;43m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;43m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;43m${1}\e[0m"
+    fi
 }
 
 darkturquoise() {
-    echo -e "\e[38;5;44m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;44m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;44m${1}\e[0m"
+    fi
 }
 
 turquoise2() {
-    echo -e "\e[38;5;45m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;45m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;45m${1}\e[0m"
+    fi
 }
 
 green1() {
-    echo -e "\e[38;5;46m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;46m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;46m${1}\e[0m"
+    fi
 }
 
 springgreen2() {
-    echo -e "\e[38;5;47m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;47m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;47m${1}\e[0m"
+    fi
 }
 
 springgreen1() {
-    echo -e "\e[38;5;48m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;48m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;48m${1}\e[0m"
+    fi
 }
 
 mediumspringgreen() {
-    echo -e "\e[38;5;49m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;49m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;49m${1}\e[0m"
+    fi
 }
 
 cyan2() {
-    echo -e "\e[38;5;50m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;50m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;50m${1}\e[0m"
+    fi
 }
 
 cyan1() {
-    echo -e "\e[38;5;51m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;51m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;51m${1}\e[0m"
+    fi
 }
 
 darkred() {
-    echo -e "\e[38;5;52m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;52m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;52m${1}\e[0m"
+    fi
 }
 
 deeppink4() {
-    echo -e "\e[38;5;53m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;53m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;53m${1}\e[0m"
+    fi
 }
 
 purple4() {
-    echo -e "\e[38;5;54m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;54m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;54m${1}\e[0m"
+    fi
 }
 
 purple4() {
-    echo -e "\e[38;5;55m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;55m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;55m${1}\e[0m"
+    fi
 }
 
 purple3() {
-    echo -e "\e[38;5;56m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;56m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;56m${1}\e[0m"
+    fi
 }
 
 blueviolet() {
-    echo -e "\e[38;5;57m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;57m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;57m${1}\e[0m"
+    fi
 }
 
 orange4() {
-    echo -e "\e[38;5;58m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;58m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;58m${1}\e[0m"
+    fi
 }
 
 grey37() {
-    echo -e "\e[38;5;59m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;59m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;59m${1}\e[0m"
+    fi
 }
 
 mediumpurple4() {
-    echo -e "\e[38;5;60m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;60m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;60m${1}\e[0m"
+    fi
 }
 
 slateblue3() {
-    echo -e "\e[38;5;61m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;61m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;61m${1}\e[0m"
+    fi
 }
 
 slateblue3() {
-    echo -e "\e[38;5;62m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;62m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;62m${1}\e[0m"
+    fi
 }
 
 royalblue1() {
-    echo -e "\e[38;5;63m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;63m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;63m${1}\e[0m"
+    fi
 }
 
 chartreuse4() {
-    echo -e "\e[38;5;64m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;64m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;64m${1}\e[0m"
+    fi
 }
 
 darkseagreen4() {
-    echo -e "\e[38;5;65m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;65m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;65m${1}\e[0m"
+    fi
 }
 
 paleturquoise4() {
-    echo -e "\e[38;5;66m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;66m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;66m${1}\e[0m"
+    fi
 }
 
 steelblue() {
-    echo -e "\e[38;5;67m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;67m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;67m${1}\e[0m"
+    fi
 }
 
 steelblue3() {
-    echo -e "\e[38;5;68m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;68m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;68m${1}\e[0m"
+    fi
 }
 
 cornflowerblue() {
-    echo -e "\e[38;5;69m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;69m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;69m${1}\e[0m"
+    fi
 }
 
 chartreuse3() {
-    echo -e "\e[38;5;70m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;70m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;70m${1}\e[0m"
+    fi
 }
 
 darkseagreen4() {
-    echo -e "\e[38;5;71m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;71m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;71m${1}\e[0m"
+    fi
 }
 
 cadetblue() {
-    echo -e "\e[38;5;72m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;72m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;72m${1}\e[0m"
+    fi
 }
 
 cadetblue() {
-    echo -e "\e[38;5;73m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;73m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;73m${1}\e[0m"
+    fi
 }
 
 skyblue3() {
-    echo -e "\e[38;5;74m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;74m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;74m${1}\e[0m"
+    fi
 }
 
 steelblue1() {
-    echo -e "\e[38;5;75m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;75m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;75m${1}\e[0m"
+    fi
 }
 
 chartreuse3() {
-    echo -e "\e[38;5;76m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;76m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;76m${1}\e[0m"
+    fi
 }
 
 palegreen3() {
-    echo -e "\e[38;5;77m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;77m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;77m${1}\e[0m"
+    fi
 }
 
 seagreen3() {
-    echo -e "\e[38;5;78m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;78m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;78m${1}\e[0m"
+    fi
 }
 
 aquamarine3() {
-    echo -e "\e[38;5;79m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;79m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;79m${1}\e[0m"
+    fi
 }
 
 mediumturquoise() {
-    echo -e "\e[38;5;80m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;80m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;80m${1}\e[0m"
+    fi
 }
 
 steelblue1() {
-    echo -e "\e[38;5;81m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;81m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;81m${1}\e[0m"
+    fi
 }
 
 chartreuse2() {
-    echo -e "\e[38;5;82m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;82m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;82m${1}\e[0m"
+    fi
 }
 
 seagreen2() {
-    echo -e "\e[38;5;83m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;83m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;83m${1}\e[0m"
+    fi
 }
 
 seagreen1() {
-    echo -e "\e[38;5;84m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;84m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;84m${1}\e[0m"
+    fi
 }
 
 seagreen1() {
-    echo -e "\e[38;5;85m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;85m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;85m${1}\e[0m"
+    fi
 }
 
 aquamarine1() {
-    echo -e "\e[38;5;86m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;86m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;86m${1}\e[0m"
+    fi
 }
 
 darkslategray2() {
-    echo -e "\e[38;5;87m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;87m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;87m${1}\e[0m"
+    fi
 }
 
 darkred() {
-    echo -e "\e[38;5;88m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;88m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;88m${1}\e[0m"
+    fi
 }
 
 deeppink4() {
-    echo -e "\e[38;5;89m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;89m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;89m${1}\e[0m"
+    fi
 }
 
 darkmagenta() {
-    echo -e "\e[38;5;90m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;90m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;90m${1}\e[0m"
+    fi
 }
 
 darkmagenta() {
-    echo -e "\e[38;5;91m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;91m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;91m${1}\e[0m"
+    fi
 }
 
 darkviolet() {
-    echo -e "\e[38;5;92m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;92m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;92m${1}\e[0m"
+    fi
 }
 
 purple() {
-    echo -e "\e[38;5;93m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;93m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;93m${1}\e[0m"
+    fi
 }
 
 orange4() {
-    echo -e "\e[38;5;94m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;94m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;94m${1}\e[0m"
+    fi
 }
 
 lightpink4() {
-    echo -e "\e[38;5;95m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;95m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;95m${1}\e[0m"
+    fi
 }
 
 plum4() {
-    echo -e "\e[38;5;96m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;96m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;96m${1}\e[0m"
+    fi
 }
 
 mediumpurple3() {
-    echo -e "\e[38;5;97m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;97m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;97m${1}\e[0m"
+    fi
 }
 
 mediumpurple3() {
-    echo -e "\e[38;5;98m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;98m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;98m${1}\e[0m"
+    fi
 }
 
 slateblue1() {
-    echo -e "\e[38;5;99m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;99m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;99m${1}\e[0m"
+    fi
 }
 
 yellow4() {
-    echo -e "\e[38;5;100m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;100m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;100m${1}\e[0m"
+    fi
 }
 
 wheat4() {
-    echo -e "\e[38;5;101m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;101m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;101m${1}\e[0m"
+    fi
 }
 
 grey53() {
-    echo -e "\e[38;5;102m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;102m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;102m${1}\e[0m"
+    fi
 }
 
 lightslategrey() {
-    echo -e "\e[38;5;103m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;103m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;103m${1}\e[0m"
+    fi
 }
 
 mediumpurple() {
-    echo -e "\e[38;5;104m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;104m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;104m${1}\e[0m"
+    fi
 }
 
 lightslateblue() {
-    echo -e "\e[38;5;105m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;105m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;105m${1}\e[0m"
+    fi
 }
 
 yellow4() {
-    echo -e "\e[38;5;106m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;106m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;106m${1}\e[0m"
+    fi
 }
 
 darkolivegreen3() {
-    echo -e "\e[38;5;107m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;107m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;107m${1}\e[0m"
+    fi
 }
 
 darkseagreen() {
-    echo -e "\e[38;5;108m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;108m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;108m${1}\e[0m"
+    fi
 }
 
 lightskyblue3() {
-    echo -e "\e[38;5;109m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;109m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;109m${1}\e[0m"
+    fi
 }
 
 lightskyblue3() {
-    echo -e "\e[38;5;110m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;110m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;110m${1}\e[0m"
+    fi
 }
 
 skyblue2() {
-    echo -e "\e[38;5;111m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;111m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;111m${1}\e[0m"
+    fi
 }
 
 chartreuse2() {
-    echo -e "\e[38;5;112m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;112m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;112m${1}\e[0m"
+    fi
 }
 
 darkolivegreen3() {
-    echo -e "\e[38;5;113m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;113m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;113m${1}\e[0m"
+    fi
 }
 
 palegreen3() {
-    echo -e "\e[38;5;114m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;114m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;114m${1}\e[0m"
+    fi
 }
 
 darkseagreen3() {
-    echo -e "\e[38;5;115m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;115m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;115m${1}\e[0m"
+    fi
 }
 
 darkslategray3() {
-    echo -e "\e[38;5;116m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;116m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;116m${1}\e[0m"
+    fi
 }
 
 skyblue1() {
-    echo -e "\e[38;5;117m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;117m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;117m${1}\e[0m"
+    fi
 }
 
 chartreuse1() {
-    echo -e "\e[38;5;118m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;118m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;118m${1}\e[0m"
+    fi
 }
 
 lightgreen() {
-    echo -e "\e[38;5;119m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;119m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;119m${1}\e[0m"
+    fi
 }
 
 lightgreen() {
-    echo -e "\e[38;5;120m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;120m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;120m${1}\e[0m"
+    fi
 }
 
 palegreen1() {
-    echo -e "\e[38;5;121m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;121m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;121m${1}\e[0m"
+    fi
 }
 
 aquamarine1() {
-    echo -e "\e[38;5;122m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;122m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;122m${1}\e[0m"
+    fi
 }
 
 darkslategray1() {
-    echo -e "\e[38;5;123m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;123m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;123m${1}\e[0m"
+    fi
 }
 
 red3() {
-    echo -e "\e[38;5;124m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;124m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;124m${1}\e[0m"
+    fi
 }
 
 deeppink4() {
-    echo -e "\e[38;5;125m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;125m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;125m${1}\e[0m"
+    fi
 }
 
 mediumvioletred() {
-    echo -e "\e[38;5;126m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;126m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;126m${1}\e[0m"
+    fi
 }
 
 magenta3() {
-    echo -e "\e[38;5;127m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;127m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;127m${1}\e[0m"
+    fi
 }
 
 darkviolet() {
-    echo -e "\e[38;5;128m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;128m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;128m${1}\e[0m"
+    fi
 }
 
 purple() {
-    echo -e "\e[38;5;129m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;129m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;129m${1}\e[0m"
+    fi
 }
 
 darkorange3() {
-    echo -e "\e[38;5;130m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;130m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;130m${1}\e[0m"
+    fi
 }
 
 indianred() {
-    echo -e "\e[38;5;131m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;131m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;131m${1}\e[0m"
+    fi
 }
 
 hotpink3() {
-    echo -e "\e[38;5;132m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;132m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;132m${1}\e[0m"
+    fi
 }
 
 mediumorchid3() {
-    echo -e "\e[38;5;133m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;133m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;133m${1}\e[0m"
+    fi
 }
 
 mediumorchid() {
-    echo -e "\e[38;5;134m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;134m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;134m${1}\e[0m"
+    fi
 }
 
 mediumpurple2() {
-    echo -e "\e[38;5;135m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;135m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;135m${1}\e[0m"
+    fi
 }
 
 darkgoldenrod() {
-    echo -e "\e[38;5;136m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;136m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;136m${1}\e[0m"
+    fi
 }
 
 lightsalmon3() {
-    echo -e "\e[38;5;137m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;137m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;137m${1}\e[0m"
+    fi
 }
 
 rosybrown() {
-    echo -e "\e[38;5;138m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;138m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;138m${1}\e[0m"
+    fi
 }
 
 grey63() {
-    echo -e "\e[38;5;139m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;139m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;139m${1}\e[0m"
+    fi
 }
 
 mediumpurple2() {
-    echo -e "\e[38;5;140m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;140m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;140m${1}\e[0m"
+    fi
 }
 
 mediumpurple1() {
-    echo -e "\e[38;5;141m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;141m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;141m${1}\e[0m"
+    fi
 }
 
 gold3() {
-    echo -e "\e[38;5;142m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;142m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;142m${1}\e[0m"
+    fi
 }
 
 darkkhaki() {
-    echo -e "\e[38;5;143m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;143m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;143m${1}\e[0m"
+    fi
 }
 
 navajowhite3() {
-    echo -e "\e[38;5;144m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;144m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;144m${1}\e[0m"
+    fi
 }
 
 grey69() {
-    echo -e "\e[38;5;145m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;145m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;145m${1}\e[0m"
+    fi
 }
 
 lightsteelblue3() {
-    echo -e "\e[38;5;146m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;146m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;146m${1}\e[0m"
+    fi
 }
 
 lightsteelblue() {
-    echo -e "\e[38;5;147m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;147m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;147m${1}\e[0m"
+    fi
 }
 
 yellow3() {
-    echo -e "\e[38;5;148m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;148m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;148m${1}\e[0m"
+    fi
 }
 
 darkolivegreen3() {
-    echo -e "\e[38;5;149m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;149m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;149m${1}\e[0m"
+    fi
 }
 
 darkseagreen3() {
-    echo -e "\e[38;5;150m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;150m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;150m${1}\e[0m"
+    fi
 }
 
 darkseagreen2() {
-    echo -e "\e[38;5;151m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;151m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;151m${1}\e[0m"
+    fi
 }
 
 lightcyan3() {
-    echo -e "\e[38;5;152m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;152m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;152m${1}\e[0m"
+    fi
 }
 
 lightskyblue1() {
-    echo -e "\e[38;5;153m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;153m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;153m${1}\e[0m"
+    fi
 }
 
 greenyellow() {
-    echo -e "\e[38;5;154m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;154m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;154m${1}\e[0m"
+    fi
 }
 
 darkolivegreen2() {
-    echo -e "\e[38;5;155m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;155m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;155m${1}\e[0m"
+    fi
 }
 
 palegreen1() {
-    echo -e "\e[38;5;156m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;156m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;156m${1}\e[0m"
+    fi
 }
 
 darkseagreen2() {
-    echo -e "\e[38;5;157m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;157m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;157m${1}\e[0m"
+    fi
 }
 
 darkseagreen1() {
-    echo -e "\e[38;5;158m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;158m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;158m${1}\e[0m"
+    fi
 }
 
 paleturquoise1() {
-    echo -e "\e[38;5;159m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;159m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;159m${1}\e[0m"
+    fi
 }
 
 red3() {
-    echo -e "\e[38;5;160m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;160m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;160m${1}\e[0m"
+    fi
 }
 
 deeppink3() {
-    echo -e "\e[38;5;161m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;161m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;161m${1}\e[0m"
+    fi
 }
 
 deeppink3() {
-    echo -e "\e[38;5;162m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;162m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;162m${1}\e[0m"
+    fi
 }
 
 magenta3() {
-    echo -e "\e[38;5;163m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;163m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;163m${1}\e[0m"
+    fi
 }
 
 magenta3() {
-    echo -e "\e[38;5;164m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;164m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;164m${1}\e[0m"
+    fi
 }
 
 magenta2() {
-    echo -e "\e[38;5;165m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;165m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;165m${1}\e[0m"
+    fi
 }
 
 darkorange3() {
-    echo -e "\e[38;5;166m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;166m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;166m${1}\e[0m"
+    fi
 }
 
 indianred() {
-    echo -e "\e[38;5;167m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;167m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;167m${1}\e[0m"
+    fi
 }
 
 hotpink3() {
-    echo -e "\e[38;5;168m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;168m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;168m${1}\e[0m"
+    fi
 }
 
 hotpink2() {
-    echo -e "\e[38;5;169m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;169m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;169m${1}\e[0m"
+    fi
 }
 
 orchid() {
-    echo -e "\e[38;5;170m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;170m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;170m${1}\e[0m"
+    fi
 }
 
 mediumorchid1() {
-    echo -e "\e[38;5;171m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;171m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;171m${1}\e[0m"
+    fi
 }
 
 orange3() {
-    echo -e "\e[38;5;172m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;172m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;172m${1}\e[0m"
+    fi
 }
 
 lightsalmon3() {
-    echo -e "\e[38;5;173m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;173m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;173m${1}\e[0m"
+    fi
 }
 
 lightpink3() {
-    echo -e "\e[38;5;174m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;174m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;174m${1}\e[0m"
+    fi
 }
 
 pink3() {
-    echo -e "\e[38;5;175m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;175m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;175m${1}\e[0m"
+    fi
 }
 
 plum3() {
-    echo -e "\e[38;5;176m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;176m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;176m${1}\e[0m"
+    fi
 }
 
 violet() {
-    echo -e "\e[38;5;177m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;177m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;177m${1}\e[0m"
+    fi
 }
 
 gold3() {
-    echo -e "\e[38;5;178m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;178m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;178m${1}\e[0m"
+    fi
 }
 
 lightgoldenrod3() {
-    echo -e "\e[38;5;179m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;179m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;179m${1}\e[0m"
+    fi
 }
 
 tan() {
-    echo -e "\e[38;5;180m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;180m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;180m${1}\e[0m"
+    fi
 }
 
 mistyrose3() {
-    echo -e "\e[38;5;181m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;181m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;181m${1}\e[0m"
+    fi
 }
 
 thistle3() {
-    echo -e "\e[38;5;182m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;182m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;182m${1}\e[0m"
+    fi
 }
 
 plum2() {
-    echo -e "\e[38;5;183m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;183m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;183m${1}\e[0m"
+    fi
 }
 
 yellow3() {
-    echo -e "\e[38;5;184m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;184m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;184m${1}\e[0m"
+    fi
 }
 
 khaki3() {
-    echo -e "\e[38;5;185m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;185m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;185m${1}\e[0m"
+    fi
 }
 
 lightgoldenrod2() {
-    echo -e "\e[38;5;186m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;186m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;186m${1}\e[0m"
+    fi
 }
 
 lightyellow3() {
-    echo -e "\e[38;5;187m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;187m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;187m${1}\e[0m"
+    fi
 }
 
 grey84() {
-    echo -e "\e[38;5;188m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;188m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;188m${1}\e[0m"
+    fi
 }
 
 lightsteelblue1() {
-    echo -e "\e[38;5;189m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;189m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;189m${1}\e[0m"
+    fi
 }
 
 yellow2() {
-    echo -e "\e[38;5;190m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;190m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;190m${1}\e[0m"
+    fi
 }
 
 darkolivegreen1() {
-    echo -e "\e[38;5;191m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;191m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;191m${1}\e[0m"
+    fi
 }
 
 darkolivegreen1() {
-    echo -e "\e[38;5;192m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;192m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;192m${1}\e[0m"
+    fi
 }
 
 darkseagreen1() {
-    echo -e "\e[38;5;193m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;193m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;193m${1}\e[0m"
+    fi
 }
 
 honeydew2() {
-    echo -e "\e[38;5;194m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;194m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;194m${1}\e[0m"
+    fi
 }
 
 lightcyan1() {
-    echo -e "\e[38;5;195m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;195m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;195m${1}\e[0m"
+    fi
 }
 
 red1() {
-    echo -e "\e[38;5;196m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;196m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;196m${1}\e[0m"
+    fi
 }
 
 deeppink2() {
-    echo -e "\e[38;5;197m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;197m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;197m${1}\e[0m"
+    fi
 }
 
 deeppink1() {
-    echo -e "\e[38;5;198m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;198m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;198m${1}\e[0m"
+    fi
 }
 
 deeppink1() {
-    echo -e "\e[38;5;199m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;199m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;199m${1}\e[0m"
+    fi
 }
 
 magenta2() {
-    echo -e "\e[38;5;200m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;200m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;200m${1}\e[0m"
+    fi
 }
 
 magenta1() {
-    echo -e "\e[38;5;201m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;201m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;201m${1}\e[0m"
+    fi
 }
 
 orangered1() {
-    echo -e "\e[38;5;202m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;202m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;202m${1}\e[0m"
+    fi
 }
 
 indianred1() {
-    echo -e "\e[38;5;203m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;203m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;203m${1}\e[0m"
+    fi
 }
 
 indianred1() {
-    echo -e "\e[38;5;204m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;204m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;204m${1}\e[0m"
+    fi
 }
 
 hotpink() {
-    echo -e "\e[38;5;205m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;205m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;205m${1}\e[0m"
+    fi
 }
 
 hotpink() {
-    echo -e "\e[38;5;206m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;206m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;206m${1}\e[0m"
+    fi
 }
 
 mediumorchid1() {
-    echo -e "\e[38;5;207m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;207m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;207m${1}\e[0m"
+    fi
 }
 
 darkorange() {
-    echo -e "\e[38;5;208m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;208m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;208m${1}\e[0m"
+    fi
 }
 
 salmon1() {
-    echo -e "\e[38;5;209m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;209m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;209m${1}\e[0m"
+    fi
 }
 
 lightcoral() {
-    echo -e "\e[38;5;210m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;210m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;210m${1}\e[0m"
+    fi
 }
 
 palevioletred1() {
-    echo -e "\e[38;5;211m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;211m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;211m${1}\e[0m"
+    fi
 }
 
 orchid2() {
-    echo -e "\e[38;5;212m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;212m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;212m${1}\e[0m"
+    fi
 }
 
 orchid1() {
-    echo -e "\e[38;5;213m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;213m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;213m${1}\e[0m"
+    fi
 }
 
 orange1() {
-    echo -e "\e[38;5;214m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;214m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;214m${1}\e[0m"
+    fi
 }
 
 sandybrown() {
-    echo -e "\e[38;5;215m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;215m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;215m${1}\e[0m"
+    fi
 }
 
 lightsalmon1() {
-    echo -e "\e[38;5;216m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;216m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;216m${1}\e[0m"
+    fi
 }
 
 lightpink1() {
-    echo -e "\e[38;5;217m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;217m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;217m${1}\e[0m"
+    fi
 }
 
 pink1() {
-    echo -e "\e[38;5;218m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;218m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;218m${1}\e[0m"
+    fi
 }
 
 plum1() {
-    echo -e "\e[38;5;219m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;219m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;219m${1}\e[0m"
+    fi
 }
 
 gold1() {
-    echo -e "\e[38;5;220m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;220m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;220m${1}\e[0m"
+    fi
 }
 
 lightgoldenrod2() {
-    echo -e "\e[38;5;221m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;221m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;221m${1}\e[0m"
+    fi
 }
 
 lightgoldenrod2() {
-    echo -e "\e[38;5;222m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;222m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;222m${1}\e[0m"
+    fi
 }
 
 navajowhite1() {
-    echo -e "\e[38;5;223m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;223m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;223m${1}\e[0m"
+    fi
 }
 
 mistyrose1() {
-    echo -e "\e[38;5;224m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;224m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;224m${1}\e[0m"
+    fi
 }
 
 thistle1() {
-    echo -e "\e[38;5;225m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;225m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;225m${1}\e[0m"
+    fi
 }
 
 yellow1() {
-    echo -e "\e[38;5;226m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;226m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;226m${1}\e[0m"
+    fi
 }
 
 lightgoldenrod1() {
-    echo -e "\e[38;5;227m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;227m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;227m${1}\e[0m"
+    fi
 }
 
 khaki1() {
-    echo -e "\e[38;5;228m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;228m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;228m${1}\e[0m"
+    fi
 }
 
 wheat1() {
-    echo -e "\e[38;5;229m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;229m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;229m${1}\e[0m"
+    fi
 }
 
 cornsilk1() {
-    echo -e "\e[38;5;230m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;230m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;230m${1}\e[0m"
+    fi
 }
 
 grey100() {
-    echo -e "\e[38;5;231m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;231m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;231m${1}\e[0m"
+    fi
 }
 
 grey3() {
-    echo -e "\e[38;5;232m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;232m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;232m${1}\e[0m"
+    fi
 }
 
 grey7() {
-    echo -e "\e[38;5;233m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;233m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;233m${1}\e[0m"
+    fi
 }
 
 grey11() {
-    echo -e "\e[38;5;234m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;234m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;234m${1}\e[0m"
+    fi
 }
 
 grey15() {
-    echo -e "\e[38;5;235m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;235m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;235m${1}\e[0m"
+    fi
 }
 
 grey19() {
-    echo -e "\e[38;5;236m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;236m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;236m${1}\e[0m"
+    fi
 }
 
 grey23() {
-    echo -e "\e[38;5;237m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;237m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;237m${1}\e[0m"
+    fi
 }
 
 grey27() {
-    echo -e "\e[38;5;238m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;238m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;238m${1}\e[0m"
+    fi
 }
 
 grey30() {
-    echo -e "\e[38;5;239m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;239m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;239m${1}\e[0m"
+    fi
 }
 
 grey35() {
-    echo -e "\e[38;5;240m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;240m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;240m${1}\e[0m"
+    fi
 }
 
 grey39() {
-    echo -e "\e[38;5;241m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;241m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;241m${1}\e[0m"
+    fi
 }
 
 grey42() {
-    echo -e "\e[38;5;242m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;242m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;242m${1}\e[0m"
+    fi
 }
 
 grey46() {
-    echo -e "\e[38;5;243m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;243m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;243m${1}\e[0m"
+    fi
 }
 
 grey50() {
-    echo -e "\e[38;5;244m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;244m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;244m${1}\e[0m"
+    fi
 }
 
 grey54() {
-    echo -e "\e[38;5;245m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;245m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;245m${1}\e[0m"
+    fi
 }
 
 grey58() {
-    echo -e "\e[38;5;246m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;246m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;246m${1}\e[0m"
+    fi
 }
 
 grey62() {
-    echo -e "\e[38;5;247m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;247m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;247m${1}\e[0m"
+    fi
 }
 
 grey66() {
-    echo -e "\e[38;5;248m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;248m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;248m${1}\e[0m"
+    fi
 }
 
 grey70() {
-    echo -e "\e[38;5;249m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;249m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;249m${1}\e[0m"
+    fi
 }
 
 grey74() {
-    echo -e "\e[38;5;250m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;250m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;250m${1}\e[0m"
+    fi
 }
 
 grey78() {
-    echo -e "\e[38;5;251m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;251m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;251m${1}\e[0m"
+    fi
 }
 
 grey82() {
-    echo -e "\e[38;5;252m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;252m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;252m${1}\e[0m"
+    fi
 }
 
 grey85() {
-    echo -e "\e[38;5;253m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;253m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;253m${1}\e[0m"
+    fi
 }
 
 grey89() {
-    echo -e "\e[38;5;254m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;254m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;254m${1}\e[0m"
+    fi
 }
 
 grey93() {
-    echo -e "\e[38;5;255m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;255m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;255m${1}\e[0m"
+    fi
 }
 
 blackbg() {
-    echo -e "\e[48;5;0m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;0m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;0m${1}\e[0m"
+    fi
 }
 
 maroonbg() {
-    echo -e "\e[48;5;1m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;1m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;1m${1}\e[0m"
+    fi
 }
 
 greenbg() {
-    echo -e "\e[48;5;2m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;2m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;2m${1}\e[0m"
+    fi
 }
 
 olivebg() {
-    echo -e "\e[48;5;3m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;3m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;3m${1}\e[0m"
+    fi
 }
 
 navybg() {
-    echo -e "\e[48;5;4m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;4m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;4m${1}\e[0m"
+    fi
 }
 
 purplebg() {
-    echo -e "\e[48;5;5m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;5m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;5m${1}\e[0m"
+    fi
 }
 
 tealbg() {
-    echo -e "\e[48;5;6m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;6m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;6m${1}\e[0m"
+    fi
 }
 
 silverbg() {
-    echo -e "\e[48;5;7m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;7m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;7m${1}\e[0m"
+    fi
 }
 
 greybg() {
-    echo -e "\e[48;5;8m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;8m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;8m${1}\e[0m"
+    fi
 }
 
 redbg() {
-    echo -e "\e[48;5;9m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;9m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;9m${1}\e[0m"
+    fi
 }
 
 limebg() {
-    echo -e "\e[48;5;10m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;10m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;10m${1}\e[0m"
+    fi
 }
 
 yellowbg() {
-    echo -e "\e[48;5;11m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;11m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;11m${1}\e[0m"
+    fi
 }
 
 bluebg() {
-    echo -e "\e[48;5;12m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;12m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;12m${1}\e[0m"
+    fi
 }
 
 fuchsiabg() {
-    echo -e "\e[48;5;13m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;13m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;13m${1}\e[0m"
+    fi
 }
 
 aquabg() {
-    echo -e "\e[48;5;14m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;14m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;14m${1}\e[0m"
+    fi
 }
 
 whitebg() {
-    echo -e "\e[48;5;15m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;15m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;15m${1}\e[0m"
+    fi
 }
 
 grey0bg() {
-    echo -e "\e[48;5;16m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;16m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;16m${1}\e[0m"
+    fi
 }
 
 navybluebg() {
-    echo -e "\e[48;5;17m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;17m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;17m${1}\e[0m"
+    fi
 }
 
 darkbluebg() {
-    echo -e "\e[48;5;18m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;18m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;18m${1}\e[0m"
+    fi
 }
 
 blue3bg() {
-    echo -e "\e[48;5;19m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;19m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;19m${1}\e[0m"
+    fi
 }
 
 blue3bg() {
-    echo -e "\e[48;5;20m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;20m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;20m${1}\e[0m"
+    fi
 }
 
 blue1bg() {
-    echo -e "\e[48;5;21m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;21m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;21m${1}\e[0m"
+    fi
 }
 
 darkgreenbg() {
-    echo -e "\e[48;5;22m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;22m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;22m${1}\e[0m"
+    fi
 }
 
 deepskyblue4bg() {
-    echo -e "\e[48;5;23m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;23m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;23m${1}\e[0m"
+    fi
 }
 
 deepskyblue4bg() {
-    echo -e "\e[48;5;24m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;24m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;24m${1}\e[0m"
+    fi
 }
 
 deepskyblue4bg() {
-    echo -e "\e[48;5;25m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;25m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;25m${1}\e[0m"
+    fi
 }
 
 dodgerblue3bg() {
-    echo -e "\e[48;5;26m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;26m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;26m${1}\e[0m"
+    fi
 }
 
 dodgerblue2bg() {
-    echo -e "\e[48;5;27m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;27m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;27m${1}\e[0m"
+    fi
 }
 
 green4bg() {
-    echo -e "\e[48;5;28m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;28m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;28m${1}\e[0m"
+    fi
 }
 
 springgreen4bg() {
-    echo -e "\e[48;5;29m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;29m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;29m${1}\e[0m"
+    fi
 }
 
 turquoise4bg() {
-    echo -e "\e[48;5;30m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;30m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;30m${1}\e[0m"
+    fi
 }
 
 deepskyblue3bg() {
-    echo -e "\e[48;5;31m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;31m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;31m${1}\e[0m"
+    fi
 }
 
 deepskyblue3bg() {
-    echo -e "\e[48;5;32m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;32m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;32m${1}\e[0m"
+    fi
 }
 
 dodgerblue1bg() {
-    echo -e "\e[48;5;33m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;33m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;33m${1}\e[0m"
+    fi
 }
 
 green3bg() {
-    echo -e "\e[48;5;34m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;34m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;34m${1}\e[0m"
+    fi
 }
 
 springgreen3bg() {
-    echo -e "\e[48;5;35m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;35m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;35m${1}\e[0m"
+    fi
 }
 
 darkcyanbg() {
-    echo -e "\e[48;5;36m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;36m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;36m${1}\e[0m"
+    fi
 }
 
 lightseagreenbg() {
-    echo -e "\e[48;5;37m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;37m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;37m${1}\e[0m"
+    fi
 }
 
 deepskyblue2bg() {
-    echo -e "\e[48;5;38m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;38m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;38m${1}\e[0m"
+    fi
 }
 
 deepskyblue1bg() {
-    echo -e "\e[48;5;39m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;39m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;39m${1}\e[0m"
+    fi
 }
 
 green3bg() {
-    echo -e "\e[48;5;40m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;40m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;40m${1}\e[0m"
+    fi
 }
 
 springgreen3bg() {
-    echo -e "\e[48;5;41m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;41m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;41m${1}\e[0m"
+    fi
 }
 
 springgreen2bg() {
-    echo -e "\e[48;5;42m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;42m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;42m${1}\e[0m"
+    fi
 }
 
 cyan3bg() {
-    echo -e "\e[48;5;43m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;43m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;43m${1}\e[0m"
+    fi
 }
 
 darkturquoisebg() {
-    echo -e "\e[48;5;44m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;44m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;44m${1}\e[0m"
+    fi
 }
 
 turquoise2bg() {
-    echo -e "\e[48;5;45m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;45m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;45m${1}\e[0m"
+    fi
 }
 
 green1bg() {
-    echo -e "\e[48;5;46m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;46m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;46m${1}\e[0m"
+    fi
 }
 
 springgreen2bg() {
-    echo -e "\e[48;5;47m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;47m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;47m${1}\e[0m"
+    fi
 }
 
 springgreen1bg() {
-    echo -e "\e[48;5;48m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;48m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;48m${1}\e[0m"
+    fi
 }
 
 mediumspringgreenbg() {
-    echo -e "\e[48;5;49m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;49m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;49m${1}\e[0m"
+    fi
 }
 
 cyan2bg() {
-    echo -e "\e[48;5;50m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;50m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;50m${1}\e[0m"
+    fi
 }
 
 cyan1bg() {
-    echo -e "\e[48;5;51m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;51m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;51m${1}\e[0m"
+    fi
 }
 
 darkredbg() {
-    echo -e "\e[48;5;52m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;52m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;52m${1}\e[0m"
+    fi
 }
 
 deeppink4bg() {
-    echo -e "\e[48;5;53m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;53m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;53m${1}\e[0m"
+    fi
 }
 
 purple4bg() {
-    echo -e "\e[48;5;54m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;54m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;54m${1}\e[0m"
+    fi
 }
 
 purple4bg() {
-    echo -e "\e[48;5;55m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;55m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;55m${1}\e[0m"
+    fi
 }
 
 purple3bg() {
-    echo -e "\e[48;5;56m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;56m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;56m${1}\e[0m"
+    fi
 }
 
 bluevioletbg() {
-    echo -e "\e[48;5;57m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;57m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;57m${1}\e[0m"
+    fi
 }
 
 orange4bg() {
-    echo -e "\e[48;5;58m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;58m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;58m${1}\e[0m"
+    fi
 }
 
 grey37bg() {
-    echo -e "\e[48;5;59m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;59m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;59m${1}\e[0m"
+    fi
 }
 
 mediumpurple4bg() {
-    echo -e "\e[48;5;60m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;60m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;60m${1}\e[0m"
+    fi
 }
 
 slateblue3bg() {
-    echo -e "\e[48;5;61m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;61m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;61m${1}\e[0m"
+    fi
 }
 
 slateblue3bg() {
-    echo -e "\e[48;5;62m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;62m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;62m${1}\e[0m"
+    fi
 }
 
 royalblue1bg() {
-    echo -e "\e[48;5;63m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;63m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;63m${1}\e[0m"
+    fi
 }
 
 chartreuse4bg() {
-    echo -e "\e[48;5;64m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;64m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;64m${1}\e[0m"
+    fi
 }
 
 darkseagreen4bg() {
-    echo -e "\e[48;5;65m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;65m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;65m${1}\e[0m"
+    fi
 }
 
 paleturquoise4bg() {
-    echo -e "\e[48;5;66m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;66m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;66m${1}\e[0m"
+    fi
 }
 
 steelbluebg() {
-    echo -e "\e[48;5;67m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;67m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;67m${1}\e[0m"
+    fi
 }
 
 steelblue3bg() {
-    echo -e "\e[48;5;68m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;68m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;68m${1}\e[0m"
+    fi
 }
 
 cornflowerbluebg() {
-    echo -e "\e[48;5;69m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;69m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;69m${1}\e[0m"
+    fi
 }
 
 chartreuse3bg() {
-    echo -e "\e[48;5;70m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;70m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;70m${1}\e[0m"
+    fi
 }
 
 darkseagreen4bg() {
-    echo -e "\e[48;5;71m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;71m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;71m${1}\e[0m"
+    fi
 }
 
 cadetbluebg() {
-    echo -e "\e[48;5;72m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;72m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;72m${1}\e[0m"
+    fi
 }
 
 cadetbluebg() {
-    echo -e "\e[48;5;73m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;73m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;73m${1}\e[0m"
+    fi
 }
 
 skyblue3bg() {
-    echo -e "\e[48;5;74m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;74m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;74m${1}\e[0m"
+    fi
 }
 
 steelblue1bg() {
-    echo -e "\e[48;5;75m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;75m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;75m${1}\e[0m"
+    fi
 }
 
 chartreuse3bg() {
-    echo -e "\e[48;5;76m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;76m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;76m${1}\e[0m"
+    fi
 }
 
 palegreen3bg() {
-    echo -e "\e[48;5;77m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;77m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;77m${1}\e[0m"
+    fi
 }
 
 seagreen3bg() {
-    echo -e "\e[48;5;78m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;78m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;78m${1}\e[0m"
+    fi
 }
 
 aquamarine3bg() {
-    echo -e "\e[48;5;79m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;79m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;79m${1}\e[0m"
+    fi
 }
 
 mediumturquoisebg() {
-    echo -e "\e[48;5;80m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;80m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;80m${1}\e[0m"
+    fi
 }
 
 steelblue1bg() {
-    echo -e "\e[48;5;81m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;81m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;81m${1}\e[0m"
+    fi
 }
 
 chartreuse2bg() {
-    echo -e "\e[48;5;82m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;82m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;82m${1}\e[0m"
+    fi
 }
 
 seagreen2bg() {
-    echo -e "\e[48;5;83m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;83m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;83m${1}\e[0m"
+    fi
 }
 
 seagreen1bg() {
-    echo -e "\e[48;5;84m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;84m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;84m${1}\e[0m"
+    fi
 }
 
 seagreen1bg() {
-    echo -e "\e[48;5;85m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;85m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;85m${1}\e[0m"
+    fi
 }
 
 aquamarine1bg() {
-    echo -e "\e[48;5;86m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;86m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;86m${1}\e[0m"
+    fi
 }
 
 darkslategray2bg() {
-    echo -e "\e[48;5;87m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;87m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;87m${1}\e[0m"
+    fi
 }
 
 darkredbg() {
-    echo -e "\e[48;5;88m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;88m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;88m${1}\e[0m"
+    fi
 }
 
 deeppink4bg() {
-    echo -e "\e[48;5;89m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;89m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;89m${1}\e[0m"
+    fi
 }
 
 darkmagentabg() {
-    echo -e "\e[48;5;90m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;90m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;90m${1}\e[0m"
+    fi
 }
 
 darkmagentabg() {
-    echo -e "\e[48;5;91m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;91m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;91m${1}\e[0m"
+    fi
 }
 
 darkvioletbg() {
-    echo -e "\e[48;5;92m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;92m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;92m${1}\e[0m"
+    fi
 }
 
 purplebg() {
-    echo -e "\e[48;5;93m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;93m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;93m${1}\e[0m"
+    fi
 }
 
 orange4bg() {
-    echo -e "\e[48;5;94m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;94m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;94m${1}\e[0m"
+    fi
 }
 
 lightpink4bg() {
-    echo -e "\e[48;5;95m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;95m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;95m${1}\e[0m"
+    fi
 }
 
 plum4bg() {
-    echo -e "\e[48;5;96m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;96m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;96m${1}\e[0m"
+    fi
 }
 
 mediumpurple3bg() {
-    echo -e "\e[48;5;97m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;97m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;97m${1}\e[0m"
+    fi
 }
 
 mediumpurple3bg() {
-    echo -e "\e[48;5;98m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;98m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;98m${1}\e[0m"
+    fi
 }
 
 slateblue1bg() {
-    echo -e "\e[48;5;99m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;99m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;99m${1}\e[0m"
+    fi
 }
 
 yellow4bg() {
-    echo -e "\e[48;5;100m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;100m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;100m${1}\e[0m"
+    fi
 }
 
 wheat4bg() {
-    echo -e "\e[48;5;101m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;101m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;101m${1}\e[0m"
+    fi
 }
 
 grey53bg() {
-    echo -e "\e[48;5;102m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;102m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;102m${1}\e[0m"
+    fi
 }
 
 lightslategreybg() {
-    echo -e "\e[48;5;103m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;103m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;103m${1}\e[0m"
+    fi
 }
 
 mediumpurplebg() {
-    echo -e "\e[48;5;104m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;104m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;104m${1}\e[0m"
+    fi
 }
 
 lightslatebluebg() {
-    echo -e "\e[48;5;105m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;105m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;105m${1}\e[0m"
+    fi
 }
 
 yellow4bg() {
-    echo -e "\e[48;5;106m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;106m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;106m${1}\e[0m"
+    fi
 }
 
 darkolivegreen3bg() {
-    echo -e "\e[48;5;107m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;107m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;107m${1}\e[0m"
+    fi
 }
 
 darkseagreenbg() {
-    echo -e "\e[48;5;108m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;108m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;108m${1}\e[0m"
+    fi
 }
 
 lightskyblue3bg() {
-    echo -e "\e[48;5;109m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;109m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;109m${1}\e[0m"
+    fi
 }
 
 lightskyblue3bg() {
-    echo -e "\e[48;5;110m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;110m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;110m${1}\e[0m"
+    fi
 }
 
 skyblue2bg() {
-    echo -e "\e[48;5;111m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;111m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;111m${1}\e[0m"
+    fi
 }
 
 chartreuse2bg() {
-    echo -e "\e[48;5;112m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;112m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;112m${1}\e[0m"
+    fi
 }
 
 darkolivegreen3bg() {
-    echo -e "\e[48;5;113m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;113m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;113m${1}\e[0m"
+    fi
 }
 
 palegreen3bg() {
-    echo -e "\e[48;5;114m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;114m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;114m${1}\e[0m"
+    fi
 }
 
 darkseagreen3bg() {
-    echo -e "\e[48;5;115m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;115m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;115m${1}\e[0m"
+    fi
 }
 
 darkslategray3bg() {
-    echo -e "\e[48;5;116m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;116m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;116m${1}\e[0m"
+    fi
 }
 
 skyblue1bg() {
-    echo -e "\e[48;5;117m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;117m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;117m${1}\e[0m"
+    fi
 }
 
 chartreuse1bg() {
-    echo -e "\e[48;5;118m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;118m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;118m${1}\e[0m"
+    fi
 }
 
 lightgreenbg() {
-    echo -e "\e[48;5;119m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;119m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;119m${1}\e[0m"
+    fi
 }
 
 lightgreenbg() {
-    echo -e "\e[48;5;120m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;120m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;120m${1}\e[0m"
+    fi
 }
 
 palegreen1bg() {
-    echo -e "\e[48;5;121m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;121m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;121m${1}\e[0m"
+    fi
 }
 
 aquamarine1bg() {
-    echo -e "\e[48;5;122m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;122m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;122m${1}\e[0m"
+    fi
 }
 
 darkslategray1bg() {
-    echo -e "\e[48;5;123m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;123m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;123m${1}\e[0m"
+    fi
 }
 
 red3bg() {
-    echo -e "\e[48;5;124m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;124m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;124m${1}\e[0m"
+    fi
 }
 
 deeppink4bg() {
-    echo -e "\e[48;5;125m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;125m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;125m${1}\e[0m"
+    fi
 }
 
 mediumvioletredbg() {
-    echo -e "\e[48;5;126m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;126m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;126m${1}\e[0m"
+    fi
 }
 
 magenta3bg() {
-    echo -e "\e[48;5;127m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;127m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;127m${1}\e[0m"
+    fi
 }
 
 darkvioletbg() {
-    echo -e "\e[48;5;128m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;128m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;128m${1}\e[0m"
+    fi
 }
 
 purplebg() {
-    echo -e "\e[48;5;129m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;129m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;129m${1}\e[0m"
+    fi
 }
 
 darkorange3bg() {
-    echo -e "\e[48;5;130m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;130m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;130m${1}\e[0m"
+    fi
 }
 
 indianredbg() {
-    echo -e "\e[48;5;131m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;131m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;131m${1}\e[0m"
+    fi
 }
 
 hotpink3bg() {
-    echo -e "\e[48;5;132m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;132m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;132m${1}\e[0m"
+    fi
 }
 
 mediumorchid3bg() {
-    echo -e "\e[48;5;133m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;133m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;133m${1}\e[0m"
+    fi
 }
 
 mediumorchidbg() {
-    echo -e "\e[48;5;134m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;134m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;134m${1}\e[0m"
+    fi
 }
 
 mediumpurple2bg() {
-    echo -e "\e[48;5;135m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;135m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;135m${1}\e[0m"
+    fi
 }
 
 darkgoldenrodbg() {
-    echo -e "\e[48;5;136m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;136m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;136m${1}\e[0m"
+    fi
 }
 
 lightsalmon3bg() {
-    echo -e "\e[48;5;137m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;137m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;137m${1}\e[0m"
+    fi
 }
 
 rosybrownbg() {
-    echo -e "\e[48;5;138m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;138m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;138m${1}\e[0m"
+    fi
 }
 
 grey63bg() {
-    echo -e "\e[48;5;139m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;139m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;139m${1}\e[0m"
+    fi
 }
 
 mediumpurple2bg() {
-    echo -e "\e[48;5;140m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;140m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;140m${1}\e[0m"
+    fi
 }
 
 mediumpurple1bg() {
-    echo -e "\e[48;5;141m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;141m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;141m${1}\e[0m"
+    fi
 }
 
 gold3bg() {
-    echo -e "\e[48;5;142m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;142m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;142m${1}\e[0m"
+    fi
 }
 
 darkkhakibg() {
-    echo -e "\e[48;5;143m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;143m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;143m${1}\e[0m"
+    fi
 }
 
 navajowhite3bg() {
-    echo -e "\e[48;5;144m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;144m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;144m${1}\e[0m"
+    fi
 }
 
 grey69bg() {
-    echo -e "\e[48;5;145m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;145m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;145m${1}\e[0m"
+    fi
 }
 
 lightsteelblue3bg() {
-    echo -e "\e[48;5;146m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;146m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;146m${1}\e[0m"
+    fi
 }
 
 lightsteelbluebg() {
-    echo -e "\e[48;5;147m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;147m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;147m${1}\e[0m"
+    fi
 }
 
 yellow3bg() {
-    echo -e "\e[48;5;148m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;148m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;148m${1}\e[0m"
+    fi
 }
 
 darkolivegreen3bg() {
-    echo -e "\e[48;5;149m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;149m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;149m${1}\e[0m"
+    fi
 }
 
 darkseagreen3bg() {
-    echo -e "\e[48;5;150m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;150m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;150m${1}\e[0m"
+    fi
 }
 
 darkseagreen2bg() {
-    echo -e "\e[48;5;151m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;151m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;151m${1}\e[0m"
+    fi
 }
 
 lightcyan3bg() {
-    echo -e "\e[48;5;152m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;152m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;152m${1}\e[0m"
+    fi
 }
 
 lightskyblue1bg() {
-    echo -e "\e[48;5;153m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;153m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;153m${1}\e[0m"
+    fi
 }
 
 greenyellowbg() {
-    echo -e "\e[48;5;154m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;154m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;154m${1}\e[0m"
+    fi
 }
 
 darkolivegreen2bg() {
-    echo -e "\e[48;5;155m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;155m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;155m${1}\e[0m"
+    fi
 }
 
 palegreen1bg() {
-    echo -e "\e[48;5;156m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;156m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;156m${1}\e[0m"
+    fi
 }
 
 darkseagreen2bg() {
-    echo -e "\e[48;5;157m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;157m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;157m${1}\e[0m"
+    fi
 }
 
 darkseagreen1bg() {
-    echo -e "\e[48;5;158m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;158m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;158m${1}\e[0m"
+    fi
 }
 
 paleturquoise1bg() {
-    echo -e "\e[48;5;159m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;159m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;159m${1}\e[0m"
+    fi
 }
 
 red3bg() {
-    echo -e "\e[48;5;160m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;160m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;160m${1}\e[0m"
+    fi
 }
 
 deeppink3bg() {
-    echo -e "\e[48;5;161m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;161m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;161m${1}\e[0m"
+    fi
 }
 
 deeppink3bg() {
-    echo -e "\e[48;5;162m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;162m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;162m${1}\e[0m"
+    fi
 }
 
 magenta3bg() {
-    echo -e "\e[48;5;163m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;163m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;163m${1}\e[0m"
+    fi
 }
 
 magenta3bg() {
-    echo -e "\e[48;5;164m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;164m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;164m${1}\e[0m"
+    fi
 }
 
 magenta2bg() {
-    echo -e "\e[48;5;165m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;165m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;165m${1}\e[0m"
+    fi
 }
 
 darkorange3bg() {
-    echo -e "\e[48;5;166m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;166m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;166m${1}\e[0m"
+    fi
 }
 
 indianredbg() {
-    echo -e "\e[48;5;167m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;167m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;167m${1}\e[0m"
+    fi
 }
 
 hotpink3bg() {
-    echo -e "\e[48;5;168m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;168m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;168m${1}\e[0m"
+    fi
 }
 
 hotpink2bg() {
-    echo -e "\e[48;5;169m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;169m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;169m${1}\e[0m"
+    fi
 }
 
 orchidbg() {
-    echo -e "\e[48;5;170m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;170m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;170m${1}\e[0m"
+    fi
 }
 
 mediumorchid1bg() {
-    echo -e "\e[48;5;171m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;171m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;171m${1}\e[0m"
+    fi
 }
 
 orange3bg() {
-    echo -e "\e[48;5;172m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;172m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;172m${1}\e[0m"
+    fi
 }
 
 lightsalmon3bg() {
-    echo -e "\e[48;5;173m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;173m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;173m${1}\e[0m"
+    fi
 }
 
 lightpink3bg() {
-    echo -e "\e[48;5;174m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;174m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;174m${1}\e[0m"
+    fi
 }
 
 pink3bg() {
-    echo -e "\e[48;5;175m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;175m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;175m${1}\e[0m"
+    fi
 }
 
 plum3bg() {
-    echo -e "\e[48;5;176m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;176m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;176m${1}\e[0m"
+    fi
 }
 
 violetbg() {
-    echo -e "\e[48;5;177m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;177m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;177m${1}\e[0m"
+    fi
 }
 
 gold3bg() {
-    echo -e "\e[48;5;178m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;178m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;178m${1}\e[0m"
+    fi
 }
 
 lightgoldenrod3bg() {
-    echo -e "\e[48;5;179m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;179m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;179m${1}\e[0m"
+    fi
 }
 
 tanbg() {
-    echo -e "\e[48;5;180m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;180m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;180m${1}\e[0m"
+    fi
 }
 
 mistyrose3bg() {
-    echo -e "\e[48;5;181m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;181m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;181m${1}\e[0m"
+    fi
 }
 
 thistle3bg() {
-    echo -e "\e[48;5;182m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;182m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;182m${1}\e[0m"
+    fi
 }
 
 plum2bg() {
-    echo -e "\e[48;5;183m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;183m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;183m${1}\e[0m"
+    fi
 }
 
 yellow3bg() {
-    echo -e "\e[48;5;184m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;184m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;184m${1}\e[0m"
+    fi
 }
 
 khaki3bg() {
-    echo -e "\e[48;5;185m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;185m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;185m${1}\e[0m"
+    fi
 }
 
 lightgoldenrod2bg() {
-    echo -e "\e[48;5;186m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;186m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;186m${1}\e[0m"
+    fi
 }
 
 lightyellow3bg() {
-    echo -e "\e[48;5;187m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;187m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;187m${1}\e[0m"
+    fi
 }
 
 grey84bg() {
-    echo -e "\e[48;5;188m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;188m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;188m${1}\e[0m"
+    fi
 }
 
 lightsteelblue1bg() {
-    echo -e "\e[48;5;189m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;189m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;189m${1}\e[0m"
+    fi
 }
 
 yellow2bg() {
-    echo -e "\e[48;5;190m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;190m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;190m${1}\e[0m"
+    fi
 }
 
 darkolivegreen1bg() {
-    echo -e "\e[48;5;191m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;191m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;191m${1}\e[0m"
+    fi
 }
 
 darkolivegreen1bg() {
-    echo -e "\e[48;5;192m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;192m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;192m${1}\e[0m"
+    fi
 }
 
 darkseagreen1bg() {
-    echo -e "\e[48;5;193m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;193m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;193m${1}\e[0m"
+    fi
 }
 
 honeydew2bg() {
-    echo -e "\e[48;5;194m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;194m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;194m${1}\e[0m"
+    fi
 }
 
 lightcyan1bg() {
-    echo -e "\e[48;5;195m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;195m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;195m${1}\e[0m"
+    fi
 }
 
 red1bg() {
-    echo -e "\e[48;5;196m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;196m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;196m${1}\e[0m"
+    fi
 }
 
 deeppink2bg() {
-    echo -e "\e[48;5;197m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;197m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;197m${1}\e[0m"
+    fi
 }
 
 deeppink1bg() {
-    echo -e "\e[48;5;198m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;198m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;198m${1}\e[0m"
+    fi
 }
 
 deeppink1bg() {
-    echo -e "\e[48;5;199m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;199m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;199m${1}\e[0m"
+    fi
 }
 
 magenta2bg() {
-    echo -e "\e[48;5;200m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;200m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;200m${1}\e[0m"
+    fi
 }
 
 magenta1bg() {
-    echo -e "\e[48;5;201m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;201m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;201m${1}\e[0m"
+    fi
 }
 
 orangered1bg() {
-    echo -e "\e[48;5;202m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;202m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;202m${1}\e[0m"
+    fi
 }
 
 indianred1bg() {
-    echo -e "\e[48;5;203m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;203m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;203m${1}\e[0m"
+    fi
 }
 
 indianred1bg() {
-    echo -e "\e[48;5;204m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;204m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;204m${1}\e[0m"
+    fi
 }
 
 hotpinkbg() {
-    echo -e "\e[48;5;205m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;205m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;205m${1}\e[0m"
+    fi
 }
 
 hotpinkbg() {
-    echo -e "\e[48;5;206m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;206m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;206m${1}\e[0m"
+    fi
 }
 
 mediumorchid1bg() {
-    echo -e "\e[48;5;207m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;207m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;207m${1}\e[0m"
+    fi
 }
 
 darkorangebg() {
-    echo -e "\e[48;5;208m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;208m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;208m${1}\e[0m"
+    fi
 }
 
 salmon1bg() {
-    echo -e "\e[48;5;209m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;209m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;209m${1}\e[0m"
+    fi
 }
 
 lightcoralbg() {
-    echo -e "\e[48;5;210m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;210m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;210m${1}\e[0m"
+    fi
 }
 
 palevioletred1bg() {
-    echo -e "\e[48;5;211m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;211m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;211m${1}\e[0m"
+    fi
 }
 
 orchid2bg() {
-    echo -e "\e[48;5;212m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;212m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;212m${1}\e[0m"
+    fi
 }
 
 orchid1bg() {
-    echo -e "\e[48;5;213m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;213m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;213m${1}\e[0m"
+    fi
 }
 
 orange1bg() {
-    echo -e "\e[48;5;214m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;214m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;214m${1}\e[0m"
+    fi
 }
 
 sandybrownbg() {
-    echo -e "\e[48;5;215m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;215m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;215m${1}\e[0m"
+    fi
 }
 
 lightsalmon1bg() {
-    echo -e "\e[48;5;216m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;216m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;216m${1}\e[0m"
+    fi
 }
 
 lightpink1bg() {
-    echo -e "\e[48;5;217m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;217m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;217m${1}\e[0m"
+    fi
 }
 
 pink1bg() {
-    echo -e "\e[48;5;218m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;218m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;218m${1}\e[0m"
+    fi
 }
 
 plum1bg() {
-    echo -e "\e[48;5;219m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;219m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;219m${1}\e[0m"
+    fi
 }
 
 gold1bg() {
-    echo -e "\e[48;5;220m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;220m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;220m${1}\e[0m"
+    fi
 }
 
 lightgoldenrod2bg() {
-    echo -e "\e[48;5;221m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;221m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;221m${1}\e[0m"
+    fi
 }
 
 lightgoldenrod2bg() {
-    echo -e "\e[48;5;222m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;222m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;222m${1}\e[0m"
+    fi
 }
 
 navajowhite1bg() {
-    echo -e "\e[48;5;223m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;223m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;223m${1}\e[0m"
+    fi
 }
 
 mistyrose1bg() {
-    echo -e "\e[48;5;224m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;224m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;224m${1}\e[0m"
+    fi
 }
 
 thistle1bg() {
-    echo -e "\e[48;5;225m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;225m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;225m${1}\e[0m"
+    fi
 }
 
 yellow1bg() {
-    echo -e "\e[48;5;226m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;226m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;226m${1}\e[0m"
+    fi
 }
 
 lightgoldenrod1bg() {
-    echo -e "\e[48;5;227m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;227m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;227m${1}\e[0m"
+    fi
 }
 
 khaki1bg() {
-    echo -e "\e[48;5;228m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;228m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;228m${1}\e[0m"
+    fi
 }
 
 wheat1bg() {
-    echo -e "\e[48;5;229m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;229m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;229m${1}\e[0m"
+    fi
 }
 
 cornsilk1bg() {
-    echo -e "\e[48;5;230m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;230m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;230m${1}\e[0m"
+    fi
 }
 
 grey100bg() {
-    echo -e "\e[48;5;231m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;231m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;231m${1}\e[0m"
+    fi
 }
 
 grey3bg() {
-    echo -e "\e[48;5;232m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;232m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;232m${1}\e[0m"
+    fi
 }
 
 grey7bg() {
-    echo -e "\e[48;5;233m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;233m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;233m${1}\e[0m"
+    fi
 }
 
 grey11bg() {
-    echo -e "\e[48;5;234m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;234m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;234m${1}\e[0m"
+    fi
 }
 
 grey15bg() {
-    echo -e "\e[48;5;235m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;235m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;235m${1}\e[0m"
+    fi
 }
 
 grey19bg() {
-    echo -e "\e[48;5;236m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;236m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;236m${1}\e[0m"
+    fi
 }
 
 grey23bg() {
-    echo -e "\e[48;5;237m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;237m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;237m${1}\e[0m"
+    fi
 }
 
 grey27bg() {
-    echo -e "\e[48;5;238m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;238m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;238m${1}\e[0m"
+    fi
 }
 
 grey30bg() {
-    echo -e "\e[48;5;239m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;239m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;239m${1}\e[0m"
+    fi
 }
 
 grey35bg() {
-    echo -e "\e[48;5;240m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;240m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;240m${1}\e[0m"
+    fi
 }
 
 grey39bg() {
-    echo -e "\e[48;5;241m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;241m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;241m${1}\e[0m"
+    fi
 }
 
 grey42bg() {
-    echo -e "\e[48;5;242m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;242m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;242m${1}\e[0m"
+    fi
 }
 
 grey46bg() {
-    echo -e "\e[48;5;243m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;243m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;243m${1}\e[0m"
+    fi
 }
 
 grey50bg() {
-    echo -e "\e[48;5;244m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;244m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;244m${1}\e[0m"
+    fi
 }
 
 grey54bg() {
-    echo -e "\e[48;5;245m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;245m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;245m${1}\e[0m"
+    fi
 }
 
 grey58bg() {
-    echo -e "\e[48;5;246m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;246m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;246m${1}\e[0m"
+    fi
 }
 
 grey62bg() {
-    echo -e "\e[48;5;247m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;247m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;247m${1}\e[0m"
+    fi
 }
 
 grey66bg() {
-    echo -e "\e[48;5;248m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;248m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;248m${1}\e[0m"
+    fi
 }
 
 grey70bg() {
-    echo -e "\e[48;5;249m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;249m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;249m${1}\e[0m"
+    fi
 }
 
 grey74bg() {
-    echo -e "\e[48;5;250m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;250m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;250m${1}\e[0m"
+    fi
 }
 
 grey78bg() {
-    echo -e "\e[48;5;251m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;251m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;251m${1}\e[0m"
+    fi
 }
 
 grey82bg() {
-    echo -e "\e[48;5;252m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;252m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;252m${1}\e[0m"
+    fi
 }
 
 grey85bg() {
-    echo -e "\e[48;5;253m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;253m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;253m${1}\e[0m"
+    fi
 }
 
 grey89bg() {
-    echo -e "\e[48;5;254m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;254m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;254m${1}\e[0m"
+    fi
 }
 
 grey93bg() {
-    echo -e "\e[48;5;255m${1}\e[0m"
+    if (( $# == 0 )) ; then
+        xargs -I{} echo -e "\e[38;5;255m{}\e[0m" < /dev/stdin
+    else
+        echo -e "\e[48;5;255m${1}\e[0m"
+    fi
 }
 
 #A neat little trick with an if statement to block out a bunch of lines in a script. If you want the demo, comment out the if false statement, the attached then, and lastly the fi at the bottom of the script.
@@ -2057,6 +4105,7 @@ then
 echo ""
 echo "Now lets demo these colors:"
 echo ""
+
 black "This is black!"
 maroon "This is maroon!"
 green "This is green!"
@@ -2313,9 +4362,11 @@ grey82 "This is grey82!"
 grey85 "This is grey85!"
 grey89 "This is grey89!"
 grey93 "This is grey93!"
+
 echo ""
 echo "Now lets demo these background colors:"
 echo ""
+
 blackbg "This is black!"
 maroonbg "This is maroon!"
 greenbg "This is green!"

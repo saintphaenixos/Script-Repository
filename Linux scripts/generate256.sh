@@ -9,7 +9,11 @@ shades=(black maroon green olive navy purple teal silver grey red lime yellow bl
 for ((i=0;i<256;i++)); do
   echo ""
   echo "${shades[$i]}() {"
-  echo "    echo -e \"\e[38;5;${colors[$i]}m\${1}\e[0m\""
+  echo "    if (( \$# == 0 )) ; then"
+  echo "        xargs -I{} echo -e \"\e[38;5;${colors[$i]}m{}\e[0m\" < /dev/stdin"
+  echo "    else"
+  echo "        echo -e \"\e[38;5;${colors[$i]}m\${1}\e[0m\""
+  echo "    fi"
   echo "}"
 
 done
@@ -17,23 +21,31 @@ done
 for ((i=0;i<256;i++)); do
   echo ""
   echo "${shades[$i]}bg() {"
-  echo "    echo -e \"\e[48;5;${colors[$i]}m\${1}\e[0m\""
+  echo "    if (( \$# == 0 )) ; then"
+  echo "        xargs -I{} echo -e \"\e[38;5;${colors[$i]}m{}\e[0m\" < /dev/stdin"
+  echo "    else"
+  echo "        echo -e \"\e[48;5;${colors[$i]}m\${1}\e[0m\""
+  echo "    fi"
   echo "}"
 
 done
 
+echo ""
 echo "echo \"\""
 echo "echo \"Now lets demo these colors:\""
 echo "echo \"\""
+echo ""
 
 for ((i=0;i<256;i++)); do
   echo "${shades[$i]} \"This is ${shades[$i]}!\""
 
 done
 
+echo ""
 echo "echo \"\""
 echo "echo \"Now lets demo these background colors:\""
 echo "echo \"\""
+echo ""
 
 for ((i=0;i<256;i++)); do
   echo "${shades[$i]}bg \"This is ${shades[$i]}!\""
