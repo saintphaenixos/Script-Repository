@@ -9,7 +9,7 @@ formats=(1 2 4 5 7 8)
 effects=(bold dim underline blink invertcolor hidden)
 
 echo "#!/bin/bash"
-echo "#Version 2.2"
+echo "#Version 1.0"
 echo ""
 echo "#This is a sourceable library of functions for changing the text or background of text colors to one of the 16 colors and text formats using ANSI/VT100 Control sequences."
 
