@@ -1,9 +1,9 @@
 #!/bin/zsh
 
-# Version 1.0
+# Version 1.1
 
 #This is a script that will run in a ZSH or Bash session for MacOS versions 10.11 - Current.
-#the useage is simple, it allows a user to run the script with an argument which will run the find command to find all instances of the named file across the entirety of MacOS, and then delete it using xargs.
+#the useage is simple, it allows a user to run the script with an argument which will run the find command to find all instances of the named file across the entirety of MacOS, and then delete it using the rm as root.
 
 #Example usage of script: "sudo ./findanddelete.sh Photoshop"
 
@@ -16,7 +16,7 @@ red() {
 if [ "$UID" -gt 0 ]; then
      red "This script must be run as root!"
      echo "exiting..."
-     return
+     exit
 fi
 
 #Next lets check if an argument was used with the script or not.
@@ -27,10 +27,8 @@ fi
 
 #Once that's checked lets run the command, with a prompt for safety.
 
-red "This will delete all instances of files named \e[1m${1}\e[0m."
-echo ""
-red "This is inclusive and will find \e[4mALL\e[24m files with that string in it, be absolutely sure before running this!"
-echo ""
+red "This will delete all instances of files named \e[1m${1}\e[0m. \n"
+red "This is inclusive and will find \e[4mALL\e[24m files with that string in it, be absolutely sure before running this! \n"
 echo "Proceed? Y/N?"
 read REPLY
   if [[ $REPLY =~ ^[Yy]$ ]]
