@@ -22,6 +22,7 @@ fi
 #Next lets check if an argument was used with the script or not.
 if (( $# == 0 )); then
     red "No argument specified with script, exiting..."
+    echo "Example usage of script: sudo ./findanddelete.sh Photoshop"
     exit
 fi
 
