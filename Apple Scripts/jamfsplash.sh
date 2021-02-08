@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/zsh
 
 sudo jamf recon
 
 sudo jamf policy -event splash_it_up
 
-osascript -e 'tell application "Terminal" to close first window' & exit 
+osascript -e 'tell application "Terminal" to close first window' & exit
