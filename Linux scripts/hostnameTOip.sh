@@ -1,4 +1,4 @@
-#bin/bash
+#!/bin/bash
 
 #Written by Kent DuBack at Pima Community College February 3rd 2020, to aid in operations there.
 

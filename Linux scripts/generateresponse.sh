@@ -1,4 +1,5 @@
 #!/bin/zsh
+#!/bin/bash
 
 #Lets add some color!
 red() {
