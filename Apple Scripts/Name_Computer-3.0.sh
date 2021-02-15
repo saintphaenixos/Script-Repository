@@ -66,6 +66,6 @@ scutil --set HostName $name
 scutil --set LocalHostName $name
 
 # Change the Site of the device based on variable
-curl -sfku $apiUser:$apiPass -X PUT https://pccjamf.jamfcloud.com/JSSResource/computers/serialnumber/$serialnumber/subset/general -H "accept: application/xml" -H "Content-Type: application/xml" -d "<?xml version=\"1.0\" encoding=\"UTF-8\"?><computer>\t<general><site>\t\t<id>$siteID</id>\t\t<name>$sitevalue</name>\t\t</site>\t</general></computer>"
 
+curl -sfku $apiUser:$apiPass -X PUT https://pccjamf.jamfcloud.com/JSSResource/computers/serialnumber/$serialnumber/subset/general -H "accept: application/xml" -H "Content-Type: application/xml" -d "<?xml version=\"1.0\" encoding=\"UTF-8\"?><computer><general><name>$validname</name><site><id>$siteID</id><name>$sitevalue</name></site></general></computer>"
 exit 0
