@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Collect Variables
-serialnumber=$(ioreg -l | grep IOPlatformSerialNumber | sed -e 's/.*\"\(.*\)\"/\1/')
+serialnumber=$(ioreg -l | awk '/IOPlatformSerialNumber/ { print $4;}' | tr -d '"')
 apiUser=$(echo $4 | /usr/bin/openssl enc -aes256 -d -a -A -S "$6" -k "$7")
 apiPass=$(echo $5 | /usr/bin/openssl enc -aes256 -d -a -A -S "$8" -k "$9")
 
@@ -10,15 +10,14 @@ do
   #Here we get the name from osascript, and the exit status of the command in errorout, then we pass it through validname to see if it's a valid PCC name., and compare using those further in.
   name=$(osascript -e 'Tell application "System Events" to display dialog "Please Enter A Name For The Computer \n e.g WC-C111123123SN or EC-E101145934LC" default answer ""' -e 'text returned of result' 2>/dev/null)
   errorout=$?
-  validname=$( echo "$name" | perl -nle'print if m{^((?=.{15}$)([a-zA-Z]{2}|(([a-zA-Z]{2}|[0-9]{2})-([a-zA-Z]{1,2})))(([0-9]{2,3})([0-9]{6}))([a-zA-Z]{2}|[vV]{1}[0-9]{1}))|((?=.{15}$)([a-zA-Z]{3}|(([a-zA-Z]{3}|[0-9]{2})-([a-zA-Z]{3})))([0-9]{6})([a-zA-Z]{2}|[vV]{1}[0-9]{1}))|((?=.{15}$)(([a-zA-Z]{3,4}[0-9]{0,1}|(([0-9]{2,3})-([a-zA-Z]{1,3})))([0-9]{6}|[0-9]{8}|[0-9]{9})[a-zA-Z0-9]{2}))$}g')
+  validname=$( echo "$name" | perl -nle'print if m{^(?=.{15}$)(([a-z]{2}|[\d]{2})-([a-z]{1,2}))(([\d]{2,3})([\d]{6}))([a-z]{2}|[v]{1}[\d]{1})|(?=.{15}$)([a-z]{3})-([a-z]{3})([\d]{6})([a-z]{2}|[v]{1}[\d]{1})|((?=.{15}$)([a-z]{3,4}[\d]{0,1})([\d]{9})([a-z]{2}|[v]{1}[\d]{1}))$}gi')
   if [ "$errorout" -ne 0 ]
-  then # user cancel
-    exit
+    then # user cancel
+      exit
   elif [ -z "$name" ] || [ -z "$validname"  ]
-  then # loop until input or cancel
-    osascript -e 'Tell application "System Events" to display alert " Name entered is not correct or empty! \n Please enter a name or select Cancel! " as warning'
+    then # loop until input or cancel
+      osascript -e 'Tell application "System Events" to display alert " Name entered is not correct or empty! \n Please enter a name or select Cancel! " as warning'
   else [ -n "$name" ]
-    echo "$name"
     break
   fi
 done
