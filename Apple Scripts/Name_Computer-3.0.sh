@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Written by Kent DuBack II and Will Crabtree 
+
 # Collect Variables
 serialnumber=$(ioreg -l | awk '/IOPlatformSerialNumber/ { print $4;}' | tr -d '"')
 apiUser=$(echo $4 | /usr/bin/openssl enc -aes256 -d -a -A -S "$6" -k "$7")
