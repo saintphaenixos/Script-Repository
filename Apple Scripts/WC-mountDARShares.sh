@@ -20,6 +20,12 @@ for ((i=0;i<3;i++)); do
   fi
 done
 
+if [ -z $finderactive]
+  then
+    echo "<result>Finder Not Active</result>"
+    exit 2
+fi
+
 /usr/bin/osascript > /dev/null <<EOT
 tell application "Finder"
 activate
