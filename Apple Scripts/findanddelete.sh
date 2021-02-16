@@ -35,7 +35,7 @@ echo "Proceed? Y/N?"
 read REPLY
   if [[ $REPLY =~ ^[Yy]$ ]]
     then
-      find / -iname "*${1}*" 2> /var/log/findanddeleteall.log | xargs -I{} rm -Rf -v {} >>/var/log/findanddeleteall.log
+      find / -type d \( -path /Volumes -o -path /System/Volumes \) -prune -false -o -iname '*${targetfile}*' 2> /var/log/findanddeleteall.log | xargs -I{} rm -Rf -v {} >>/var/log/findanddeleteall.log
       echo "Log written to /var/log/findanddeleteall.log"
     else
       red "Answer was not affirmative, exiting..."

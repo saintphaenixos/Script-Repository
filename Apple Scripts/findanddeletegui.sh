@@ -10,7 +10,7 @@
 #THIS IS POTENTIALLY A NUCLEAR SCRIPT, USE WITH CAUTION!
 
 #Lets list some exceptionally dangerous commands to run here in an array to stop our most destructive impulses.
-scary=(microsoft apple darwin mach catalina sur sierra macos mac mojave)
+scary=(microsoft apple darwin mach catalina sur sierra macos mac mojave macmini)
 
 #First lets check if the user is Root or not.
 if [ "$UID" -gt 0 ]; then
@@ -22,7 +22,7 @@ fi
 while true
   do
     #Here we get the name from osascript, and the exit status of the command in errorout, then we pass it through validname to see if it's a valid PCC name., and compare using those further in.
-    targetfile=$(osascript -e 'Tell application "System Events" to display dialog "Please Enter A Name in lowercase For The Software to be removed \n e.g adobe, example.sh, quicksilver, or other." default answer ""' -e 'text returned of result' 2>/dev/null)
+    targetfile=$(osascript -e 'Tell application "System Events" to display dialog "Please Enter A Name in lowercase For The Software to be removed \n e.g adobe, example.sh, quicksilver, or other. \n" default answer ""' -e 'text returned of result' 2>/dev/null)
       if [ $? -ne 0 ]
         then # user cancel
           exit
@@ -48,7 +48,7 @@ while true
         exit
     elif [[ $confirmation == confirm ]]
       then
-        find / -iname "*${targetfile}*" 2> /var/log/findanddeleteall.log | xargs -I{} rm -Rf -v {} >>/var/log/findanddeleteall.log
+        find / -type d \( -path /Volumes -o -path /System/Volumes \) -prune -false -o -iname '*${targetfile}*' 2> /var/log/findanddeleteall.log | xargs -I{} rm -Rf -v {} >>/var/log/findanddeleteall.log
         osascript -e 'Tell application "System Events" to display alert " Log written to /var/log/findanddeleteall.log " as warning'
         exit 0
     else

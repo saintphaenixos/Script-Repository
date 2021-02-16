@@ -8,15 +8,15 @@
 
 **The scripts themselves are ordered in this way: *Executables* are in the root of each folder, and *sourceable* scripts that other scripts call upon for functions are stored in the appropriately labeled folders. *Old* folders are for storing older scripts that I wish to use in future frankenstein monsters.**
 
-- [**Apple Scripts**](/Apple_Scripts)
+- [**Apple Scripts**](https://github.com/saintphaenixos/Script-Repository/tree/CurrentWorkingScripts/Apple%20Scripts)
   - Written mostly in Zsh, most of the scripts are also Bash Compatible, and a preference towards portability was attempted with each. When in doubt check the Shebang.
 
 
-- [**Linux Scripts**](/Linux_Scripts)
+- [**Linux Scripts**](https://github.com/saintphaenixos/Script-Repository/tree/CurrentWorkingScripts/Linux%20scripts)
   - Written mostly in Zsh, most of the scripts are similarly Bash Compatible, I do attempt to mark in the Shebang's which is which as needed.
 
 
-- [**Windows Scripts**](/Windows_Scripts)
+- [**Windows Scripts**](https://github.com/saintphaenixos/Script-Repository/tree/CurrentWorkingScripts/Windows%20Scripts)
   - Written mostly in Powershell with a little CMD thrown in for certain situations, there is also a small library of sourceable functions.  
 
 ---------------------------------------
