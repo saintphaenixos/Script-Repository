@@ -12,7 +12,7 @@ do
   #Here we get the name from osascript, and the exit status of the command in errorout, then we pass it through validname to see if it's a valid PCC name., and compare using those further in.
   name=$(osascript -e 'Tell application "System Events" to display dialog "Please enter a name for the computer \n e.g WC-C210150415SN or EC-E101145934LC" default answer ""' -e 'text returned of result' 2>/dev/null)
   errorout=$?
-  validname=$( echo "$name" | perl -nle'print if m{^(?=.{15}$)(([a-z]{2}|[\d]{2})-([a-z]{1,2}))(([\d]{2,3})([\d]{6}))([a-z]{2}|[v]{1}[\d]{1})|(?=.{15}$)([a-z]{3})-([a-z]{3})([\d]{6})([a-z]{2}|[v]{1}[\d]{1})|((?=.{15}$)([a-z]{3,4}[\d]{0,1})([\d]{9})([a-z]{2}|[v]{1}[\d]{1}))$}gi')
+  validname=$( echo "$name" | perl -nle'print if m{^(?=.{15}$)([a-z]{2}|[\d]{2})-([a-z]{1,2})([\d]{2,3})([\d]{6})([a-z]{2}|[v]{1}[\d]{1})|(?=.{15}$)([a-z]{3})-([a-z]{3})([\d]{6})([a-z]{2}|[v]{1}[\d]{1})|(?=.{15}$)([a-z]{3,4}[\d]{0,1})([\d]{9})([a-z]{2}|[v]{1}[\d]{1})$}gi')
   if [ "$errorout" -ne 0 ]
     then # user cancel
       exit

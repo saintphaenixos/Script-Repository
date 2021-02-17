@@ -20,7 +20,7 @@ for ((i=0;i<3;i++)); do
   fi
 done
 
-if [ -z $finderactive]
+if [ -z $finderactive ]
   then
     echo "<result>Finder Not Active</result>"
     exit 2

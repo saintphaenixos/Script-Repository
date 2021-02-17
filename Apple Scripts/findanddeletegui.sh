@@ -14,7 +14,7 @@ scary=(microsoft apple darwin mach catalina sur sierra macos mac mojave macmini)
 
 #First lets check if the user is Root or not.
 if [ "$UID" -gt 0 ]; then
-     red "This script must be run as root!"
+     echo "This script must be run as root!"
      echo "exiting..."
      exit
 fi
@@ -42,13 +42,13 @@ done
 
 while true
   do
-    confirmation=$(osascript -e 'Tell application "System Events" to display dialog "This will delete all instances of files, directory, and programs named. \n This is inclusive and will find ALL files with that string in it, be absolutely sure before running this! \n if you wish to proceed type: confirm" default answer ""' -e 'text returned of result' 2>/dev/null)
+    confirmation=$(osascript -e 'Tell application "System Events" to display dialog "This will delete all instances of files, directory, and programs named. \n \n This is inclusive and will find and delete ALL files with that string in it, be absolutely sure before running this! \n \n if you wish to proceed type: confirm" default answer ""' -e 'text returned of result' 2>/dev/null)
     if [ $? -ne 0 ]
       then # user cancel
         exit
     elif [[ $confirmation == confirm ]]
       then
-        find / -type d \( -path /Volumes -o -path /System/Volumes \) -prune -false -o -iname '*${targetfile}*' 2> /var/log/findanddeleteall.log | xargs -I{} rm -Rf -v {} >>/var/log/findanddeleteall.log
+        find / -type d \( -path /Volumes -o -path /System/Volumes \) -prune -false -o -iname "*$targetfile*" 2> /var/log/findanddeleteall.log | xargs -I{} rm -Rfv {} >>/var/log/findanddeleteall.log
         osascript -e 'Tell application "System Events" to display alert " Log written to /var/log/findanddeleteall.log " as warning'
         exit 0
     else
