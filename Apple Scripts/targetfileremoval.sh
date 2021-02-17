@@ -5,8 +5,7 @@
 
 #First lets check if the user is Root or not.
 if [ "$UID" -gt 0 ]; then
-     red "This script must be run as root!"
-     echo "exiting..."
+     echo -e "This script must be run as root! \n exiting..."
      exit
 fi
 
