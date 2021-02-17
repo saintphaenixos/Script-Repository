@@ -12,4 +12,4 @@ fi
 
 # Remove Adobe Acrobat DC
 
-#sudo /Applications/Adobe\ Acrobat\ DC/Adobe\ Acrobat.app/Contents/Helpers/Acrobat\ Uninstaller.app/Contents/Library/LaunchServices/com.adobe.Acrobat.RemoverTool Uninstall /Applications/Adobe\ Acrobat\ DC/Adobe\ Acrobat.app
+sudo /Applications/Adobe\ Acrobat\ DC/Adobe\ Acrobat.app/Contents/Helpers/Acrobat\ Uninstaller.app/Contents/Library/LaunchServices/com.adobe.Acrobat.RemoverTool Uninstall /Applications/Adobe\ Acrobat\ DC/Adobe\ Acrobat.app
