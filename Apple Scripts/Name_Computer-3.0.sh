@@ -72,6 +72,6 @@ scutil --set LocalHostName $name
 curl -sfku $apiUser:$apiPass -X PUT https://pccjamf.jamfcloud.com/JSSResource/computers/serialnumber/$serialnumber/subset/general -H "accept: application/xml" -H "Content-Type: application/xml" -d "<?xml version=\"1.0\" encoding=\"UTF-8\"?><computer><general><name>$validname</name><site><id>$siteID</id><name>$sitevalue</name></site></general></computer>"
 
 #Send old name to log:
-log "Switched to $validname from $oldname"
+echo -e "Switched to $validname from $oldname"
 
 exit 0
