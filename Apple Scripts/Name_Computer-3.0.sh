@@ -6,6 +6,7 @@
 serialnumber=$(ioreg -l | awk '/IOPlatformSerialNumber/ { print $4;}' | tr -d '"')
 apiUser=$(echo $4 | /usr/bin/openssl enc -aes256 -d -a -A -S "$6" -k "$7")
 apiPass=$(echo $5 | /usr/bin/openssl enc -aes256 -d -a -A -S "$8" -k "$9")
+oldname=$(hostname)
 
 while true
 do
@@ -69,4 +70,8 @@ scutil --set LocalHostName $name
 # Change the Site of the device based on variable
 
 curl -sfku $apiUser:$apiPass -X PUT https://pccjamf.jamfcloud.com/JSSResource/computers/serialnumber/$serialnumber/subset/general -H "accept: application/xml" -H "Content-Type: application/xml" -d "<?xml version=\"1.0\" encoding=\"UTF-8\"?><computer><general><name>$validname</name><site><id>$siteID</id><name>$sitevalue</name></site></general></computer>"
+
+#Send old name to log:
+log "Switched to $validname from $oldname"
+
 exit 0
