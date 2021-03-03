@@ -16,7 +16,7 @@ scary=(microsoft apple darwin mach catalina sur sierra macos mac mojave macmini)
 if [ "$UID" -gt 0 ]; then
      echo "This script must be run as root!"
      echo "exiting..."
-     exit
+     exit 1
 fi
 
 while true

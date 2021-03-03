@@ -7,12 +7,11 @@
 #First lets make sure the user is running as root:
 if [ "$UID" -gt 0 ]; then
      echo "user is not root, exiting..."
-     sleep 3
      exit 1
 fi
 
 #We'll check if we have our needed programs:
-for program in pigz pv; do
+for program in pigz pv fatresize; do
   installed=$(command -v $program)
   [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt update && sudo apt install $program || echo "$program is installed"
 done

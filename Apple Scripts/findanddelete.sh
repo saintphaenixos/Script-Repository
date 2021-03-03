@@ -17,14 +17,14 @@ red() {
 if [ "$UID" -gt 0 ]; then
      red "This script must be run as root!"
      echo "exiting..."
-     exit
+     exit 1
 fi
 
 #Next lets check if an argument was used with the script or not.
 if (( $# == 0 )); then
     red "No argument specified with script, exiting..."
     echo "Example usage of script: sudo ./findanddelete.sh Photoshop"
-    exit
+    exit 1
 fi
 
 #Once that's checked lets run the command, with a prompt for safety.

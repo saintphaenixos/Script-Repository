@@ -47,5 +47,5 @@ if ! [ -z $EDUDOMAINCONNECTION ] || [ -z $PCCDOMAINCONNECTION ]; then
   echo "Computer is not joined to the Domain, attempting join now..."
 else
   echo "Computer is connected to the Domain, reconnecting."
-  exit 1
+  exit
 fi

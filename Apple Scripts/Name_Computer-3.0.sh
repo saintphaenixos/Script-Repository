@@ -62,7 +62,7 @@ case $name in
         siteID="15" ;;
 esac
 
-# Set Computer Name
+# Set Computer Name internally to be consistant with JAMF name.
 scutil --set ComputerName $name
 scutil --set HostName $name
 scutil --set LocalHostName $name

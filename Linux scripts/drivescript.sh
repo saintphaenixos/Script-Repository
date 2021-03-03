@@ -5,7 +5,7 @@
 if [ "$UID" -gt 0 ]; then
      echo "This script must be run as root!"
      echo "exiting..."
-     exit
+     exit 1
 fi
 
 echo "select your drive"

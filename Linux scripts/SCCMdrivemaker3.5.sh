@@ -11,12 +11,12 @@
 if [ "$UID" -gt 0 ]; then
      echo "This script must be run as root!"
      echo "exiting..."
-     exit
+     exit 1
 fi
 
 #Lets check to make sure we have all the software installed that we need:
 
-for program in parallel dosfstools fatresize; do
+for program in parallel fatresize; do
   installed=$(command -v $program)
   [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt update && sudo apt install $program || echo "$program is installed"
 done

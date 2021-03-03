@@ -6,7 +6,7 @@
 #First lets check if the user is Root or not.
 if [ "$UID" -gt 0 ]; then
      echo -e "This script must be run as root! \n exiting..."
-     exit
+     exit 1
 fi
 
 #Now we have our logic to remove the target file, folder, or program.

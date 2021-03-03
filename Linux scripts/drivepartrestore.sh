@@ -7,12 +7,12 @@
 if [ "$UID" -gt 0 ]; then
      echo "This script must be run as root!"
      echo "exiting..."
-     exit
+     exit 1
 fi
 
 # The program requires the package "pv" to be installed, as it will use pv to monitor progress of the action.
 # We'll go ahead and check if these programs are installed, and get them installed.
-for program in pigz pv; do
+for program in pigz pv yad; do
   installed=$(command -v $program)
   [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt update && sudo apt install $program || echo "$program is installed"
 done
@@ -25,8 +25,11 @@ echo "What is the name of the backup?"
 
 read backupname
 
+#We use yad here to select an image to restore from.
+backuplocation=$(yad --title=Please\ Select\ an\ Image\ To\ Restore\ From --file)
+
 echo "Select drive letter to backup e.g sdA or sdB in lowercase."
 
 read drive
 
-gunzip </home/fenix/Downloads/$date$backupname.img.gz >/dev/sd$drive
+gunzip <$backuplocation >/dev/sd$drive

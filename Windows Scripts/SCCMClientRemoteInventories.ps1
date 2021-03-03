@@ -17,13 +17,10 @@ Function Invoke-CMClient{
 
     PARAM(
             [Parameter(Mandatory=$True,ValueFromPipeline=$True,ValueFromPipelineByPropertyName=$True)]
-            [string[]]$ComputerName = $env:COMPUTERNAME,
-
-            [Parameter(Mandatory=$True)]
-            [ValidateSet('hardwareinv','softwareinv','updatescan','machinepol','userpolicy','discoveryinv','filecollect','applicdeploy','discovdata','machpoleval','softmeteruse','softupdeploy','winstalllist')]
-            [string]$Actions = "$Menu | Out-GridView -OutputMode Multiple -Title 'Select client inventories you want to run, and click OK.'"
+            [string[]]$ComputerName = $env:COMPUTERNAME
          )
-
+            $Credential = Get-Credential
+            $Actions = $Menu | Out-GridView -OutputMode Multiple -Title 'Select client inventories you want to run, and click OK.'
 
     # here the actions that can be taken are listed, the names are shortened for sanity while typing, and are all lower case in case more need to be added.
     SWITCH ($Actions) {
@@ -44,7 +41,7 @@ Function Invoke-CMClient{
 
     FOREACH ($Computer in $ComputerName){
         if ($PSCmdlet.ShouldProcess("$Actions $computer")) {
-            Invoke-WmiMethod -ComputerName $Computer -Namespace root\CCM -Class SMS_Client -Name TriggerSchedule -ArgumentList "$_action"
+            Invoke-WmiMethod -ComputerName $Computer -Namespace root\CCM -Class SMS_Client -Credential $Credential -Name TriggerSchedule -ArgumentList "$Actions"
         }
     }
 }
