@@ -1,12 +1,7 @@
 #!/bin/zsh
 
 #Lets check if you are root first, as you need to be root for this:
-
-if [ "$UID" -gt 0 ]; then
-     echo "This script must be run as root!"
-     echo "exiting..."
-     exit 1
-fi
+[ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1
 
 echo "select your drive"
 

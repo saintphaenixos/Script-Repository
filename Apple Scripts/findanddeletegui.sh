@@ -13,11 +13,7 @@
 scary=(microsoft apple darwin mach catalina sur sierra macos mac mojave macmini)
 
 #First lets check if the user is Root or not.
-if [ "$UID" -gt 0 ]; then
-     echo "This script must be run as root!"
-     echo "exiting..."
-     exit 1
-fi
+[ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1
 
 while true
   do
@@ -30,7 +26,7 @@ while true
         then # loop until input or cancel
           osascript -e 'Tell application "System Events" to display alert " Name entered is empty! \n Please enter a name or select Cancel! " as warning'
       elif [[ "${scary[@]}" =~ "${targetfile}" ]]
-        then # user selects scary thing to remove, so it just denied instead.
+        then # user selects scary thing to remove, so it's just denied instead.
           osascript -e 'Tell application "System Events" to display alert " This file name as written is exceptionally dangerous and as such will not be run. \n Please use an alternative to this script to clear files with this name. " as warning'
           exit 2
       else [ -n "$targetfile" ]

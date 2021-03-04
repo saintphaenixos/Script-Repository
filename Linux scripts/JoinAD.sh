@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+#DO NOT RUN THIS SCRIPT AS ROOT! LETS ENSURE THAT HERE:
+[ "$UID" == 0 ] && echo -e "This script cannot be run as root! \n exiting..." && exit 1
+
 #This is a script to automate the process of joining my computer to my Active Directory server.
 
 # required software for this is: Curl, zsh, and wget, lets check for them and get them installed.

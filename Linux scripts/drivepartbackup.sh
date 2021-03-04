@@ -3,12 +3,7 @@
 # this is a script to take a backup of a Hard drive with the dd command in linux and zip it for backup.
 
 #Lets check if you are root first, as you need to be root for this:
-
-if [ "$UID" -gt 0 ]; then
-     echo "This script must be run as root!"
-     echo "exiting..."
-     exit 1
-fi
+[ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1
 
 # The program requires the package "pigz" and "pv" to be installed, as it will use pigz instead of gzip so that the job may be done as fast as possible with all available cores on a machine. PV will be used to monitor progress of the action.
 

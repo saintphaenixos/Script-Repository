@@ -5,10 +5,7 @@
 #Ensure that targeted Uninstaller can be run without arguments, or if arguments or flags are needed to add them to the additional jamf lines
 
 #First lets check if the user is Root or not.
-if [ "$UID" -gt 0 ]; then
-     echo -e "This script must be run as root! \n exiting..."
-     exit 1
-fi
+[ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1
 
 #Now we have our logic to attempt uninstall of the target program.
 

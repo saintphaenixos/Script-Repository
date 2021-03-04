@@ -4,10 +4,7 @@
 #A simple script to remove target files\folders\or programs from a Unix/Linux machine.
 
 #First lets check if the user is Root or not.
-if [ "$UID" -gt 0 ]; then
-     echo -e "This script must be run as root! \n exiting..."
-     exit 1
-fi
+[ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1
 
 #Now we have our logic to remove the target file, folder, or program.
 
