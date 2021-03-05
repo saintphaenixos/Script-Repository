@@ -10,7 +10,7 @@
 #THIS IS POTENTIALLY A NUCLEAR SCRIPT, USE WITH CAUTION!
 
 #Lets list some exceptionally dangerous commands to run here in an array to stop our most destructive impulses.
-scary=(microsoft apple darwin mach catalina sur sierra macos mac mojave macmini)
+scary=(microsoft apple darwin mach catalina sur sierra macos mac mojave macmini capitan mavericks)
 
 #First lets check if the user is Root or not.
 [ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1

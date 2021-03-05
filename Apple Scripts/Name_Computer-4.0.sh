@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Additional functions: Pull out PCC number, check if number if valid against API call, and if it is, continue with it, if isn't
+# Additional functions: Pull out PCC number, check if number if valid against PCC number from API call, and if it is, continue with it, if isn't
 
 # Written by Kent DuBack II and Will Crabtree and Luis Duarte
 
