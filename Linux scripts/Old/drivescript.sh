@@ -1,11 +1,10 @@
-#!/bin/bash
 #!/bin/zsh
 
-#the purpose of this script is to create a list of drives from a linux system to then pipe into zenity to select drives from for other functions.
-#     The current idea is to keep creating new variables into I can put the list of valid drives not partitions into an array, and then present that to zenity to create an interface to pick drives in.
+#Lets check if you are root first, as you need to be root for this:
+[ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1
 
-#First lets make sure perl and zenity are installed
-for program in perl zenity; do
+#first lets ensure that needed software for this is installed:
+for program in perl zenity smartmontools; do
   installed=$(command -v $program)
   [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt update && sudo apt install $program || echo "$program is installed"
 done
@@ -29,3 +28,10 @@ preparedlist=$(echo "$drivelist" | awk '{print "/dev/" $0}') # Here we add /dev/
 
 #Let us see the list.
 echo "$preparedlist"
+
+echo "select your drive"
+
+read drive
+
+echo "you selected drive $drive"
+sudo smartctl /dev/sd$drive -a | grep 9\ Power
