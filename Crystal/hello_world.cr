@@ -19,7 +19,7 @@ puts "Numbers come in both InT32 32 bit integers, and in Float64 floating point 
 puts "1 is an", typeof(1)
 puts "1.0 is an", typeof(1.0)
 
-#here's some comparison operators:
+puts "here's some comparison operators:"
 puts 1 == 1,
      1 == 2,
      1.0 == 1,
@@ -70,3 +70,41 @@ puts "it's #{newvariable}!"
 puts "this works the same with digits"
 newestvariable = 6
 puts "This is #{newestvariable}!"
+
+puts "you can also do concatenation where you just glue everything together with +'s'"
+puts "This is an example of " + newvariable + " remembering to add spaces"
+
+puts "To escape characters in a string such as \"\", here is how to escape them."
+puts "This is: \"an Example\""
+
+puts "you can also remove tons of them at once, by using \%\(\)"
+
+puts "for example: %(\\\\\\\\\ and \\\\n)"
+
+#simple terminals may not have unicode so quote this out:
+#puts "You can show unicode emoji by simply printing it here: 🌐 or by using \u{1F310}"
+
+puts "You can do Transformations on text in the following way. Camelcasing and underscoring work differently."
+
+message = "this is a test!"
+
+puts "normal: #{message}"
+puts "upcased: #{message.upcase}"
+puts "downcased: #{message.downcase}"
+puts "camelcased: #{message.camelcase}"
+puts "capitalized: #{message.capitalize}"
+puts "reversed: #{message.reverse}"
+puts "titleized: #{message.titleize}"
+puts "underscored: #{message.underscore}"
+
+puts "crystal also can use powershell like property dereference operators"
+
+newmessage = "How long is this string? It can be very long indeed!"
+
+puts newmessage.size
+
+puts "you can also check to see if a variable is blank! for example Blorgmessage is null."
+blorgmessage = ""
+
+puts newmessage.empty?
+puts blorgmessage.empty?
