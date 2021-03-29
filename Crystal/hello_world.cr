@@ -86,7 +86,7 @@ puts "for example: %(\\\\\\\\\ and \\\\n)"
 
 puts "You can do Transformations on text in the following way. Camelcasing and underscoring work differently."
 
-message = "this is a test!"
+message = "This is a Test!"
 
 puts "normal: #{message}"
 puts "upcased: #{message.upcase}"
@@ -108,3 +108,29 @@ blorgmessage = ""
 
 puts newmessage.empty?
 puts blorgmessage.empty?
+
+puts "Here is an equivalent for the UNIX \[ command in Crystal:"
+
+puts message == "this is a test",
+   message == "this is a blorg",
+   message == "This is a Test",
+   message.compare("this is a test", case_insensitive: false),
+   message.compare("this is a test", case_insensitive: true)
+
+puts "We can also test if a string includes specific parts, this will output a true or false"
+
+puts message.includes?("Crystal"),
+   message.includes?("Test")
+
+puts "We can test if a string starts or ends with a particular bit of text also:"
+
+puts message.starts_with?("This"),
+    message.starts_with?("Blorg"),
+    message.ends_with?("!"),
+    message.ends_with?("?")
+
+puts "If you need to see the "
+
+puts "What is the position?".index("What"),
+    "What is the position?".index("s"),
+    "What is the position?".index("po")
