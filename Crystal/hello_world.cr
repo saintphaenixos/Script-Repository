@@ -129,8 +129,55 @@ puts message.starts_with?("This"),
     message.ends_with?("!"),
     message.ends_with?("?")
 
-puts "If you need to see the "
+puts "If you need to see the indexed position of a character in a string you can search in this manner, it will find the first instance of that character or characters."
 
 puts "What is the position?".index("What"),
     "What is the position?".index("s"),
     "What is the position?".index("po")
+
+puts "Boolean algebra for comparing values or strings is done in the following way:"
+
+a = true
+b = false
+
+puts a && b, # conjunction (AND)
+   a || b, # disjunction (OR)
+   !a,     # negation (NOT)
+   a != b, # inequivalence (XOR)
+   a == b  # equivalence
+
+puts "Here's an example of some use of conjuction and disjunctions:"
+
+puts "foo" && nil,
+  "foo" && false,
+  false || "foo",
+  "bar" || "foo"
+
+puts "Here's an example of an if Statement:"
+
+if message.starts_with?("This")
+  puts "Message starts with the word: This, continuing..."
+end
+
+#This next one will be false and not show in the compiled program:
+if message.starts_with?("blorg")
+  puts "Then this isn't going to work."
+end
+
+if !message.starts_with?("Blorg")
+  puts "Message doesn't start with Blorg, it really should..."
+end
+
+puts "With boolean Algebra we can also do this:"
+
+if message.starts_with?("This") || !message.starts_with?("Blorg")
+  puts "this variable starts with this, and doesn't start with blorg so its true!"
+end
+
+puts "We can alsdo replace if with Unless which is the opposite of if"
+
+#I LOVE THIS UNLESS STATEMENT, THATS A COOL FEATURE OF THE LANGUAGE! :O!
+
+unless message.starts_with?("Blorg")
+  puts "unless this statement starts with blorg, always print this message. :)"
+end
