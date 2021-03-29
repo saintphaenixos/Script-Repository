@@ -181,3 +181,13 @@ puts "We can alsdo replace if with Unless which is the opposite of if"
 unless message.starts_with?("Blorg")
   puts "unless this statement starts with blorg, always print this message. :)"
 end
+
+# Crystal uses PCRE Regex, so my perl strings will still work with no issue here.
+
+if /This/.match("#{message}")
+  puts "This regex works!"
+end
+
+unless /Blorg/.match("#{message}")
+  puts "This regex won't work!"
+end
