@@ -179,7 +179,11 @@ puts "We can alsdo replace if with Unless which is the opposite of if"
 #I LOVE THIS UNLESS STATEMENT, THATS A COOL FEATURE OF THE LANGUAGE! :O!
 
 unless message.starts_with?("Blorg")
-  puts "unless this statement starts with blorg, always print this message. :)"
+  puts "unless this statement starts with blorg, always print this message. :)\n WHAT A FREAKING COOL FEATURE OF THE LANGUAGE!"
+end
+
+unless message.starts_with?("This")
+  puts "This won't print because it starts with this! :o"
 end
 
 # Crystal uses PCRE Regex, so my perl strings will still work with no issue here.
