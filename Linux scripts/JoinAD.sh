@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+# from this Github: https://github.com/BeyondTrust/pbis-open
+
 #DO NOT RUN THIS SCRIPT AS ROOT! LETS ENSURE THAT HERE:
 [ "$UID" == 0 ] && echo -e "This script cannot be run as root! \n exiting..." && exit 1
 
@@ -8,7 +10,7 @@
 # required software for this is: Curl, zsh, and wget, lets check for them and get them installed.
 for program in curl zsh wget; do
   installed=$(command -v $program)
-  [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt update && sudo apt install $program || echo "$program is installed"
+  [[ -z "$installed" ]] && echo "$program is not installed" && echo "$program is not installed, Please install $program from a seperate elevated Command prompt." || echo "$program is installed"
 done
 
 #Lets set some variables:
