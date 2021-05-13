@@ -7,6 +7,6 @@ if(!(Test-Path -Path 'HKCU:Software\TouchNet'))
 {
   New-Item -Path HKCU:\Software\TouchNet
   New-Item -Path HKCU:\Software\TouchNet\OTC
-  Set-ItemProperty -Path HKCU:\Software\TouchNet\OTC -Name Username -Value "C21239.$env:USERNAME"
+  Set-ItemProperty -Path HKCU:\Software\TouchNet\OTC -Name Username -Value "C21239.$($env:USERNAME)"
   Set-ItemProperty -Path HKCU:\Software\TouchNet\OTC -Name Station "WC03"
 }
