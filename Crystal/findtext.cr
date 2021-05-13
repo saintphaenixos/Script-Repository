@@ -4,6 +4,6 @@ content = Dir.current
 
 puts "#{content}"
 
-blorg = Dir.current
-def entries : Array(String)
-end
+#blorg = Dir.current
+#def entries : Array(String)
+#end
