@@ -7,6 +7,15 @@
 #Lets check if you are root first, as you need to be root for this:
 [ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1
 
+#Lets set a color function for usage in the end message:
+cyan() {
+    if (( $# == 0 )) ; then
+        xargs -r -I{} echo -e "\e[36m"{}"\e[0m" < /dev/stdin
+    else
+        echo -e "\e[36m${@}\e[0m"
+    fi
+}
+
 #Lets set the Variable for my user directory, and where I want Ventoy to install itself:
 USR=kduback
 Ventdirectory=/home/$USER/Scripts/Programs_for_scripts/Ventoy
@@ -36,3 +45,5 @@ rm drivelist.temp
 
 #Last we make a temp file of all mounted drives under /Media/$USR and order rsync to over-write all files on those partitions with everything in Ventoy.Export on my machine. Then we remove the temp list.
 ls /media/$USR | grep SCCM | time parallel -j+0 --progress "rsync --info=progress2 -r /home/$USR/Downloads/Ventoy.Export/* /media/$USR/{}/"
+
+cyan "Complete! The Drives are now ready for use. If you are adding ISO's and files to them, be sure to remount them before doing so."
