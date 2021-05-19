@@ -43,7 +43,7 @@ udevadm | pee "udevadm info --query=all --name=sd"{a..z} "udevadm info --query=a
 yes | xargs -a drivelist.temp -I{} -d'\n' zsh ./Ventoy2Disk.sh -I /dev/{} -s -g -L SCCMDrive
 rm drivelist.temp
 
-#Last we make a temp file of all mounted drives under /Media/$USR and order rsync to over-write all files on those partitions with everything in Ventoy.Export on my machine. Then we remove the temp list.
-ls /media/$USR | grep SCCM | time parallel -j+0 --progress "rsync --info=progress2 -r /home/$USR/Downloads/Ventoy.Export/* /media/$USR/{}/"
+#Last we make a temp file of all mounted drives under /Media/$USR and order rsync to over-write all files on those partitions with everything in Ventoy.Export on my machine. THIS CURRENTLY DOESNT WORK. It's purpose however is to allow everything stored in the $USR variable to be transferred to the new disks.
+#ls /media/$USR | grep SCCM | time parallel -j+0 --progress "rsync --info=progress2 -r /home/$USR/Downloads/Ventoy.Export/* /media/$USR/{}/"
 
 cyan "Complete! The Drives are now ready for use. If you are adding ISO's and files to them, be sure to remount them before doing so."
