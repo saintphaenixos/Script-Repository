@@ -15,7 +15,7 @@ sudo apt update
 #Now lets install everything.
 for program in $Programs ; do
   installed=$(command -v $program)
-  [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt install $program || echo "$program is installed"
+  [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt --yes --force-yes install $program || echo "$program is installed"
 done
 
 ###################################################################
