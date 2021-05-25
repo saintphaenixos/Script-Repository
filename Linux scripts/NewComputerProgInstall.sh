@@ -3,11 +3,9 @@
 #Lets make sure that we are running as root before we start:
 [ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1
 
-scriptname=$(basename -- "$0")
-[ -z "ps -p $$ | grep bash" ] && echo -e "This Script must be run with bash ./$scriptname" && exit 1
-
 #Lets go ahead and create an array of all the programs we'll want installed, we'll do this from a file:
 Programs=$(<./newcomputer.programs)
+SnapPrograms=$(<./newcomputer.snap)
 
 #lastly lets update the apps list so it doesn't have to be done repeatedly:
 sudo apt update
@@ -16,6 +14,12 @@ sudo apt update
 for program in $Programs ; do
   installed=$(command -v $program)
   [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt --yes install $program || echo "$program is installed"
+done
+
+#Now lets do the same for snap programs:
+for SnapProgram in $SnapPrograms ; do
+  installed=$(command -v $SnapProgram)
+  [[ -z "$installed" ]] && echo "$SnapProgram is not installed" && yes | sudo snap install $SnapProgram || echo "$SnapProgram is installed"
 done
 
 ###################################################################

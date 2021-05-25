@@ -8,6 +8,7 @@ deja-dup
 detox
 dosfstools
 etherwake
+exa
 fail2ban
 fatresize
 figlet
@@ -30,6 +31,7 @@ parallel
 peazip
 pigz
 pv
+prettyping
 python3-pip
 qdirstat
 remmina
