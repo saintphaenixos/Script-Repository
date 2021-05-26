@@ -2,6 +2,7 @@ audacity
 bat
 build-essential
 cmatrix
+curl
 dash
 dcfldd
 deja-dup
@@ -15,6 +16,7 @@ figlet
 fish
 flameshot
 fzf
+gdebi
 git
 gnome-boxes
 gnome-tweaks
@@ -48,3 +50,4 @@ virt-manager
 vlc
 whois
 xclip
+zsh
