@@ -20,6 +20,12 @@ cyan() {
 USR=kduback
 Ventdirectory=/home/$USER/Scripts/Programs_for_scripts/Ventoy
 
+#We'll check if we have our needed programs:
+for program in moreutils; do
+  installed=$(command -v pee)
+  [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt update && sudo apt install $program || echo "$program is installed"
+done
+
 #First we'll clear out the install directory and re-create it.
 rm -r $Ventdirectory*
 mkdir $Ventdirectory

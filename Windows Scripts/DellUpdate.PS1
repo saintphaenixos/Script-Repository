@@ -1,3 +1,6 @@
+# This is a script to make a bunch of Dell drivers in one folder install. It's never been very effective.
+
+
 # Relaunch as an elevated process:
 If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     Start-Process powershell.exe "-File", ('"{0}"' -f $MyInvocation.MyCommand.Path) -Verb RunAs

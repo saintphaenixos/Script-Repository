@@ -5,7 +5,7 @@
 
 #Lets go ahead and create an array of all the programs we'll want installed, we'll do this from a file:
 Programs=$(<./newcomputer.programs)
-SnapPrograms=$(<./newcomputer.snap)
+SnapPrograms=$(<./newcomputer.snapish)
 
 #lastly lets update the apps list so it doesn't have to be done repeatedly:
 sudo apt update
@@ -19,7 +19,7 @@ done
 #Now lets do the same for snap programs:
 for SnapProgram in $SnapPrograms ; do
   installed=$(command -v $SnapProgram)
-  [[ -z "$installed" ]] && echo "$SnapProgram is not installed" && yes | sudo snap install $SnapProgram || echo "$SnapProgram is installed"
+  [[ -z "$installed" ]] && echo "$SnapProgram is not installed" && yes | sudo snap install $SnapProgram --classic || echo "$SnapProgram is installed"
 done
 
 ###################################################################

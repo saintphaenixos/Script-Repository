@@ -2,6 +2,7 @@ audacity
 bat
 build-essential
 cmatrix
+curl
 dash
 dcfldd
 deja-dup
@@ -48,3 +49,4 @@ virt-manager
 vlc
 whois
 xclip
+zsh
