@@ -5,12 +5,12 @@
 #DO NOT RUN THIS SCRIPT AS ROOT! LETS ENSURE THAT HERE:
 [[ "$UID" == 0 ]] && echo -e "This script cannot be run as root! \n exiting..." && exit 1
 
-#This is a script to automate the process of joining my computer to my Active Directory server.
+#This is a script to automate the process of joining a Linux computer running Ubuntu 19.10 to 21.04 to an Active Directory server.
 
 # required software for this is: Curl, zsh, and wget, lets check for them and get them installed.
 for program in curl zsh wget; do
   installed=$(command -v $program)
-  [[ -z "$installed" ]] && echo "$program is not installed" && echo "$program is not installed, Please install $program from a seperate elevated Command prompt, and then run this script again." || echo "$program is installed"
+  [[ -z "$installed" ]] && echo "$program is not installed, Please install $program from a seperate elevated Command prompt, and then run this script again." && exit 1 || echo "$program is installed"
 done
 
 #Lets set some variables:
@@ -70,7 +70,7 @@ config AssumeDefaultDomain True
 config LoginShellTemplate /bin/zsh
 config HomeDirTemplate %H/%D/%U
 config $DOMAIN
-echo "The error above is normal."
+echo "The error above is normal, please ignore."
 
 
 #Lets restart lsass before we enumerate the users.
