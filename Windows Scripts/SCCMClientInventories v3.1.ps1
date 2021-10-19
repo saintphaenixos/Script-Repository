@@ -15,7 +15,7 @@ If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 Write-Host "==== Starting GPUpdate ====" -ForegroundColor Red -BackgroundColor White
 
 #Before we get serious, lets run a GPUpdate:
-#gpupdate /force
+gpupdate /force
 
 #Alright lets list the cycles in an array and write out to the terminal that we are starting the cycles
 Write-Host "==== Starting Configuration Manager Cycles ====" -ForegroundColor Red -BackgroundColor White
@@ -43,27 +43,16 @@ for ($timer = 1; $timer -le 20; $timer++) {
   Write-Host "`nWe are on Cycle: $timer"
   Write-Host "Ctrl+C to return to Powershell, or just close the window." -ForegroundColor Cyan -BackgroundColor Darkcyan
   # Thank you DrakharD
-  <#
-  [int]$countdown = 20
-  $Length = $countdown / 100
-  For ($countdown -gt 0; $countdown--) {
-    Write-Progress -Activity "Waiting for..." -Status "$($countdown % 60) seconds" -PercentComplete ($countdown / $Length)
-    Start-Sleep 1
-  }
-#>
+
+  # https://gist.github.com/ctigeek/bd637eeaeeb71c5b17f4
   $seconds = 20
   $doneDT = (Get-Date).AddSeconds($seconds)
   while ($doneDT -gt (Get-Date)) {
     $secondsLeft = $doneDT.Subtract((Get-Date)).TotalSeconds
     $percent = ($seconds - $secondsLeft) / $seconds * 100
-    Write-Progress -Activity "Waiting for..." -Status "Sleeping..." -SecondsRemaining $secondsLeft -PercentComplete $percent
+    Write-Progress -Activity "Waiting for..." -Status "Sleeping" -SecondsRemaining $secondsLeft -PercentComplete $percent
     [System.Threading.Thread]::Sleep(500)
   }
   Write-Progress -Activity "Sleeping" -Status "Sleeping..." -SecondsRemaining 0 -Completed
-
-
-
-
-  Write-Progress -Activity "Waiting for..." -Status "Ready" -Completed
   Clear-Host
 }
