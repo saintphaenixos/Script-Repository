@@ -10,7 +10,9 @@
 # Color tricks
 #=====================================================================================
 
+#=========================================
 #Write-Marquee allows you to color input via comma delineated sequences of strings, and in the second parameter colors. It is very simple, and needs the same amount of arguments on both sides: E.G. 3 comma delineated strings in the -Text and 3 Comma delineated colors in -Color
+#=========================================
 
 function Write-Marquee([String[]]$Text, [ConsoleColor[]]$Color) {
   for ($i = 0; $i -lt $Text.Length; $i++) {
@@ -21,7 +23,9 @@ function Write-Marquee([String[]]$Text, [ConsoleColor[]]$Color) {
 #Example:
 # Write-Marquee -Text Green,Blue,Red -Color Green,Blue,Red
 
-#A More General Purpose Color writer for selecting colors on the fly without all the flags of "Write-Host".
+#=========================================
+#Write-Color is a more general purpose color writer for selecting colors on the fly without all the flags of "Write-Host".
+#=========================================
 
 function Write-Color() {
   Param(
@@ -72,9 +76,159 @@ if([string]::IsNullOrEmpty($Message)) {
  $Host.UI.RawUI.ForegroundColor = $StartingColor
 }
 
+function Write-DarkGreen {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required, piped or as a parameter."
+}
+ $StartingColor = $Host.UI.RawUI.ForegroundColor
+ $Host.UI.RawUI.ForegroundColor = "DarkGreen"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.ForegroundColor = $StartingColor
+}
+
+function Write-DarkCyan {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required, piped or as a parameter."
+}
+ $StartingColor = $Host.UI.RawUI.ForegroundColor
+ $Host.UI.RawUI.ForegroundColor = "DarkCyan"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.ForegroundColor = $StartingColor
+}
+
+function Write-DarkRed {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required, piped or as a parameter."
+}
+ $StartingColor = $Host.UI.RawUI.ForegroundColor
+ $Host.UI.RawUI.ForegroundColor = "DarkRed"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.ForegroundColor = $StartingColor
+}
+
+function Write-DarkMagenta {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required, piped or as a parameter."
+}
+ $StartingColor = $Host.UI.RawUI.ForegroundColor
+ $Host.UI.RawUI.ForegroundColor = "DarkMagenta"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.ForegroundColor = $StartingColor
+}
+
+function Write-DarkYellow {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required, piped or as a parameter."
+}
+ $StartingColor = $Host.UI.RawUI.ForegroundColor
+ $Host.UI.RawUI.ForegroundColor = "DarkYellow"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.ForegroundColor = $StartingColor
+}
+
+function Write-Gray {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required, piped or as a parameter."
+}
+ $StartingColor = $Host.UI.RawUI.ForegroundColor
+ $Host.UI.RawUI.ForegroundColor = "Gray"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.ForegroundColor = $StartingColor
+}
+
+function Write-DarkGray {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required, piped or as a parameter."
+}
+ $StartingColor = $Host.UI.RawUI.ForegroundColor
+ $Host.UI.RawUI.ForegroundColor = "DarkGray"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.ForegroundColor = $StartingColor
+}
+
+function Write-Blue {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required, piped or as a parameter."
+}
+ $StartingColor = $Host.UI.RawUI.ForegroundColor
+ $Host.UI.RawUI.ForegroundColor = "Blue"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.ForegroundColor = $StartingColor
+}
+
+function Write-Green {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required, piped or as a parameter."
+}
+ $StartingColor = $Host.UI.RawUI.ForegroundColor
+ $Host.UI.RawUI.ForegroundColor = "Green"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.ForegroundColor = $StartingColor
+}
+
 #=====================================================================================
 # Background Colors
 #=====================================================================================
+
+function Write-Blackground {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required."
+}
+ $StartingColor = $Host.UI.RawUI.BackgroundColor
+ $Host.UI.RawUI.BackgroundColor = "Black"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.BackgroundColor = $StartingColor
+}
 
 function Write-DarkBlueBackground {
  [cmdletbinding()]
