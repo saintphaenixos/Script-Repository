@@ -2,6 +2,8 @@
 
 #This is a script to delete extraneous Apps that Windows 10 installs on a new Installation of the OS.
 
+# Requires Testing on new Windows 11 installations.
+
 $ErrorActionPreference= 'silentlycontinue'
 
 If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))

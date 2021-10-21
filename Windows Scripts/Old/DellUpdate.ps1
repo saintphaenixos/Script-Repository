@@ -16,6 +16,8 @@ Get-ChildItem -path C:\Users\Public\Downloads\DellDrivers -Name | % { "& C:\User
 
 #Now we execute that script.
 Write-Host "Beginning Installation of the Drivers, This may take awhile."
+
+# I have no idea what script this is referring to anymore, I'll have to eventually re-write it. 10.15.21
 & "C:\Users\Public\Downloads\DellDrivers\DellDriverExecution.Ps1"
 Write-Host "Done installing!"
 
