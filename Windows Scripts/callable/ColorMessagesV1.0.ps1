@@ -42,9 +42,21 @@ function Write-Color() {
 #Example: "Write-Color" "First color is Text color", "second is background color".
 # Write-Color Green Yellow "Example Text Here"
 
+#=========================================
+#This is just a small trick to show all the color combinations at once.
+#=========================================
+<#>
+$colors = [enum]::GetValues([System.ConsoleColor]) | Select-Object @{N='ColorObject';E={$_}}, @{N='ColorName'; E={ If ($_.ToString().substring(0,3) -eq 'Dar' ){ $_.ToString().Substring(4) + 'DARK' } else { $_.ToString() } } } | Sort-Object Colorname ; Foreach ($bgcolor in $colors.ColorObject){ Foreach ($fgcolor in $colors.ColorObject) { Write-Host "$fgcolor|" -ForegroundColor $fgcolor -BackgroundColor $bgcolor -NoNewLine } Write-Host " on $bgcolor" }
+</#>
+
 #=====================================================================================
 # Foreground Colors
 #=====================================================================================
+
+<#>
+Available Foreground (Font) Colors:
+Black ,DarkBlue ,DarkGreen ,DarkCyan ,DarkRed ,DarkMagenta ,DarkYellow ,Gray ,DarkGray ,Blue ,Green ,Cyan ,Red ,Magenta ,Yellow ,White.
+</#>
 
 function Write-Black {
  [cmdletbinding()]
@@ -215,6 +227,11 @@ if([string]::IsNullOrEmpty($Message)) {
 # Background Colors
 #=====================================================================================
 
+<#>
+Available Background Colors:
+Black ,DarkBlue ,DarkGreen ,DarkCyan ,DarkRed ,DarkMagenta ,DarkYellow ,Gray ,DarkGray ,Blue ,Green ,Cyan ,Red ,Magenta ,Yellow ,White.
+</#>
+
 function Write-Blackground {
  [cmdletbinding()]
  param(
@@ -245,42 +262,227 @@ if([string]::IsNullOrEmpty($Message)) {
  $Host.UI.RawUI.BackgroundColor = $StartingColor
 }
 
-Black
-DarkBlue
-DarkGreen
-DarkCyan
-DarkRed
-DarkMagenta
-DarkYellow
-Gray
-DarkGray
-Blue
-Green
-Cyan
-Red
-Magenta
-Yellow
-White
+function Write-DarkGreenBackground {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required."
+}
+ $StartingColor = $Host.UI.RawUI.BackgroundColor
+ $Host.UI.RawUI.BackgroundColor = "DarkGreen"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.BackgroundColor = $StartingColor
+}
 
-Background colors:
-Black
-DarkBlue
-DarkGreen
-DarkCyan
-DarkRed
-DarkMagenta
-DarkYellow
-Gray
-DarkGray
-Blue
-Green
-Cyan
-Red
-Magenta
-Yellow
-White
+function Write-DarkCyanBackground {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required."
+}
+ $StartingColor = $Host.UI.RawUI.BackgroundColor
+ $Host.UI.RawUI.BackgroundColor = "DarkCyan"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.BackgroundColor = $StartingColor
+}
 
-#To show all available color combinations at once:
-<#>
-$colors = [enum]::GetValues([System.ConsoleColor]) | Select-Object @{N='ColorObject';E={$_}}, @{N='ColorName'; E={ If ($_.ToString().substring(0,3) -eq 'Dar' ){ $_.ToString().Substring(4) + 'DARK' } else { $_.ToString() } } } | Sort-Object Colorname ; Foreach ($bgcolor in $colors.ColorObject){ Foreach ($fgcolor in $colors.ColorObject) { Write-Host "$fgcolor|" -ForegroundColor $fgcolor -BackgroundColor $bgcolor -NoNewLine } Write-Host " on $bgcolor" }
-</#>
+function Write-DarkRedBackground {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required."
+}
+ $StartingColor = $Host.UI.RawUI.BackgroundColor
+ $Host.UI.RawUI.BackgroundColor = "DarkRed"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.BackgroundColor = $StartingColor
+}
+
+function Write-DarkMagentaBackground {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required."
+}
+ $StartingColor = $Host.UI.RawUI.BackgroundColor
+ $Host.UI.RawUI.BackgroundColor = "DarkMagenta"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.BackgroundColor = $StartingColor
+}
+
+function Write-DarkYellowBackground {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required."
+}
+ $StartingColor = $Host.UI.RawUI.BackgroundColor
+ $Host.UI.RawUI.BackgroundColor = "DarkYellow"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.BackgroundColor = $StartingColor
+}
+
+function Write-GrayBackground {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required."
+}
+ $StartingColor = $Host.UI.RawUI.BackgroundColor
+ $Host.UI.RawUI.BackgroundColor = "Gray"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.BackgroundColor = $StartingColor
+}
+
+function Write-DarkGrayBackground {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required."
+}
+ $StartingColor = $Host.UI.RawUI.BackgroundColor
+ $Host.UI.RawUI.BackgroundColor = "DarkGray"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.BackgroundColor = $StartingColor
+}
+
+function Write-BlueBackground {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required."
+}
+ $StartingColor = $Host.UI.RawUI.BackgroundColor
+ $Host.UI.RawUI.BackgroundColor = "Blue"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.BackgroundColor = $StartingColor
+}
+
+function Write-BlueBackground {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required."
+}
+ $StartingColor = $Host.UI.RawUI.BackgroundColor
+ $Host.UI.RawUI.BackgroundColor = "Blue"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.BackgroundColor = $StartingColor
+}
+
+function Write-GreenBackground {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required."
+}
+ $StartingColor = $Host.UI.RawUI.BackgroundColor
+ $Host.UI.RawUI.BackgroundColor = "Green"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.BackgroundColor = $StartingColor
+}
+
+function Write-CyanBackground {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required."
+}
+ $StartingColor = $Host.UI.RawUI.BackgroundColor
+ $Host.UI.RawUI.BackgroundColor = "Cyan"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.BackgroundColor = $StartingColor
+}
+
+function Write-RedBackground {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required."
+}
+ $StartingColor = $Host.UI.RawUI.BackgroundColor
+ $Host.UI.RawUI.BackgroundColor = "Red"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.BackgroundColor = $StartingColor
+}
+
+function Write-MagentaBackground {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required."
+}
+ $StartingColor = $Host.UI.RawUI.BackgroundColor
+ $Host.UI.RawUI.BackgroundColor = "Magenta"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.BackgroundColor = $StartingColor
+}
+
+function Write-YellowBackground {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required."
+}
+ $StartingColor = $Host.UI.RawUI.BackgroundColor
+ $Host.UI.RawUI.BackgroundColor = "Yellow"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.BackgroundColor = $StartingColor
+}
+
+function Write-WhiteBackground {
+ [cmdletbinding()]
+ param(
+ [parameter(Mandatory=$false,ValueFromPipeline)]
+ [string]$Message
+ )
+if([string]::IsNullOrEmpty($Message)) {
+    throw [System.ArgumentException] "Input in the form of a string is required."
+}
+ $StartingColor = $Host.UI.RawUI.BackgroundColor
+ $Host.UI.RawUI.BackgroundColor = "White"
+ Write-Output -inputobject $Message
+ $Host.UI.RawUI.BackgroundColor = $StartingColor
+}
