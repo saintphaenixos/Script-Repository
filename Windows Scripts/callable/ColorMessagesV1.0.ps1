@@ -39,7 +39,7 @@ function Write-Color() {
   Write-Host $Text -ForegroundColor $ForegroundColor -BackgroundColor $BackgroundColor
 }
 
-#Example: "Write-Color" "First color is Text color", "second is background color".
+#Example: "Write-Color" "First color is Text color", "second is background color", "insert text here in double quotations".
 # Write-Color Green Yellow "Example Text Here"
 
 #=========================================
