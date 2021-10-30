@@ -13,6 +13,12 @@ $SixthKeyBatch = "HKCR:\Directory\ContextMenus\PowerShell7x64\shell\runas\comman
 $SeventhKeyBatch = "HKCR:\Directory\shell\PowerShell7x64"
 $EighthKeyBatch =  "HKCR:\Drive\shell\PowerShell7x64"
 
+######################################################################
+# Function for Adding the Powershell Registry Entries:
+######################################################################
+
+function AddPWSH7Entries() {
+
 #First we make the HKEY_CLASSES_ROOT Drive able to be read/written to in powershell:
 New-PSDrive -PSProvider registry -Root HKEY_CLASSES_ROOT -Name HKCR
 
@@ -55,3 +61,29 @@ Set-ItemProperty -Path $SeventhKeyBatch -Name ExtendedSubCommandsKey -Value "Dir
 
 #Seventh Batch to Create: (To remove we remove up to \Shell\ in this path)
 New-Item -Path $EighthKeyBatch -Force
+Set-ItemProperty -Path $EighthKeyBatch -Name MUIVerb -Value "&PowerShell 7"
+Set-ItemProperty -Path $EighthKeyBatch -Name Icon -Value "C:\Program Files\PowerShell\7\assets\Powershell_black.ico"
+Set-ItemProperty -Path $EighthKeyBatch -Name ExtendedSubCommandsKey -Value "Directory\ContextMenus\PowerShell7x64"
+
+}
+
+######################################################################
+# Function for Removing the Powershell Registry Entries:
+######################################################################
+
+function RemovePWSH7Entries() {
+
+Remove-Item -Path $FirstKeyBatch -Recurse
+Remove-Item -Path $SecondKeyBatch -Recurse
+Remove-Item -Path $ThirdKeyBatch -Recurse
+Remove-Item -Path $FourthKeyBatch -Recurse
+Remove-Item -Path $FifthKeyBatch -Recurse
+Remove-Item -Path $SixthKeyBatch -Recurse
+Remove-Item -Path $SeventhKeyBatch -Recurse
+Remove-Item -Path $EighthKeyBatch -Recurse
+
+}
+
+######################################################################
+# Now the actual Switch:
+######################################################################
