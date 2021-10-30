@@ -87,3 +87,16 @@ Remove-Item -Path $EighthKeyBatch -Recurse
 ######################################################################
 # Now the actual Switch:
 ######################################################################
+
+$Menu = 'Install','Remove'
+
+$Choices = $Menu | Out-GridView -OutputMode Multiple -Title 'Select either an Installation or Removal of Powershell 7 Right Click utilites, and click OK.'
+
+Switch ($Choices)
+{
+  'Installation' {echo "THIS IS INSTALLING!"}
+  'Removal' {echo "THIS IS REMOVING!"}
+}
+
+echo "We are done!"
+sleep 3
