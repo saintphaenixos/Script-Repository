@@ -1,7 +1,5 @@
-#This is a script that creates the needed registry keys to add the "open with Powershell 7 here" Context menu's that Pima's default deployment do not add.
+#This is a script that creates the needed registry keys to add the "open with Powershell 7 here" and a "Open with Powershell 5 here" Context menus that Pima's default deployment do not add.
 # It was originally written by Kent DuBack II on 10.22.21 for Pima Community College.
-
-#The idea is to create two functions, one that adds the needed keys, and will check if they are already installed, throwing a message and then closing the script after a brief wait. The second switch will remove them, and likewise check throwing an error if they are already removed and then closing.
 
 ######################################################################
 # All of our Variables:
@@ -155,8 +153,7 @@ Remove-Item -Path $EighthKeyBatchPWSH5 -Recurse
 ######################################################################
 
 $Menu = 'Install Both Menus','Install PWSH 5 Menus','Remove PWSH 5 Menus','Install PWSH 7 Menus','Remove PWSH 7 Menus','Remove Both'
-
-$Choices = $Menu | Out-GridView -OutputMode Multiple -Title 'Select your desired Powershell Installations, or removals.'
+$Choices = $Menu | Out-GridView -OutputMode Multiple -Title 'Select your Desired Powershell Context Menu Installations, or Removals.'
 
 Switch ($Choices)
 {
