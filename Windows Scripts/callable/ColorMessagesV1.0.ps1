@@ -45,6 +45,7 @@ function Write-Color() {
 #=========================================
 #This is just a small trick to show all the color combinations at once.
 #=========================================
+
 <#>
 $colors = [enum]::GetValues([System.ConsoleColor]) | Select-Object @{N='ColorObject';E={$_}}, @{N='ColorName'; E={ If ($_.ToString().substring(0,3) -eq 'Dar' ){ $_.ToString().Substring(4) + 'DARK' } else { $_.ToString() } } } | Sort-Object Colorname ; Foreach ($bgcolor in $colors.ColorObject){ Foreach ($fgcolor in $colors.ColorObject) { Write-Host "$fgcolor|" -ForegroundColor $fgcolor -BackgroundColor $bgcolor -NoNewLine } Write-Host " on $bgcolor" }
 </#>
