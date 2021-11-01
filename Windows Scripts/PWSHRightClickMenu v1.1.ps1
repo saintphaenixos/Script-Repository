@@ -1,6 +1,12 @@
 #This is a script that creates the needed registry keys to add the "open with Powershell 7 here" and a "Open with Powershell 5 here" Context menus that Pima's default deployment do not add.
 # It was originally written by Kent DuBack II on 10.22.21 for Pima Community College.
 
+# First Let's relaunch as an elevated process:
+If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+  Start-Process powershell.exe "-File", ('"{0}"' -f $MyInvocation.MyCommand.Path) -Verb RunAs
+  exit
+}
+
 ######################################################################
 # All of our Variables:
 ######################################################################
