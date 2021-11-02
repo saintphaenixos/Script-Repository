@@ -1,4 +1,6 @@
-﻿#region Variable Declarations
+#Shamelessly stolen from Will Crabtree, this doesn't currently work.
+
+#region Variable Declarations
 $OC = Read-Host -Prompt 'Old Name'
 $NC = Read-Host -Prompt 'New Name'
 $UN = Get-Credential
@@ -10,7 +12,7 @@ if($Connection -eq "True")
 {
   write-host "Standby... Changing name"
   Rename-Computer -ComputerName $OC -NewName $NC -DomainCredential $UN -Force -Restart
-  write-host "Rename Complete. Machine is restarting." 
+  write-host "Rename Complete. Machine is restarting."
 }
 else
 {

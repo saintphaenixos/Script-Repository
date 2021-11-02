@@ -1,4 +1,4 @@
-# This script will attempt to run the MBAM 500 times over the course of the day.
+# This script will attempt to run the MBAM encryption prompt 500 times over the course of the day.
 # Written by Bryce Bull & Kent Duback on 11.20.2020 for Pima Community College.
 # Original idea from Katrina Hockman
 
@@ -13,15 +13,15 @@ gpupdate /force
 
 # Will attempt to open MBAM every 30 seconds 500 times. Estimated 4-5 hours. Will exit if MBAMBClientUI.exe is detected.
 for ($timer = 1; $timer -le 500; $timer++) {
-  start-process 'C:\Program Files\Microsoft\MDOP MBAM\MBAMClientUI.exe' 
+  start-process 'C:\Program Files\Microsoft\MDOP MBAM\MBAMClientUI.exe'
   Start-Sleep -Seconds 5
   if ((Get-Process -ProcessName "MBAMClientUI") -ne $null) {
     Write-Host "MBAMClientUI found, exiting ..."
     exit
   }
   else {
-        
-    
+
+
     Write-Host "`nWe are on Cycle: $timer"
     Write-Host "Ctrl+C to return to Powershell, or just close the window." -ForegroundColor Cyan -BackgroundColor Darkcyan `n
     # Thank you DrakharD
