@@ -7,8 +7,10 @@
 #We'll check to see if they are already added or not.
 
 #First lets see if the files (If they exist) have GUIX_PROFILE in them and store that for comparisons..
-GuixProfileSetBash=$(cat ~/.bash_profile | grep "GUIX_PROFILE" )
-GuixProfileSetZsh=$(cat ~/.zsh_profile | grep "GUIX_PROFILE" )
+GuixProfileSetBash=$(cat ~/.bash_profile | grep "GUIX_PROFILE")
+GuixProfileSetZsh=$(cat ~/.zsh_profile | grep "GUIX_PROFILE")
+
+#We're seeing a failure right here that needs to be re-written:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 #Now lets run it.
 if [ -z $GuixProfileSetBash ] || [ -z $GuixProfileSetZsh ] ; then
