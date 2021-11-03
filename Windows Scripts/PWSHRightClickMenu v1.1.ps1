@@ -161,8 +161,7 @@ Remove-Item -Path $EighthKeyBatchPWSH5 -Recurse
 $Menu = 'Install Both Menus','Install PWSH 5 Menus','Remove PWSH 5 Menus','Install PWSH 7 Menus','Remove PWSH 7 Menus','Remove Both'
 $Choices = $Menu | Out-GridView -OutputMode Multiple -Title 'Select your Desired Powershell Context Menu Installations, or Removals.'
 
-Switch ($Choices)
-{
+Switch ($Choices) {
   'Install Both Menus'   {Write-Host "==== Installing Powershell 5 Context Menu Entries ====" -ForegroundColor Blue -BackgroundColor White;
                           AddPWSH5Entries > $null;
                           Write-Host "==== Installing Powershell 7 Context Menu Entries ====" -ForegroundColor Blue -BackgroundColor White;
