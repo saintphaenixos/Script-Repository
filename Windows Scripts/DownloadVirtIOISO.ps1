@@ -3,7 +3,7 @@
 #Written for Pima Community College by Kent DuBack II 11.1.2021
 
 #Change directory and download the .iso
-cd ~\Dowloads
+cd ~\Downloads
 Start-BitsTransfer https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso
 
 #Mount the ISO and begin installation:
