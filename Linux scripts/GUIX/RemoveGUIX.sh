@@ -14,6 +14,9 @@ rm /usr/lib/systemd/system/guix-daemon.service
 systemctl daemon-reload
 systemctl reset-failed
 
+#Now lets unmount the virtual GUIX store:
+sudo umount /gnu/store
+
 #Now lets remove all the directories full of GUIX:
 rm -rf /gnu
 rm -rf /var/guix
