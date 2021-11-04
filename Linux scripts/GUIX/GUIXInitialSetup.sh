@@ -10,14 +10,13 @@
 GuixProfileSetBash=$(cat ~/.bash_profile | grep "GUIX_PROFILE")
 GuixProfileSetZsh=$(cat ~/.zsh_profile | grep "GUIX_PROFILE")
 
-#We're seeing a failure right here that needs to be re-written:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 #Now lets run it.
-if [ -z $GuixProfileSetBash ] || [ -z $GuixProfileSetZsh ] ; then
+if [ -z "$GuixProfileSetBash" ] || [ -z "$GuixProfileSetZsh" ] ; then
   echo 'GUIX_PROFILE="$HOME/.guix-profile"' >> ~/.bash_profile
   echo '. "$GUIX_PROFILE/etc/profile"' >> ~/.bash_profile
-  echo 'GUIX_PROFILE="$HOME/.guix-profile"' >> ~/.zsh_profile
-  echo '. "$GUIX_PROFILE/etc/profile"' >> ~/.zsh_profile
+  echo 'GUIX_PROFILE="$HOME/.guix-profile"' >> ~/.zshenv
+  echo '. "$GUIX_PROFILE/etc/profile"' >> ~/.zshenv
+fi
 
 #Then we let Guix know that this is our (nearly) forever home.
 hash guix
