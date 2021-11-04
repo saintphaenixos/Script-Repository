@@ -8,7 +8,7 @@
 
 #First lets see if the files (If they exist) have GUIX_PROFILE in them and store that for comparisons..
 GuixProfileSetBash=$(cat ~/.bash_profile | grep "GUIX_PROFILE")
-GuixProfileSetZsh=$(cat ~/.zsh_profile | grep "GUIX_PROFILE")
+GuixProfileSetZsh=$(cat ~/.zshenv | grep "GUIX_PROFILE")
 
 #Now lets run it.
 if [ -z "$GuixProfileSetBash" ] || [ -z "$GuixProfileSetZsh" ] ; then
