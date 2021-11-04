@@ -33,6 +33,8 @@
         "git"
         "imagemagick"
         "ffmpeg"
+        "bpytop"
+        "glances"
         "mtr"
         "rsync"
         "screen"
