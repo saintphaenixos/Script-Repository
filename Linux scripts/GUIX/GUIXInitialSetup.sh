@@ -7,19 +7,25 @@
 #We'll check to see if they are already added or not.
 
 #First lets see if the files (If they exist) have GUIX_PROFILE in them and store that for comparisons..
-GuixProfileSetBash=$(cat ~/.bash_profile | grep "GUIX_PROFILE")
-GuixProfileSetZsh=$(cat ~/.zshenv | grep "GUIX_PROFILE")
+GuixProfileSetBash=$(cat ~/.bash_profile | grep 'GUIX_PROFILE="$HOME/.config/guix/current"')
+GuixProfileSetZsh=$(cat ~/.zshenv | grep 'GUIX_PROFILE="$HOME/.config/guix/current"')
 
-#Now lets run it.
+#Now lets do our first repository update:
+guix pull
+
+#Now lets update our paths for the latest version of GUIX:
 if [ -z "$GuixProfileSetBash" ] || [ -z "$GuixProfileSetZsh" ] ; then
-  echo 'GUIX_PROFILE="$HOME/.guix-profile"' >> ~/.bash_profile
-  echo '. "$GUIX_PROFILE/etc/profile"' >> ~/.bash_profile
-  echo 'GUIX_PROFILE="$HOME/.guix-profile"' >> ~/.zshenv
-  echo '. "$GUIX_PROFILE/etc/profile"' >> ~/.zshenv
+  echo 'GUIX_PROFILE="$HOME/.config/guix/current"' > ~/.bash_profile
+  echo '. "$GUIX_PROFILE/etc/profile"' > ~/.bash_profile
+  echo 'GUIX_PROFILE="$HOME/.config/guix/current"' > ~/.zshenv
+  echo '. "$GUIX_PROFILE/etc/profile"' > ~/.zshenv
 fi
 
-#Then we let Guix know that this is our (nearly) forever home.
+#Then we let GUIX know that this is our (nearly) forever home.
 hash guix
+
+#Now we do our first guix upgrade:
+guix upgrade
 
 #Next lets setup locales for GUIX as it doesn't use the local LOCALES profiles on Linux:
 guix install glibc-locales
