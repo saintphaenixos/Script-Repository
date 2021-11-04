@@ -7,20 +7,23 @@
 
 #Update GUIX:
 guix pull
-sudo -i guix pull
+hash guix
+
+#Update Guix install Packages:
+guix upgrade
 
 #Run the garbage collector:
 guix gc
 
-#Remove the older generations:
+#Remove the older generations, which is more garbage collection:
 guix gc --delete-generations
 
 #add the needed paths:
 export PATH="$HOME/.config/guix/current/bin:$PATH"
 export INFOPATH="$HOME/.config/guix/current/share/info:$INFOPATH"
 
+#Now we update the build daemon:
+sudo -i guix pull
+
 #Restart the Daemon
 systemctl restart guix-daemon.service
-
-#Update Guix install Packages:
-guix upgrade
