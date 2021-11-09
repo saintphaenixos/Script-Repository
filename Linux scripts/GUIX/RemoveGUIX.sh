@@ -7,7 +7,6 @@
 
 #Lets Obliterate the Systemd service for GUIX:
 systemctl stop guix-daemon.service
-systemctl stop guix-daemon.service
 systemctl disable guix-daemon.service
 rm /etc/systemd/system/guix-daemon.service
 rm /usr/lib/systemd/system/guix-daemon.service

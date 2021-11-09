@@ -49,4 +49,6 @@
         "neofetch"
         "feh"
         "ncdu"
+        "man-db"
+        "wget"
         "ranger"))
