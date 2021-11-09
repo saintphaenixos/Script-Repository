@@ -9,7 +9,9 @@ for program in zsh git curl; do
 done
 
 #Lets install oh-my-zsh, so I can have my favored framework:
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh > /tmp/ZSHinstall.sh
+chmod +x /tmp/ZSHinstall.sh
+bash /tmp/ZSHinstall.sh
 
 #now lets set my favorite zsh theme.
 git clone https://github.com/badouralix/oh-my-via.git $ZSH/custom/themes/oh-my-via

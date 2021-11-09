@@ -3,23 +3,18 @@
 #DO NOT RUN THIS SCRIPT AS ROOT! LETS ENSURE THAT HERE:
 [ "$UID" == 0 ] && echo -e "This script cannot be run as root! \n exiting..." && exit 1
 
-#First we need to add the GUIX installed program PATHs to the system:
-#We'll check to see if they are already added or not.
-
-#First lets see if the files (If they exist) have GUIX_PROFILE in them and store that for comparisons..
-GuixProfileSetBash=$(cat ~/.bash_profile | grep 'GUIX_PROFILE="$HOME/.config/guix/current"')
-GuixProfileSetZsh=$(cat ~/.zshenv | grep 'GUIX_PROFILE="$HOME/.config/guix/current"')
-
-#Now lets do our first repository update:
+#First lets do our first repository update:
 guix pull
 
 #Now lets update our paths for the latest version of GUIX:
-if [ -z "$GuixProfileSetBash" ] || [ -z "$GuixProfileSetZsh" ] ; then
-  echo 'GUIX_PROFILE="$HOME/.config/guix/current"' > ~/.bash_profile
-  echo '. "$GUIX_PROFILE/etc/profile"' > ~/.bash_profile
-  echo 'GUIX_PROFILE="$HOME/.config/guix/current"' > ~/.zshenv
-  echo '. "$GUIX_PROFILE/etc/profile"' > ~/.zshenv
-fi
+echo 'GUIX_PROFILE="$HOME/.guix-profile"' > ~/.bash_profile
+echo '. "$GUIX_PROFILE/etc/profile"' >> ~/.bash_profile
+echo 'GUIX_PROFILE="$HOME/.guix-profile"' > ~/.zshenv
+echo '. "$GUIX_PROFILE/etc/profile"' >> ~/.zshenv
+
+#Lets call them now however so they can be used immediately.
+GUIX_PROFILE="/home/fenix/.guix-profile"
+. "$GUIX_PROFILE/etc/profile"
 
 #Then we let GUIX know that this is our (nearly) forever home.
 hash guix
