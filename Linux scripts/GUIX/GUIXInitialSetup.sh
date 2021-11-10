@@ -15,7 +15,7 @@ echo '. "$GUIX_PROFILE/etc/profile"' >> ~/.zshenv
 #Lets call them now however so they can be used immediately.
 GUIX_PROFILE="/home/fenix/.guix-profile"
 . "$GUIX_PROFILE/etc/profile"
-source ~./bash_profile
+source ~/.bash_profile
 
 #Then we let GUIX know that this is our (nearly) forever home.
 hash guix
@@ -30,10 +30,6 @@ export GUIX_LOCPATH=$HOME/.guix-profile/lib/locale
 #If the domain name service doesn't exist install it: (This will prevent future issues with GUIX)
 NscdInstalled=$(command -v nscd)
 [[ -z "$NscdInstalled" ]] && echo "Name Service Cache Daemon is not installed" && sudo apt install nscd -y || echo "Name Service Cache Daemon is installed"
-
-#We'll need to call these again:
-GUIX_PROFILE="/home/fenix/.guix-profile"
-. "$GUIX_PROFILE/etc/profile"
 
 #Lets get the Fonts for installed programs taken care of:
 guix install gs-fonts font-dejavu font-gnu-freefont fontconfig
