@@ -31,6 +31,10 @@ export GUIX_LOCPATH=$HOME/.guix-profile/lib/locale
 NscdInstalled=$(command -v nscd)
 [[ -z "$NscdInstalled" ]] && echo "Name Service Cache Daemon is not installed" && sudo apt install nscd -y || echo "Name Service Cache Daemon is installed"
 
+#We'll need to call these again:
+GUIX_PROFILE="/home/fenix/.guix-profile"
+. "$GUIX_PROFILE/etc/profile"
+
 #Lets get the Fonts for installed programs taken care of:
 guix install gs-fonts font-dejavu font-gnu-freefont fontconfig
 fc-cache -rv
