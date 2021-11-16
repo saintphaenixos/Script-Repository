@@ -2,8 +2,21 @@
 
 #this is a script written 5.27.21 to install the GNU Guix package management system into a unix OS.
 
-#First lets make sure you are root as you run this.
+#First lets make sure you are root as you run this, and do some basic software checks:
+git=$(command -v git)
+[[ -z "$git" ]] && echo "Git is not installed, please install that before running this shell script."
+
+dosu=$(command -v sudo) #Can't name this variable sudo due to it being a command.
+[[ -z "$dosu" ]] && echo "Sudo is not installed, please install that before running this shell script." && exit 1
+
 [ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1
+
+#Now lets install the required software for this script:
+# The required software for this is: Curl, zsh, and wget, lets check for them and get them installed.
+for program in bash-completion wget curl zsh; do
+  installed=$(command -v $program)
+  [[ -z "$installed" ]] && echo "$program is not installed, Please install $program from a seperate elevated Command prompt, and then run this script again." && exit 1 || echo "$program is installed"
+done
 
 #Lets set a color function:
 teal() {
