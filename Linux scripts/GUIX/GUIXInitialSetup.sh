@@ -15,7 +15,6 @@ echo '. "$GUIX_PROFILE/etc/profile"' >> ~/.zshenv
 #Lets call them now however so they can be used immediately.
 GUIX_PROFILE="/home/fenix/.guix-profile"
 . "$GUIX_PROFILE/etc/profile"
-source ~/.bash_profile
 
 #Then we let GUIX know that this is our (nearly) forever home.
 hash guix
@@ -34,3 +33,6 @@ NscdInstalled=$(command -v nscd)
 #Lets get the Fonts for installed programs taken care of:
 guix install gs-fonts font-dejavu font-gnu-freefont fontconfig
 fc-cache -rv
+
+#Lastly lets source the bash profile to gaurantee functionality after the script.
+source ~/.bash_profile
