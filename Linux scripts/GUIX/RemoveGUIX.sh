@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 #A simple script to completely remove GUIX from a non GUIX-SD distribution.
 

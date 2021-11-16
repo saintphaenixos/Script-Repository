@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 #This is a script to update GUIX in place on a machine that has already had it installed.
 
