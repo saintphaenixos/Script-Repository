@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#this is a script written 5.27.21 to install the GNU Guix package management system into a unix OS.
+#this is a script written 5.27.21 to install the GNU Guix package management system onto a Debian Based system.
 
 #First lets make sure you are root as you run this, and do some basic software checks:
 git=$(command -v git)
