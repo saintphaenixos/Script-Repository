@@ -3,10 +3,10 @@
 #this is a script written 5.27.21 to install the GNU Guix package management system onto a Debian Based system.
 
 #First lets make sure you are root as you run this, and do some basic software checks:
+[ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1
+
 git=$(command -v git)
 [[ -z "$git" ]] && echo "Git is not installed, please install that before running this shell script."
-
-[ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1
 
 #Now lets install the required software for this script:
 # The required software for this is: Curl, zsh, and wget, lets check for them and get them installed.
