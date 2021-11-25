@@ -24,8 +24,16 @@ done
 
 ###################################################################
 
+#We need to switch back to a normal user now so Oh-My-Zsh installs properly:
+echo "Now we need to switch back to your normal user, please input that name now (CASE SENSITIVE!), and then password."
+Read Username
+su $Username
+
 #Now lets do some other things, like install oh-my-zsh:
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 #Now lets download my favorite theme for it: Oh-My-Via:
 git clone https://github.com/badouralix/oh-my-via.git $ZSH/custom/themes/oh-my-via
+
+#lastly lets set oh-my-via to be my default theme and source it.
+sed '11s+.*+ZSH_THEME="oh-my-via/via"+' ~/.zshrc
