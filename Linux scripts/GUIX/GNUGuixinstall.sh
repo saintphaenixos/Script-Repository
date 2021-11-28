@@ -17,11 +17,7 @@ done
 
 #Lets set a color function:
 teal() {
-    if (( $# == 0 )) ; then
-        xargs -r -I{} echo -e "\e[38;5;6m"{}"\e[0m" < /dev/stdin
-    else
         echo -e "\e[38;5;6m${@}\e[0m"
-    fi
 }
 
 #Now lets gather the current Guix install script for use here, we'll put it into the /tmp location.
