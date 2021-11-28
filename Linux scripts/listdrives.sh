@@ -2,7 +2,7 @@
 #!/bin/zsh
 
 #the purpose of this script is to create a list of drives from a linux system to then pipe into zenity to select drives from for other functions.
-#     The current idea is to keep creating new variables into I can put the list of valid drives not partitions into an array, and then present that to zenity to create an interface to pick drives in.
+#     The current idea is to keep creating new variables into which I can put the list of valid drives (not partitions) into an array, and then present that to zenity to create an interface to pick drives in.
 
 #First lets make sure perl and zenity are installed
 for program in perl zenity; do
