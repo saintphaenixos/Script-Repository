@@ -7,13 +7,13 @@
 guix pull
 
 #Now lets update our bash profile for the latest version of GUIX:
-if (grep -Fqs "guix-profile" .bash_profile) || [ ! -f ~/.bash_profile ] ; then
+if (grep -Fqs "guix-profile" ~/.bash_profile) || [ ! -f ~/.bash_profile ] ; then
   echo 'GUIX_PROFILE="$HOME/.guix-profile"' >> ~/.bash_profile
   echo 'source "$GUIX_PROFILE/etc/profile"' >> ~/.bash_profile
 fi
 
 #Similarly we'll do this for zsh:
-if (grep -Fqs "guix-profile" .zshenv) || [ ! -f ~/.zshenv ] ; then
+if (grep -Fqs "guix-profile" ~/.zshenv) || [ ! -f ~/.zshenv ] ; then
   echo 'GUIX_PROFILE="$HOME/.guix-profile"' >> ~/.zshenv
   echo 'source $GUIX_PROFILE/etc/profile' >> ~/.zshenv
 fi
