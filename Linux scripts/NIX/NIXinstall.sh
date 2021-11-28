@@ -9,16 +9,16 @@ sudoexist=$(grep $currentuser < /etc/sudoers)
 #First lets get prepared by installing sudo and curl, and checking if sudo is already installed or not.
 if [[ -z "$sudoexist" ]]
 then #First lets get our requirements installed:
-  for program in curl; do
-    installed=$(command -v $program)
-    [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt update && sudo apt install $program || echo "$program is installed"
-  done
-else
-  echo "Input password for root." && sleep 1
-  su root
+echo "Input password for root." && sleep 1
+su root
   for program in sudo curl; do
     installed=$(command -v $program)
     [[ -z "$installed" ]] && echo "$program is not installed" && apt update && apt install $program || echo "$program is installed"
+  done
+else
+  for program in curl; do
+    installed=$(command -v $program)
+    [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt update && sudo apt install $program || echo "$program is installed"
   done
 echo "Input password for your standard user account, you started with."
 su $currentuser
