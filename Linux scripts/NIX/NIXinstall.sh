@@ -9,7 +9,7 @@ fuchsia() {
 }
 
 #First lets get prepared by installing sudo and curl, and checking if sudo is already installed or not.
-[[ -f "$sudoexist" ]] && fuchsia "Sudo doesn't exist on this system, please install and configure it first." && exit 1
+[[ ! -f "$sudoexist" ]] && fuchsia "Sudo doesn't exist on this system, please install and configure it first." && exit 1
 for program in curl; do
   installed=$(command -v $program)
   [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt update && sudo apt install $program || echo "$program is installed"
