@@ -14,7 +14,7 @@ echo '. "$GUIX_PROFILE/etc/profile"' >> ~/.zshenv
 
 #Lets call them now however so they can be used immediately.
 GUIX_PROFILE="/home/fenix/.guix-profile"
-. "$GUIX_PROFILE/etc/profile"
+source "$GUIX_PROFILE/etc/profile"
 
 #Then we let GUIX know that this is our (nearly) forever home.
 hash guix

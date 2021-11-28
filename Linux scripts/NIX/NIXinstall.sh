@@ -15,5 +15,12 @@ for program in curl; do
   [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt update && sudo apt install $program || echo "$program is installed"
 done
 
-#Lastly lets go ahead and install Nix:
+#lets go ahead and install Nix:
 curl -L https://nixos.org/nix/install | sh
+
+#Now lets add a source to both .bashrc and .zshenv:
+if [grep -Fq "~/.nix-profile/etc/profile.d/nix.sh" .bash_profile] ; then
+echo 'source "~/.nix-profile/etc/profile.d/nix.sh"' >> ~/.bash_profile
+elif [grep -Fq "~/.nix-profile/etc/profile.d/nix.sh" .zhenv] ; then
+echo 'source "~/.nix-profile/etc/profile.d/nix.sh"' >> ~/.zshenv
+fi

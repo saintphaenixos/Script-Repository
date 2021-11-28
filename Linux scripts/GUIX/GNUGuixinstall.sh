@@ -34,7 +34,7 @@ bash guix-install.sh
 
 #First we'll set these temporarily so that GUIX can see itself on $PATH
 GUIX_PROFILE="$HOME/.guix-profile"
-. "$GUIX_PROFILE/etc/profile"
+source "$GUIX_PROFILE/etc/profile"
 
 #Now we update GUIX and its packages:
 guix pull
