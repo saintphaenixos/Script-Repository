@@ -26,7 +26,7 @@ wget -P /tmp https://releases.nixos.org/nix/nix-2.4/nix-2.4-x86_64-linux.tar.xz
 cd /tmp
 tar -xvf /tmp/nix-2.4-x86_64-linux.tar.xz
 cd /tmp/nix-2.4-x86_64-linux
-bash install-systemd-multi-user install
+bash install-multi-user install
 
 #We'll also have to add an export command to the skeleton bashrc's so that new users already have it ready to go:
 if (grep -Fqs "export NIX_REMOTE=daemon" /etc/skel/.bash_profile) || [ ! -f ~/.bash_profile ] ; then
