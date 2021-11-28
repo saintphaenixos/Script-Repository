@@ -28,12 +28,6 @@ tar -xvf /tmp/nix-2.4-x86_64-linux.tar.xz
 cd /tmp/nix-2.4-x86_64-linux
 bash install-systemd-multi-user install
 
-#Now we start the Nix Daemon for the first time:
-sudo systemctl start nix-daemon
-
-#Now we'll create a System D service that will start up with the system so it's always available:
-sudo systemctl enable nix-daemon
-
 #We'll also have to add an export command to the skeleton bashrc's so that new users already have it ready to go:
 if (grep -Fqs "export NIX_REMOTE=daemon" /etc/skel/.bash_profile) || [ ! -f ~/.bash_profile ] ; then
   sudo echo 'export NIX_REMOTE=daemon' >> ~/.bash_profile
