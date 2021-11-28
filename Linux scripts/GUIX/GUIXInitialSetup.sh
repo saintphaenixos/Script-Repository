@@ -8,9 +8,9 @@ guix pull
 
 #Now lets update our paths for the latest version of GUIX:
 echo 'GUIX_PROFILE="$HOME/.guix-profile"' > ~/.bash_profile
-echo '. "$GUIX_PROFILE/etc/profile"' >> ~/.bash_profile
+echo 'source "$GUIX_PROFILE/etc/profile"' >> ~/.bash_profile
 echo 'GUIX_PROFILE="$HOME/.guix-profile"' > ~/.zshenv
-echo '. "$GUIX_PROFILE/etc/profile"' >> ~/.zshenv
+echo 'source "$GUIX_PROFILE/etc/profile"' >> ~/.zshenv
 
 #Lets call them now however so they can be used immediately.
 GUIX_PROFILE="/home/fenix/.guix-profile"

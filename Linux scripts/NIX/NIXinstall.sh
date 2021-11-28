@@ -18,9 +18,12 @@ done
 #lets go ahead and install Nix:
 curl -L https://nixos.org/nix/install | sh
 
-#Now lets add a source to both .bashrc and .zshenv:
+#Now lets add a source for .bashrc: The installer should do this, but lets do this just in case.
 if (grep -Fqs "~/.nix-profile/etc/profile.d/nix.sh" .bash_profile) || [ ! -f ~/.bash_profile ] ; then
-echo 'source "~/.nix-profile/etc/profile.d/nix.sh"' >> ~/.bash_profile
-elif (grep -Fqs "~/.nix-profile/etc/profile.d/nix.sh" .zhenv) || [ ! -f ~/.zshenv ] ; then
-echo 'source "~/.nix-profile/etc/profile.d/nix.sh"' >> ~/.zshenv
+  echo 'source "~/.nix-profile/etc/profile.d/nix.sh"' >> ~/.bash_profile
+fi
+
+#Now we'll do it again for .zshenv
+if (grep -Fqs "~/.nix-profile/etc/profile.d/nix.sh" .zhenv) || [ ! -f ~/.zshenv ] ; then
+  echo 'source "~/.nix-profile/etc/profile.d/nix.sh"' >> ~/.zshenv
 fi
