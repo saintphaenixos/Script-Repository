@@ -32,8 +32,7 @@ for nixbuilders in $(seq 1 20); do useradd -c "Nix build user $nixbuilders" \
 wget -P /tmp https://releases.nixos.org/nix/nix-2.4/nix-2.4-x86_64-linux.tar.xz
 tar -xvf /tmp/nix-2.4-x86_64-linux.tar.xz
 cd /tmp/nix-2.4-x86_64-linux
-bash install-multi-user install
-bash install-systemd-multi-user.sh
+bash install-systemd-multi-user.sh install
 
 #Now we start the Nix Daemon for the first time:
 systemctl start nix-daemon
