@@ -10,10 +10,7 @@ fuchsia() {
 
 #I've noticed that NIX won't run on less than 2 GB of memory, so lets check for that:
 Systemmem=$(free --giga | awk 'FNR == 2 {print($3)}')
-if (( $Systemmem < 4 )) ; then
-  fuchsia "memory requirements exceed installed amount, please install greater than 4 Total Gigabytes of Memory. Exiting Installation."
-  Exit 1
-fi
+(( $Systemmem < 4 )) && fuchsia "memory requirements exceed installed amount, please install greater than 4 Total Gigabytes of Memory." && fuchsia "Exiting Installation." && exit 1
 
 #First lets get prepared by installing sudo and curl, and checking if sudo is already installed or not.
 [[ ! -f "$sudoexist" ]] && fuchsia "Sudo doesn't exist on this system, please install and configure it first." && exit 1
