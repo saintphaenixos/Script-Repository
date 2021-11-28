@@ -15,7 +15,7 @@ fi
 #Similarly we'll do this for zsh:
 if (grep -Fqs "guix-profile" .zshenv) || [ ! -f ~/.zshenv ] ; then
   echo 'GUIX_PROFILE="$HOME/.guix-profile"' >> ~/.zshenv
-  echo 'source "$GUIX_PROFILE/etc/profile"' >> ~/.zshenv
+  echo 'source $GUIX_PROFILE/etc/profile' >> ~/.zshenv
 fi
 
 #Lets call them now however so they can be used immediately.
