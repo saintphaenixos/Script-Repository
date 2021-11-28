@@ -12,16 +12,13 @@ fuchsia() {
 
 #I've noticed that NIX won't run on less than 2 GB of memory, so lets check for that:
 Systemmem=$(free --giga | awk 'FNR == 2 {print($3)}')
-(( $Systemmem < 2 )) && fuchsia "The Nix Package Manager's memory requirements exceed installed amount, please install greater than 4 Total Gigabytes of Memory." && fuchsia "Exiting Installation." && exit 1
+(( $Systemmem < 2 )) && fuchsia "The Nix Package Manager's memory requirements exceed installed amount, please install greater than 2 Total Gigabytes of Memory." && fuchsia "Exiting Installation." && exit 1
 
-#First lets get prepared by installing sudo and curl, and checking if sudo is already installed or not.
-for program in curl; do
+#First lets get prepared by installing wget.
+for program in wget; do
   installed=$(command -v $program)
   [[ -z "$installed" ]] && echo "$program is not installed" && apt update && apt install $program || echo "$program is installed"
 done
-
-#lets go ahead and install Nix:
-curl -L https://nixos.org/nix/install | sh
 
 #Now we'll need to add builders for the multiple users to use, lets create a group for them:
 groupadd -r nixbld
@@ -30,6 +27,13 @@ groupadd -r nixbld
 for nixbuilders in $(seq 1 20); do useradd -c "Nix build user $nixbuilders" \
     -d /var/empty -g nixbld -G nixbld -M -N -r -s "$(which nologin)" \
     nixbld$nixbuilders; done
+
+#lets go ahead and install Nix:
+wget -P /tmp https://releases.nixos.org/nix/nix-2.4/nix-2.4-x86_64-linux.tar.xz
+tar -xvf /tmp/nix-2.4-x86_64-linux.tar.xz
+cd /tmp/nix-2.4-x86_64-linux
+bash install-multi-user install
+bash install-systemd-multi-user.sh
 
 #Now we start the Nix Daemon for the first time:
 systemctl start nix-daemon
