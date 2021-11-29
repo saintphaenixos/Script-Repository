@@ -17,10 +17,11 @@ zshupdatealiasexist=$(grep -Fs 'alias update="sudo apt update && sudo apt dist-u
 brewaliasexist=$(grep -Fs 'alias brewupdate="brew update && brew upgrade && brew cleanup"' ~/.bashrc)
 exaaliasexist=$(grep -Fs 'alias ll="exa -l"' ~/.bashrc)
 ipcolorexist=$(grep -Fs 'alias ip="ip -c a"' ~/.bashrc)
-nixinstall==$(grep -Fs 'alias nixinstall="nix-env -i"' ~/.bashrc)
-nixremove=$(grep -Fs 'alias nixremove="nix-env -e"' ~/.bashrc)
+nixgarbageexist=$(grep -Fs 'alias nixgarbagecollection="nix-collect-garbage -d' ~/.bashrc)
+nixinstallexist=$(grep -Fs 'alias nixinstall="nix-env -i"' ~/.bashrc)
+nixremoveexist=$(grep -Fs 'alias nixremove="nix-env -e"' ~/.bashrc)
 nixsearchexist=$(grep -Fs 'alias nixsearch="nix-env -qa"' ~/.bashrc)
-nixtest=$(grep -Fs 'alias nixtest="nix-shell -p"' ~/.bashrc)
+nixtestexist=$(grep -Fs 'alias nixtest="nix-shell -p"' ~/.bashrc)
 nixupdateexist=$(grep -Fs 'alias nixupdate="nix-channel --update nixpkgs"' ~/.bashrc)
 nixupgradeexist=$(grep -Fs 'alias nixupgrade="nix-env -u '*'"' ~/.bashrc)
 
@@ -36,10 +37,11 @@ fi
 [ ! -z "$brewexist" ] && [ -z "$brewaliasexist" ] && echo 'alias brewupdate="brew update && brew upgrade && brew cleanup"' >> ~/.bashrc
 [ ! -z "$exaexist" ] && [ -z "$exaaliasexist" ] && echo 'alias ll="exa -l"' >> ~/.bashrc
 [ -z "$ipcolorexist" ] && echo 'alias ip="ip -c a"' >> ~/.bashrc
-[ ! -z "$nixexist" ] && [ -z "$nixinstall" ] && echo 'alias nixinstall="nix-env -i"' >> ~/.bashrc
-[ ! -z "$nixexist" ] && [ -z "$nixremove" ] && echo 'alias nixremove="nix-env -e"' >> ~/.bashrc
+[ ! -z "$nixexist" ] && [ -z "$nixgarbageexist" ] && echo 'alias nixgarbagecollection="nix-collect-garbage -d' >> ~/.bashrc
+[ ! -z "$nixexist" ] && [ -z "$nixinstallexist" ] && echo 'alias nixinstall="nix-env -i"' >> ~/.bashrc
+[ ! -z "$nixexist" ] && [ -z "$nixremoveexist" ] && echo 'alias nixremove="nix-env -e"' >> ~/.bashrc
 [ ! -z "$nixexist" ] && [ -z "$nixsearchexist" ] && echo 'alias nixsearch="nix-env -qa"' >> ~/.bashrc
-[ ! -z "$nixexist" ] && [ -z "$nixtest" ] && echo 'alias nixtest="nix-shell -p"' >> ~/.bashrc
+[ ! -z "$nixexist" ] && [ -z "$nixtestexist" ] && echo 'alias nixtest="nix-shell -p"' >> ~/.bashrc
 [ ! -z "$nixexist" ] && [ -z "$nixupdateexist" ] && echo 'alias nixupdate="nix-channel --update nixpkgs"' >> ~/.bashrc
 [ ! -z "$nixexist" ] && [ -z "$nixupgradeexist" ] && echo 'alias nixupgrade="nix-env -u '*'"' >> ~/.bashrc
 
@@ -55,9 +57,10 @@ fi
 [ ! -z "$brewexist" ] && [ -z "$brewaliasexist" ] && echo 'alias brewupdate="brew update && brew upgrade && brew cleanup"' >> ~/.zshrc
 [ ! -z "$exaexist" ] && [ -z "$exaaliasexist" ] && echo 'alias ll="exa -l"' >> ~/.zshrc
 [ -z "$ipcolorexist" ] && echo 'alias ip="ip -c a"' >> ~/.zshrc
-[ ! -z "$nixexist" ] && [ -z "$nixinstall" ] && echo 'alias nixinstall="nix-env -i"' >> ~/.zshrc
-[ ! -z "$nixexist" ] && [ -z "$nixremove" ] && echo 'alias nixremove="nix-env -e"' >> ~/.zshrc
+[ ! -z "$nixexist" ] && [ -z "$nixgarbageexist" ] && echo 'alias nixgarbagecollection="nix-collect-garbage -d' >> ~/.zshrc
+[ ! -z "$nixexist" ] && [ -z "$nixinstallexist" ] && echo 'alias nixinstall="nix-env -i"' >> ~/.zshrc
+[ ! -z "$nixexist" ] && [ -z "$nixremoveexist" ] && echo 'alias nixremove="nix-env -e"' >> ~/.zshrc
 [ ! -z "$nixexist" ] && [ -z "$nixsearchexist" ] && echo 'alias nixsearch="nix-env -qa"' >> ~/.zshrc
-[ ! -z "$nixexist" ] && [ -z "$nixtest" ] && echo 'alias nixtest="nix-shell -p"' >> ~/.zshrc
+[ ! -z "$nixexist" ] && [ -z "$nixtestexist" ] && echo 'alias nixtest="nix-shell -p"' >> ~/.zshrc
 [ ! -z "$nixexist" ] && [ -z "$nixupdateexist" ] && echo 'alias nixupdate="nix-channel --update nixpkgs"' >> ~/.zshrc
 [ ! -z "$nixexist" ] && [ -z "$nixupgradeexist" ] && echo 'alias nixupgrade="nix-env -u '*'"' >> ~/.zshrc
