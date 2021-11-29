@@ -24,7 +24,7 @@ for program in wget; do
 done
 
 #lets go ahead and install Nix:
-wget -P /tmp https://releases.nixos.org/nix/nix-$currentnixversion/nix-"$currentnixversion"-x86_64-linux.tar.xz
+wget -P /tmp https://releases.nixos.org/nix/nix-$currentnixversion/nix-"$currentnixversion"-x86_64-linux.tar.xz >/dev/null
 cd /tmp
 tar -xvf /tmp/nix-$currentnixversion-x86_64-linux.tar.xz 1>/dev/null
 cd /tmp/nix-$currentnixversion-x86_64-linux
