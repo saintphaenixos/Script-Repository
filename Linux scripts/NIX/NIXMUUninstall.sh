@@ -35,4 +35,7 @@ for builder in "${builders[@]}"; do
   sudo userdel -r "$builder"
 done
 
+#clean up after ourselves:
+rm nixbuilders.temp
+
 wheat1 "The Nix Multi-user Installation has completed."
