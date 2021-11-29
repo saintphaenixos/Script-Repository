@@ -12,7 +12,7 @@ fuchsia() {
 }
 
 #I've noticed that NIX won't run on less than 2 GB of memory, so lets check for that:
-Systemmem=$(free --giga | awk 'FNR == 2 {print($3)}')
+Systemmem=$(free --giga | awk 'FNR == 2 {print($2)}')
 (( $Systemmem < 1 )) && fuchsia "The Nix Package Manager's memory requirements exceed installed amount, please install greater than 2 Total Gigabytes of Memory." && fuchsia "Exiting Installation." && exit 1
 
 #First lets get prepared by installing wget.
