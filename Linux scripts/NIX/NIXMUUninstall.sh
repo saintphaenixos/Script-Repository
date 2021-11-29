@@ -2,7 +2,7 @@
 
 #This is a script to check for and download the requirements for the NIX packaging system to a Debian Based OS. It will be tested on both Debian 11, and Ubuntu 21.10.
 
-#First lets make sure you are root as you run this, and do some basic software checks:
+#THIS CURRENTLY CANT UNINSTALL NIX, AS CURRENT NIX ISN'T UNINSTALLABLE IN MULTI-USER. BEWARE WHEN INSTALLING!
 
 #Lets set some variables and a color function:
 sudoexist=/etc/sudoers

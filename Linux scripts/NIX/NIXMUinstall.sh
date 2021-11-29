@@ -6,6 +6,7 @@
 
 #Lets set some variables and a color function:
 sudoexist=/etc/sudoers
+currentnixversion=2.4
 fuchsia() {
   echo -e "\e[38;5;13m${@}\e[0m"
 }
@@ -22,10 +23,10 @@ for program in wget; do
 done
 
 #lets go ahead and install Nix:
-wget -P /tmp https://releases.nixos.org/nix/nix-2.4/nix-2.4-x86_64-linux.tar.xz
+wget -P /tmp https://releases.nixos.org/nix/nix-$currentnixversion/nix-"$currentnixversion"-x86_64-linux.tar.xz
 cd /tmp
-tar -xvf /tmp/nix-2.4-x86_64-linux.tar.xz
-cd /tmp/nix-2.4-x86_64-linux
+tar -xvf /tmp/nix-$currentnixversion-x86_64-linux.tar.xz
+cd /tmp/nix-$currentnixversion-x86_64-linux
 bash install-multi-user install
 
 #We'll also have to add an export command to the skeleton bashrc's so that new users already have it ready to go:
