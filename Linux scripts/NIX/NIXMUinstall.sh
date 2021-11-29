@@ -50,6 +50,6 @@ if (grep -Fqs "~/.nix-profile/etc/profile.d/nix.sh" /root/.bash_profile) || [ ! 
 fi
 
 #Now we'll do it again for .zshenv likewise for Root.
-if (grep -Fqs "~/.nix-profile/etc/profile.d/nix.sh" /root/.zhenv) || [ ! -f /root/.zshenv ] ; then
+if (grep -Fqs "~/.nix-profile/etc/profile.d/nix.sh" /root/.zshenv) || [ ! -f /root/.zshenv ] ; then
   sudo bash -c 'echo "source ~/.nix-profile/etc/profile.d/nix.sh" >> /root/.zshenv'
 fi
