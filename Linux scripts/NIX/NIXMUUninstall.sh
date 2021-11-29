@@ -35,6 +35,9 @@ for builder in "${builders[@]}"; do
   sudo userdel -r "$builder"
 done
 
+#Lets put the pre-NIX bash.bashrc's back in /etc, as the installer creates a backup from the before-times:
+mv /etc/bash.bashrc.backup-before-nix /etc/bash.bashrc
+
 #clean up after ourselves:
 rm nixbuilders.temp
 

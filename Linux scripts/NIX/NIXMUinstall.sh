@@ -2,6 +2,9 @@
 
 #This is a script to check for and download the requirements for the NIX packaging system to a Debian Based OS. It has been tested on both Debian 11, and Ubuntu 21.10.
 
+#This script CANNOT be run as root:
+[ "$UID" == 0 ] && echo -e "This script cannot be run as root! \n exiting..." && exit 1
+
 #Lets set some variables and a color function:
 sudoexist=/etc/sudoers
 currentnixversion=2.4
