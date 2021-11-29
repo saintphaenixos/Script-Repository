@@ -31,10 +31,10 @@ fi
 
 #Lastly we'll go ahead and remove all the nixbuilders:
 wheat1 "Now removing the Nix Build users:"
-declare -a builders
-readarray -t builders <<< $(awk -F':' '{print($1)}' </etc/passwd | grep nixbld)
+awk -F':' '{print($1)}' </etc/passwd | grep nixbld > nixbuilders.temp
+builders=($(<nixbuilders.temp))
 echo "$builders"
-sleep 3
+sleep 1
 for $builder in "${builders[@]}"; do
   echo "This is builder named: $builder!"
 done
