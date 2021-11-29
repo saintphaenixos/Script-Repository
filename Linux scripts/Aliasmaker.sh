@@ -64,3 +64,10 @@ fi
 [ ! -z "$nixexist" ] && [ -z "$nixtestexist" ] && echo 'alias nixtest="nix-shell -p"' >> ~/.zshrc
 [ ! -z "$nixexist" ] && [ -z "$nixupdateexist" ] && echo 'alias nixupdate="nix-channel --update nixpkgs"' >> ~/.zshrc
 [ ! -z "$nixexist" ] && [ -z "$nixupgradeexist" ] && echo 'alias nixupgrade="nix-env -u '*'"' >> ~/.zshrc
+
+######################
+#Sourcing our new Aliases:
+######################
+#Lastly we'll need to source these two files so they are active, we'll do that in subshells so it can be done quickly.
+(bash -c ; source ~/.bashrc)
+(zsh -c ; source ~/.zshrc)
