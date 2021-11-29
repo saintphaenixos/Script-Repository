@@ -25,18 +25,18 @@ done
 #lets go ahead and install Nix:
 wget -P /tmp https://releases.nixos.org/nix/nix-$currentnixversion/nix-"$currentnixversion"-x86_64-linux.tar.xz
 cd /tmp
-tar -xvf /tmp/nix-$currentnixversion-x86_64-linux.tar.xz
+tar -xvf /tmp/nix-$currentnixversion-x86_64-linux.tar.xz 1>/dev/null
 cd /tmp/nix-$currentnixversion-x86_64-linux
 bash install-multi-user install
 
 #We'll also have to add an export command to the skeleton bashrc's so that new users already have it ready to go:
 if (grep -Fqs "export NIX_REMOTE=daemon" /etc/skel/.bash_profile) || [ ! -f /etc/skel/.bash_profile ] ; then
-  sudo echo 'export NIX_REMOTE=daemon' >> /etc/skel/.bash_profile
+  sudo bash -c 'echo "export NIX_REMOTE=daemon" >> /etc/skel/.bash_profile'
 fi
 
 #Lets do that again for Zsh users:
 if (grep -Fqs "export NIX_REMOTE=daemon" /etc/skel/.zhenv) || [ ! -f /etc/skel/.zshenv ] ; then
-  sudo echo 'export NIX_REMOTE=daemon' >> /etc/skel/.zshenv
+  sudo bash -c 'echo "export NIX_REMOTE=daemon" >> /etc/skel/.zshenv'
 fi
 
 #An alert so we don't forget:
@@ -45,10 +45,10 @@ sleep 3
 
 #Now lets add a source for .bashrc for Root: The installer should do this, but lets do this just in case.
 if (grep -Fqs "~/.nix-profile/etc/profile.d/nix.sh" /root/.bash_profile) || [ ! -f /root/.bash_profile ] ; then
-  sudo echo 'source ~/.nix-profile/etc/profile.d/nix.sh' >> /root/.bash_profile
+  sudo bash -c ' echo "source ~/.nix-profile/etc/profile.d/nix.sh" >> /root/.bash_profile'
 fi
 
 #Now we'll do it again for .zshenv likewise for Root.
 if (grep -Fqs "~/.nix-profile/etc/profile.d/nix.sh" /root/.zhenv) || [ ! -f /root/.zshenv ] ; then
-  sudo echo 'source ~/.nix-profile/etc/profile.d/nix.sh' >> ~/.zshenv
+  sudo bash -c 'echo "source ~/.nix-profile/etc/profile.d/nix.sh" >> /root/.zshenv'
 fi
