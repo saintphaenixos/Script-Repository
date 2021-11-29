@@ -3,7 +3,6 @@
 #This is a script to check for and download the requirements for the NIX packaging system to a Debian Based OS. It will be tested on both Debian 11, and Ubuntu 21.10.
 
 #Lets make sure only Root can continue from here.
-if false ; then
 [ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1
 
 #Lets set some variables and a color function:
@@ -27,14 +26,13 @@ systemctl reset-failed
 wheat1 "Now removing the /nix location"
 rm -rf /nix
 
-fi
-
 #Lastly we'll go ahead and remove all the nixbuilders:
 wheat1 "Now removing the Nix Build users:"
 awk -F':' '{print($1)}' </etc/passwd | grep nixbld > nixbuilders.temp
 builders=($(<nixbuilders.temp))
-echo "$builders"
-sleep 1
-for $builder in "${builders[@]}"; do
-  echo "This is builder named: $builder!"
+for builder in "${builders[@]}"; do
+  wheat1 "Now Deleting $builder:"
+  sudo userdel -r "$builder"
 done
+
+wheat1 "The Nix Multi-user Installation has completed."
