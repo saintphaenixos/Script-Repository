@@ -29,13 +29,13 @@ cd /tmp/nix-2.4-x86_64-linux
 bash install-multi-user install
 
 #We'll also have to add an export command to the skeleton bashrc's so that new users already have it ready to go:
-if (grep -Fqs "export NIX_REMOTE=daemon" /etc/skel/.bash_profile) || [ ! -f ~/.bash_profile ] ; then
-  sudo echo 'export NIX_REMOTE=daemon' >> ~/.bash_profile
+if (grep -Fqs "export NIX_REMOTE=daemon" /etc/skel/.bash_profile) || [ ! -f /etc/skel/.bash_profile ] ; then
+  sudo echo 'export NIX_REMOTE=daemon' >> /etc/skel/.bash_profile
 fi
 
 #Lets do that again for Zsh users:
-if (grep -Fqs "export NIX_REMOTE=daemon" /etc/skel/.zhenv) || [ ! -f ~/.zshenv ] ; then
-  sudo echo 'export NIX_REMOTE=daemon' >> ~/.zshenv
+if (grep -Fqs "export NIX_REMOTE=daemon" /etc/skel/.zhenv) || [ ! -f /etc/skel/.zshenv ] ; then
+  sudo echo 'export NIX_REMOTE=daemon' >> /etc/skel/.zshenv
 fi
 
 #An alert so we don't forget:
@@ -43,8 +43,8 @@ fuchsia 'Please remember that all users added after this script is ran will need
 sleep 3
 
 #Now lets add a source for .bashrc for Root: The installer should do this, but lets do this just in case.
-if (grep -Fqs "~/.nix-profile/etc/profile.d/nix.sh" ~/.bash_profile) || [ ! -f ~/.bash_profile ] ; then
-  sudo echo 'source ~/.nix-profile/etc/profile.d/nix.sh' >> ~/.bash_profile
+if (grep -Fqs "~/.nix-profile/etc/profile.d/nix.sh" /root/.bash_profile) || [ ! -f /root/.bash_profile ] ; then
+  sudo echo 'source ~/.nix-profile/etc/profile.d/nix.sh' >> /root/.bash_profile
 fi
 
 #Now we'll do it again for .zshenv likewise for Root.
