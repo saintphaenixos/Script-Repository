@@ -17,12 +17,12 @@ zshupdatealiasexist=$(grep -Fs 'alias update="sudo apt update && sudo apt dist-u
 brewaliasexist=$(grep -Fs 'alias brewupdate="brew update && brew upgrade && brew cleanup"' ~/.bashrc)
 exaaliasexist=$(grep -Fs 'alias ll="exa -l"' ~/.bashrc)
 ipcolorexist=$(grep -Fs 'alias ip="ip -c a"' ~/.bashrc)
-nixinstall==$(grep =Fs 'alias nixinstall="nix-env -i"' ~/.bashrc)
-nixremove=$(grep =Fs 'alias nixremove="nix-env -e"' ~/.bashrc)
-nixsearchexist=$(grep =Fs 'alias nixsearch="nix-env -qa"' ~/.bashrc)
-nixtest=$(grep =Fs 'alias nixtest="nix-shell -p"' ~/.bashrc)
-nixupdateexist=$(grep =Fs 'alias nixupdate="nix-channel --update nixpkgs"' ~/.bashrc)
-nixupgradeexist=$(grep =Fs 'alias nixupgrade="nix-env -u '*'"' ~/.bashrc)
+nixinstall==$(grep -Fs 'alias nixinstall="nix-env -i"' ~/.bashrc)
+nixremove=$(grep -Fs 'alias nixremove="nix-env -e"' ~/.bashrc)
+nixsearchexist=$(grep -Fs 'alias nixsearch="nix-env -qa"' ~/.bashrc)
+nixtest=$(grep -Fs 'alias nixtest="nix-shell -p"' ~/.bashrc)
+nixupdateexist=$(grep -Fs 'alias nixupdate="nix-channel --update nixpkgs"' ~/.bashrc)
+nixupgradeexist=$(grep -Fs 'alias nixupgrade="nix-env -u '*'"' ~/.bashrc)
 
 ######################
 #.bashrc aliases:
