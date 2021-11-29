@@ -17,6 +17,5 @@ bash /tmp/ZSHinstall.sh
 git clone https://github.com/badouralix/oh-my-via.git $ZSH/custom/themes/oh-my-via
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="oh-my-via/via"' ~/.zshrc
 
-#Lastly add my only needed alias.
-echo 'alias update="sudo apt update && sudo apt full-upgrade"' >> ~/.zshrc
-source .zshrc
+#Lastly lets source our .zshrc and get everything into our active session:
+source ~/.zshrc

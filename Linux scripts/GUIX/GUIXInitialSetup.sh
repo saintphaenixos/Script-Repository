@@ -6,15 +6,21 @@
 #First lets do our first repository update:
 guix pull
 
-#Now lets update our paths for the latest version of GUIX:
-echo 'GUIX_PROFILE="$HOME/.guix-profile"' > ~/.bash_profile
-echo '. "$GUIX_PROFILE/etc/profile"' >> ~/.bash_profile
-echo 'GUIX_PROFILE="$HOME/.guix-profile"' > ~/.zshenv
-echo '. "$GUIX_PROFILE/etc/profile"' >> ~/.zshenv
+#Now lets update our bash profile for the latest version of GUIX:
+if (grep -Fqs "guix-profile" ~/.bash_profile) || [ ! -f ~/.bash_profile ] ; then
+  echo 'GUIX_PROFILE="$HOME/.guix-profile"' >> ~/.bash_profile
+  echo 'source "$GUIX_PROFILE/etc/profile"' >> ~/.bash_profile
+fi
+
+#Similarly we'll do this for zsh:
+if (grep -Fqs "guix-profile" ~/.zshenv) || [ ! -f ~/.zshenv ] ; then
+  echo 'GUIX_PROFILE="$HOME/.guix-profile"' >> ~/.zshenv
+  echo 'source $GUIX_PROFILE/etc/profile' >> ~/.zshenv
+fi
 
 #Lets call them now however so they can be used immediately.
 GUIX_PROFILE="/home/fenix/.guix-profile"
-. "$GUIX_PROFILE/etc/profile"
+source "$GUIX_PROFILE/etc/profile"
 
 #Then we let GUIX know that this is our (nearly) forever home.
 hash guix

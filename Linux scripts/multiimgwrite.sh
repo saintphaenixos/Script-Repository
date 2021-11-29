@@ -39,7 +39,7 @@ targetslist=$(Outputdrivesviagui)
 modtargets=$(echo "$targetslist" | tr "\n" " " )
 argtargs=$(echo "${modtargets%?}") # this removes the last character from the last output.
 
-#Lets do a sanity check to make sure we don't do this on accident:
+#Lets do a sanity check to make sure we don't overwrite the wrong targets on accident:
 confirmation=$(zenity --entry --text "Please confirm that these drives are correct: $targetslist by typing the word "confirm"")
 #if the Zenity window is closed or cancelled, then it will kill the script:
 [ "$?" -gt 0 ] && exit 1
