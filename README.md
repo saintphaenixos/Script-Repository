@@ -11,6 +11,9 @@
 - [**Apple Scripts**](https://github.com/saintphaenixos/Script-Repository/tree/CurrentWorkingScripts/Apple%20Scripts)
   - Written mostly in Zsh, most of the scripts are also Bash Compatible, and a preference towards portability was attempted with each. When in doubt check the Shebang.
 
+- [**BSD Scripts**](https://github.com/saintphaenixos/Script-Repository/tree/CurrentWorkingScripts/BSD%20scripts/)
+  - Written in bash and rarely tcsh, these scripts are largely for setting up BSD Operating systems to my preferences, but their utility varies.
+
 - [**Crystal Programs**](https://github.com/saintphaenixos/Script-Repository/tree/CurrentWorkingScripts/Crystal)
   - Written in Crystal Language, these are my first compiled programs.
 
