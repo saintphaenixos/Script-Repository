@@ -10,11 +10,11 @@
 brew install cask
 
 # Now we'll install our needed gui programs:
-brew install gitkraken google-chrome firefox vivaldi libreoffice keka discord atom gitkraken
+brew install atom discord firefox gitkraken google-chrome keka libreoffice vivaldi
 
 # Now we'll do our needed Terminal Programs:
 brew install bash zsh shellcheck
- 
+
 #Lets install oh-my-zsh, so I can have my favored zsh framework:
 wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh > /tmp/ZSHinstall.sh
 chmod +x /tmp/ZSHinstall.sh
