@@ -5,7 +5,7 @@
 # By Kent DuBack II
 
 #This is a script that will run in a ZSH or Bash session for MacOS versions 10.11 - Current.
-#the useage is simple, it allows a user to run the script with an argument which will run the find command to find all instances of the named file across the entirety of MacOS, and then delete it using rm as root.
+#the usage is simple, it allows a user to run the script with an argument which will run the find command to find all instances of the named file across the entirety of MacOS, and then delete it using rm as root.
 
 #THIS IS POTENTIALLY A NUCLEAR SCRIPT, USE WITH CAUTION!
 
