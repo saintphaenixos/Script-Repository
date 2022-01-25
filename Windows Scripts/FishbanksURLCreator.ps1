@@ -1,12 +1,16 @@
+# This is a script that creates a function to create URL shortcuts and places them on the public desktop, designed in this case for the MIT Fishbanks Simulation.
+# It was originally written by Kent DuBack II on 1.24.22 for Pima Community College.
+
+
+######################################################################
+# Pre-Run Lets run this as Administrator:
+######################################################################
 If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
 {
   # Relaunch as an elevated process:
   Start-Process powershell.exe "-File",('"{0}"' -f $MyInvocation.MyCommand.Path) -Verb RunAs
   exit
 }
-
-# This is a script that creates a function to create URL shortcuts and places them on the public desktop, designed in this case for the MIT Fishbanks Simulation.
-# It was originally written by Kent DuBack II on 1.24.22 for Pima Community College.
 
 ######################################################################
 # First lets set some variables:
@@ -38,7 +42,7 @@ $ShortCut.Save()
 ######################################################################
 
 if ($Installedstatus -eq 'True') {
-  Write-Host "Fishbanks is installed, Removing:"
+  Write-Host "Fishbanks is installed, Removing..."
   Remove-Item "C:\Users\Public\Desktop\MIT Fishbanks Software.lnk"
   Write-Host "Fishbanks has been Removed."
   start-sleep 3
