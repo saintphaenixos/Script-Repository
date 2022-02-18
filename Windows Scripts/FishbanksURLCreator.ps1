@@ -3,7 +3,7 @@
 
 
 ######################################################################
-# Pre-Run Lets run this as Administrator:
+# Pre-Run - Lets run this as Administrator:
 ######################################################################
 If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
 {
@@ -28,11 +28,11 @@ function Create-Shortcut
 {
 $Shell = New-Object -ComObject ("WScript.Shell")
 $ShortCut = $Shell.CreateShortcut("$Destination\$URLTitle.lnk")
-$ShortCut.TargetPath="$chromeroot\Application\chrome.exe"
+$ShortCut.TargetPath="$Chromeroot\Application\chrome.exe"
 $ShortCut.Arguments="--app $URL"
 $ShortCut.WorkingDirectory = "$Chromeroot\Application";
 $ShortCut.WindowStyle = 1;
-$ShortCut.IconLocation = "$chromeroot\Application\chrome.exe, 0";
+$ShortCut.IconLocation = "$Chromeroot\Application\chrome.exe, 0";
 $ShortCut.Description = "";
 $ShortCut.Save()
 }
@@ -40,7 +40,6 @@ $ShortCut.Save()
 ######################################################################
 # Now the Actual Script:
 ######################################################################
-
 if ($Installedstatus -eq 'True') {
   Write-Host "Fishbanks is installed, Removing..."
   Remove-Item "C:\Users\Public\Desktop\MIT Fishbanks Software.lnk"
