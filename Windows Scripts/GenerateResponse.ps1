@@ -2,6 +2,19 @@
 # It was originally written by Kent DuBack II on 2.18.22 for Pima Community College.
 
 ######################################################################
+#Pleasantry Variables:
+######################################################################
+
+#This section is for writing out our pleasantries at the end of the ticket:
+
+$endpleasantry = "Thank you for contacting Pima's IT Department If you have any further questions on the issue, please give us a call at 520-206-4900 (Or just Extension:4900 on a Pima phone) or respond to this email, and it'll automatically re-open the ticket. We Are always available via phone during these business hours:"
+
+$hoursofoperation = "IT Service Desk Hours: Mon-Thu: 7am-7:30pm, Fri: 7am - 5pm, Sat: 8am - 2pm, Sun: Closed"
+
+#Put your name here:
+$myname = "CHANGEME"
+
+######################################################################
 #Color Function for creating the popup messages, as well as setting the color of the terminal:
 ######################################################################
 
@@ -27,10 +40,10 @@ function Set-ConsoleColor ($bc, $fc) {
     Clear-Host
 }
 
-#We then set the console colors:
+#We then set the console colors. Broken due to powershell's way of working with console colors currently, so disabled.
 Set-ConsoleColor 'DarkGray' 'Blue'
 
-#A command to change the Background and Foreground colors of the Readline as its edited.
+#A command to change the Background and Foreground colors of the Readline as its edited. Whitespace currently is broken, so disabled.
 #$e = [char]0x1b
 #Set-PSReadLineOption -Colors @{ Command = "$e[48;2;255;255;255m" + "$e[38;2;0;81;153m" }
 #Set-PSReadLineOption -Colors @{ Default = "$e[48;2;255;255;255m" + "$e[38;2;0;81;153m" }
@@ -49,63 +62,71 @@ $issue = Read-Host
 Write-Color blue darkgray "What did I do to fix the issue?"
 $fix = Read-Host
 
-yellow "Was there any miscellaneous info to say?"
+Write-Color yellow darkgray "Was there any miscellaneous info to say?"
 $extra = Read-Host
 
-$hour = Get-Date -Format "HH:mm"
+$hour = Get-Date -Format "HH"
 
 ######################################################################
 #Lets format the input and output it to the clipboard
 ######################################################################
 
-Write-Host
+Write-Output "$issue" | Out-File response.txt
 
-echo "$issue" > responsetemp.fil
+Write-Output "`n$name" | Add-Content response.txt
 
-echo "" >> responsetemp.fil
+Write-Output "`n$issue" | Add-Content response.txt
 
-echo "$fix" >> responsetemp.fil
+Write-Output "`n" | Add-Content response.txt
 
-echo "" >> responsetemp.fil
+Write-Output "`n$fix" | Add-Content response.txt
 
-if [ -z "$extra" ]
-then
-  :
-else
-  echo "$extra" >> responsetemp.fil
-  echo "" >> responsetemp.fil
-fi
+Write-Output "`n" | Add-Content response.txt
 
-  echo "-------------------------------------------------------------" >> responsetemp.fil
+#Lets write an if statement for putting in the extra info if needed.
+if ($extra -ne '$null') {
+  Write-Output "`n$extra" | Add-Content response.txt
+  Write-Output "`n" | Add-Content response.txt
+}
 
-if [ $h -lt 12 ]; then
-  echo Good Morning $name >> responsetemp.fil
-elif [ $h -lt 18 ]; then
-  echo Good Afternoon $name >> responsetemp.fil
-else
-  echo Good Evening $name >> responsetemp.fil
-fi
+Write-Output "-------------------------------------------------------------" | Add-Content response.txt
 
-echo "" >> responsetemp.fil
+if ($hour -lt '12') {
+  Write-Output "Good Morning $name" | Add-Content response.txt
+}
+elseif ($hour -lt '18') {
+  Write-Output "Good Afternoon $name" | Add-Content response.txt
+}
+else {
+  Write-Output "Good Evening $name" | Add-Content response.txt
+}
 
-echo "I hope this fixes the issue, If you have any further questions on the issue, please give us a call at 4900 or respond to this email, and it'll automatically re-open the ticket." >> responsetemp.fil
+Write-Output "`n" | Add-Content response.txt
 
-echo "" >> responsetemp.fil
+Write-Output "$endpleasantry" | Add-Content response.txt
 
-if [ $h -lt 12 ]; then
-  echo You have a good rest of your morning, >> responsetemp.fil
-elif [ $h -lt 18 ]; then
-  echo You have a good rest of your afternoon, >> responsetemp.fil
-else
-  echo You have a good rest of your evening, >> responsetemp.fil
-fi
+Write-Output "`n" | Add-Content response.txt
 
-echo "" >> responsetemp.fil
+if ($hour -lt '12') {
+  Write-Output "You have a good day," | Add-Content response.txt
+}
+elseif ($hour -lt '18') {
+  Write-Output "have a good afternoon," | Add-Content response.txt
+}
+else {
+  Write-Output "I hope you have a good evening," | Add-Content response.txt
+}
 
-echo "-Kent in IT" >> responsetemp.fil
+Write-Output "`n" | Add-Content response.txt
 
-#you need to install xclip and the handle is specified here.
+Write-Output "$myname" | Add-Content response.txt
 
-cat responsetemp.fil | xclip -selection c
+######################################################################
+#Now lets output everything to the clipboard
+######################################################################
 
-rm responsetemp.fil
+Get-Content -Path .\response.txt | Set-Clipboard
+
+Write-Output "Thanks for using"
+
+exit
