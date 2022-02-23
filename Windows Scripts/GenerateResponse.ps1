@@ -51,15 +51,18 @@ Set-ConsoleColor 'DarkGray' 'Blue'
 </#>
 
 ######################################################################
-#Lets read the ticket input:
+#Lets clear the screen, and read the ticket input:
 ######################################################################
-Write-Color blue white "What is their name?"
+
+clear
+
+Write-Color blue white "What is user's name?"
 $name = Read-Host
 
 Write-Color blue gray "What was the issue on the machine?"
 $issue = Read-Host
 
-Write-Color blue darkgray "What did I do to fix the issue?"
+Write-Color darkblue gray "What did I do to fix the issue?"
 $fix = Read-Host
 
 Write-Color yellow darkgray "Was there any miscellaneous info to say?"
@@ -73,53 +76,40 @@ $hour = Get-Date -Format "HH"
 
 Write-Output "$issue" | Out-File response.txt
 
-Write-Output "`n$name" | Add-Content response.txt
-
-Write-Output "`n$issue" | Add-Content response.txt
-
-Write-Output "`n" | Add-Content response.txt
-
 Write-Output "`n$fix" | Add-Content response.txt
-
-Write-Output "`n" | Add-Content response.txt
 
 #Lets write an if statement for putting in the extra info if needed.
 if ($extra -ne '$null') {
   Write-Output "`n$extra" | Add-Content response.txt
-  Write-Output "`n" | Add-Content response.txt
 }
 
 Write-Output "-------------------------------------------------------------" | Add-Content response.txt
 
-if ($hour -lt '12') {
-  Write-Output "Good Morning $name" | Add-Content response.txt
-}
-elseif ($hour -lt '18') {
-  Write-Output "Good Afternoon $name" | Add-Content response.txt
-}
-else {
-  Write-Output "Good Evening $name" | Add-Content response.txt
-}
-
-Write-Output "`n" | Add-Content response.txt
-
-Write-Output "$endpleasantry" | Add-Content response.txt
-
 Write-Output "`n" | Add-Content response.txt
 
 if ($hour -lt '12') {
-  Write-Output "You have a good day," | Add-Content response.txt
+  Write-Output "Good Morning $name," | Add-Content response.txt
 }
 elseif ($hour -lt '18') {
-  Write-Output "have a good afternoon," | Add-Content response.txt
+  Write-Output "Good Afternoon $name," | Add-Content response.txt
 }
 else {
-  Write-Output "I hope you have a good evening," | Add-Content response.txt
+  Write-Output "Good Evening $name," | Add-Content response.txt
 }
 
-Write-Output "`n" | Add-Content response.txt
+Write-Output "`n$endpleasantry $hoursofoperation" | Add-Content response.txt
 
-Write-Output "$myname" | Add-Content response.txt
+if ($hour -lt '12') {
+  Write-Output "`nYou have a good day," | Add-Content response.txt
+}
+elseif ($hour -lt '18') {
+  Write-Output "`nhave a good afternoon," | Add-Content response.txt
+}
+else {
+  Write-Output "`nI hope you have a good evening," | Add-Content response.txt
+}
+
+Write-Output "`n$myname" | Add-Content response.txt
 
 ######################################################################
 #Now lets output everything to the clipboard
@@ -127,6 +117,10 @@ Write-Output "$myname" | Add-Content response.txt
 
 Get-Content -Path .\response.txt | Set-Clipboard
 
-Write-Output "Thanks for using"
+Remove-Item .\response.txt
+
+Write-Output "Thanks for using Kent's Response Generator!"
+
+start-sleep 1
 
 exit
