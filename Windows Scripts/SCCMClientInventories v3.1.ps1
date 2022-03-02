@@ -34,7 +34,34 @@ $ConfigManCycles = @(
 )
 
 # here we have a for loop that runs on an incrementing timer, it then runs through the cycles in the array piece by piece and outputs all the output to null, with the exception of the names. It shows what cycle we are on, and clears the screen repeatedly after each, to show motion on the screen and make it easier to see what it is doing.
-for ($timer = 1; $timer -le 20; $timer++) {
+for ($timer = 1; $timer -le 500; $timer++) {
+
+  # Check for pending reboot
+  # https://www.dbtales.com/using-powershell-check-for-pending-reboot-and-last-restart-on-remote-computer/
+
+  $pendingReboot = $false
+  if (Get-ChildItem "HKLM:\Software\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPending" -EA Ignore) { $pendingReboot = $true }
+  if (Get-Item "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired" -EA Ignore) { $pendingReboot = $true }
+  if (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager" -Name PendingFileRenameOperations -EA Ignore) { $pendingReboot = $true }
+  try { 
+    $util = [wmiclass]"\\.\root\ccm\clientsdk:CCM_ClientUtilities"
+    $status = $util.DetermineIfRebootPending()
+    if (($null -ne $status) -and $status.RebootPending) {
+      $pendingReboot = $true
+    }
+  }
+  catch {}
+
+
+  # If a reboot is pending and CPU Useage is under 10%, reboot computer
+  if ($pendingReboot) {
+    $cpuUseage = Get-CimInstance win32_processor | Measure-Object -Property LoadPercentage -Average
+    if ($cpuUseage.Average -le 10) {
+      Restart-Computer -Force
+      Exit
+    }
+  }
+
   ForEach ($Cycle in $ConfigManCycles) {
     write-host "Working on" $Cycle[1]
     Invoke-WMIMethod -ComputerName $env:COMPUTERNAME -Namespace root\ccm -Class SMS_CLIENT -Name TriggerSchedule $Cycle[0] | Out-Null
@@ -45,13 +72,13 @@ for ($timer = 1; $timer -le 20; $timer++) {
   # Thank you DrakharD
 
   # https://gist.github.com/ctigeek/bd637eeaeeb71c5b17f4
-  $seconds = 20
+  $seconds = 1200
   $doneDT = (Get-Date).AddSeconds($seconds)
   while ($doneDT -gt (Get-Date)) {
     $secondsLeft = $doneDT.Subtract((Get-Date)).TotalSeconds
     $percent = ($seconds - $secondsLeft) / $seconds * 100
     Write-Progress -Activity "Waiting for..." -Status "Sleeping" -SecondsRemaining $secondsLeft -PercentComplete $percent
-    [System.Threading.Thread]::Sleep(500)
+    Start-Sleep -Seconds 1
   }
   Write-Progress -Activity "Sleeping" -Status "Sleeping..." -SecondsRemaining 0 -Completed
   Clear-Host
