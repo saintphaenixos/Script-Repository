@@ -119,6 +119,7 @@ Get-Content -Path .\response.txt | Set-Clipboard
 
 Remove-Item .\response.txt
 
+Write-Output '"The Response is now available in your clipboard, simply right-click, paste or press CTRL+V"'
 Write-Output "Thanks for using Kent's Response Generator!"
 
 start-sleep 1
