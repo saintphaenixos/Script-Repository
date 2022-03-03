@@ -1,4 +1,4 @@
-# This script automatically runs the SCCM task sequences 500 times every 20 seconds.
+# This script automatically runs the SCCM task sequences 500 times every 20 Minutes.
 # It was originally written by Kent DuBack II on 12/5/2019 for Pima Community College.
 
 # With many additions by Craby4Github on occasion
@@ -33,7 +33,7 @@ $ConfigManCycles = @(
     ('{00000000-0000-0000-0000-000000000032}', 'Windows Installers Source List Update Cycle')
 )
 
-# here we have a for loop that runs on an incrementing timer, it then runs through the cycles in the array piece by piece and outputs all the output to null, with the exception of the names. It shows what cycle we are on, and clears the screen repeatedly after each, to show motion on the screen and make it easier to see what it is doing.
+# here we have a for loop that runs on an incrementing timer, it then runs through the cycles in the array piece by piece and outputs all the output to null, with the exception of the names. It shows what cycle we are on, and clears the screen repeatedly after each, to show motion on the screen and make it easier to see what it is doing. IT likewise checks for a pending reboot and will reboot as it needs to to help with the update process, though it only does this if the CPU usage of the computer is under 10%.
 for ($timer = 1; $timer -le 500; $timer++) {
 
   # Check for pending reboot
@@ -43,7 +43,7 @@ for ($timer = 1; $timer -le 500; $timer++) {
   if (Get-ChildItem "HKLM:\Software\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPending" -EA Ignore) { $pendingReboot = $true }
   if (Get-Item "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired" -EA Ignore) { $pendingReboot = $true }
   if (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager" -Name PendingFileRenameOperations -EA Ignore) { $pendingReboot = $true }
-  try { 
+  try {
     $util = [wmiclass]"\\.\root\ccm\clientsdk:CCM_ClientUtilities"
     $status = $util.DetermineIfRebootPending()
     if (($null -ne $status) -and $status.RebootPending) {
@@ -69,8 +69,8 @@ for ($timer = 1; $timer -le 500; $timer++) {
 
   Write-Host "`nWe are on Cycle: $timer"
   Write-Host "Ctrl+C to return to Powershell, or just close the window." -ForegroundColor Cyan -BackgroundColor Darkcyan
-  # Thank you DrakharD
 
+  # Thank you DrakharD
   # https://gist.github.com/ctigeek/bd637eeaeeb71c5b17f4
   $seconds = 1200
   $doneDT = (Get-Date).AddSeconds($seconds)
