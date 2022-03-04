@@ -52,7 +52,6 @@ for ($timer = 1; $timer -le 500; $timer++) {
   }
   catch {}
 
-
   # If a reboot is pending and CPU Useage is under 10%, reboot computer
   if ($pendingReboot) {
     $cpuUseage = Get-CimInstance win32_processor | Measure-Object -Property LoadPercentage -Average
