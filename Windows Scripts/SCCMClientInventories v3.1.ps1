@@ -11,6 +11,22 @@ If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 
 #READY SET GO!
 
+#Lets verify the computer name matches our naming conventions
+$computername = Get-WmiObject Win32_ComputerSystem
+
+if ($computername.Name -match "^(?<Campus>[a-z]{2,3})(?<Dash>-?)(?<BuildingandRoom>([a-z]{1,2}\d{2,3})|[a-z]{3})(?<PCCNumber>\d{6})[a-z]{2}$") {
+
+  Add-Type -AssemblyName System.Windows.Forms | Out-Null
+
+  [System.Windows.Forms.MessageBox]::Show(
+    "Computer name does not match naming conventions. Please rename the computer.`n
+        Campus: $($Matches.Campus)`n
+        Room: $($Matches.BuildingandRoom)`n
+        PCC #: $($Matches.PCCNumber)`n
+        Current name: $($computername.Name)", 'Error', 'OK', 'Error'
+  )
+}
+
 #Here is the title and all data afterword tells us if it's functioning.
 Write-Host "==== Starting GPUpdate ====" -ForegroundColor Red -BackgroundColor White
 
