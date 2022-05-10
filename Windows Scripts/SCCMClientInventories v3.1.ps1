@@ -19,11 +19,9 @@ if ($computername.Name -notmatch "^(?<Campus>[a-z]{2,3})(?<Dash>-?)(?<Buildingan
   Add-Type -AssemblyName System.Windows.Forms | Out-Null
 
   [System.Windows.Forms.MessageBox]::Show(
-    "Computer name does not match naming conventions. Please rename the computer.`n
-        Campus: $($Matches.Campus)`n
-        Room: $($Matches.BuildingandRoom)`n
-        PCC #: $($Matches.PCCNumber)`n
-        Current name: $($computername.Name)", 'Error', 'OK', 'Error'
+    "Computer name does not match naming conventions.`n
+    Please rename the computer.`n
+    Current name: $($computername.Name)", 'Error', 'OK', 'Error'
   )
 }
 
