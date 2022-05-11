@@ -11,6 +11,20 @@ If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 
 #READY SET GO!
 
+#Lets verify the computer name matches our naming conventions
+$computername = Get-WmiObject Win32_ComputerSystem
+
+if ($computername.Name -notmatch "^(?<Campus>[a-z]{2,3})(?<Dash>-?)(?<BuildingandRoom>([a-z]{1,2}\d{2,3})|[a-z]{3})(?<PCCNumber>\d{6})[a-z]{2}$") {
+
+  Add-Type -AssemblyName System.Windows.Forms | Out-Null
+
+  [System.Windows.Forms.MessageBox]::Show(
+    "Computer name does not match naming conventions.`n
+    Please rename the computer.`n
+    Current name: $($computername.Name)", 'Error', 'OK', 'Error'
+  )
+}
+
 #Here is the title and all data afterword tells us if it's functioning.
 Write-Host "==== Starting GPUpdate ====" -ForegroundColor Red -BackgroundColor White
 
@@ -52,12 +66,43 @@ for ($timer = 1; $timer -le 500; $timer++) {
   }
   catch {}
 
-  # If a reboot is pending and CPU Useage is under 10%, reboot computer
+# If a reboot is pending and CPU Useage is under 10%, and network bandwidth is under 1% for half a minute, reboot computer
   if ($pendingReboot) {
     $cpuUseage = Get-CimInstance win32_processor | Measure-Object -Property LoadPercentage -Average
     if ($cpuUseage.Average -le 10) {
-      Restart-Computer -Force
-      Exit
+      # https://ss64.com/ps/syntax-get-bandwidth.html
+      $startTime = get-date
+      $endTime = $startTime.addMinutes(0.5)
+      $timeSpan = new-timespan $startTime $endTime
+
+      $count = 0
+      $totalBandwidth = 0
+
+      while ($timeSpan -gt 0) {
+        # Get an object for the network interfaces, excluding any that are currently disabled.
+        $colInterfaces = Get-CimInstance -class Win32_PerfFormattedData_Tcpip_NetworkInterface | select BytesTotalPersec, CurrentBandwidth, PacketsPersec | where { $_.PacketsPersec -gt 0 }
+
+        foreach ($interface in $colInterfaces) {
+          $bitsPerSec = $interface.BytesTotalPersec * 8
+          $totalBits = $interface.CurrentBandwidth
+
+          # Exclude Nulls (any WMI failures)
+          if ($totalBits -gt 0) {
+            $result = (( $bitsPerSec / $totalBits) * 100)
+            $totalBandwidth = $totalBandwidth + $result
+            $count++
+          }
+        }
+        Start-Sleep -milliseconds 100
+
+        # recalculate the remaining time
+        $timeSpan = new-timespan $(Get-Date) $endTime
+      }
+      $averageBandwidth = $totalBandwidth / $count
+      if ($averageBandwidth -le 1) {
+        Restart-Computer -Force
+        Exit
+      }
     }
   }
 
