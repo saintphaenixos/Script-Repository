@@ -14,7 +14,7 @@ If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 #Lets verify the computer name matches our naming conventions
 $computername = Get-WmiObject Win32_ComputerSystem
 
-if ($computername.Name -notmatch "^(?<Campus>[a-z]{2,3})(?<Dash>-?)(?<BuildingandRoom>([a-z]{1,2}\d{2,3})|[a-z]{3})(?<PCCNumber>\d{6})[a-z]{2}$") {
+if ($computername.Name -notmatch "^(?<Campus>[a-z]{2,3})(?<Dash>-?)(?<BuildingandRoom>([a-z]{1,2}\d{2,3})|[a-z]{3})(?<PCCNumber>\d{6})(?<Suffix>[a-z]{2}|[v]\d)$") {
 
   Add-Type -AssemblyName System.Windows.Forms | Out-Null
 
