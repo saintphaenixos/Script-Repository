@@ -9,7 +9,9 @@ If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
   exit
 }
 
-#READY SET GO!
+######################################################################
+# Computer Name Check, Gpupdate and Variables/Arrays
+######################################################################
 
 #Lets verify the computer name matches our naming conventions
 $computername = Get-WmiObject Win32_ComputerSystem
@@ -47,7 +49,14 @@ $ConfigManCycles = @(
     ('{00000000-0000-0000-0000-000000000032}', 'Windows Installers Source List Update Cycle')
 )
 
-# here we have a for loop that runs on an incrementing timer, it then runs through the cycles in the array piece by piece and outputs all the output to null, with the exception of the names. It shows what cycle we are on, and clears the screen repeatedly after each, to show motion on the screen and make it easier to see what it is doing. IT likewise checks for a pending reboot and will reboot as it needs to to help with the update process, though it only does this if the CPU usage of the computer is under 10%.
+######################################################################
+# The Process Loop
+######################################################################
+
+# here we have a for loop that runs on an incrementing timer, it then runs through the cycles in the array piece by piece and outputs all the output to null, with the exception of the names. It shows what cycle we are on, and clears the screen repeatedly after each, to show motion on the screen and make it easier to see what it is doing. It likewise checks for a pending reboot and will reboot as it needs to to help with the update process, though it only does this if the CPU usage of the computer is under 10% and network bandwidth is under 1% for half a minute.
+
+#READY, SET, GO!
+
 for ($timer = 1; $timer -le 500; $timer++) {
 
   # Check for pending reboot
