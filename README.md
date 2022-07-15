@@ -1,6 +1,6 @@
 # <div align="center">My System Script Repository:
 
-![BSD Banner](ximg/Moscow_Skyline.jpeg) </div>
+![Moscow_Skyline](ximg/Moscow_Skyline.jpeg) </div>
 
 ## <div align="center">**Table of Scripts:**</div>
 
