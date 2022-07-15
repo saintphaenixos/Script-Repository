@@ -1,6 +1,13 @@
 #!/bin/zsh
 #!/bin/bash
 
+# This is a script creates a response for use in TDX tickets.
+# It was originally written by Kent DuBack II on 11.21.2019 for Pima Community College.
+
+######################################################################
+# Here is the meat of the script: Simple read commands to create variables with the needed information.
+######################################################################
+
 #Lets add some color!
 red() {
     echo "\e[31m${1}\e[0m"
@@ -75,8 +82,28 @@ echo "" >> responsetemp.fil
 
 echo "-Kent in IT" >> responsetemp.fil
 
-#you need to install xclip and the handle is specified here.
+######################################################################
+# Here is the OS switch to let this work on other OS's
+######################################################################
 
-cat responsetemp.fil | xclip -selection c
+#Lets create a variable to figure out what kernel we're running on.
+systype=$(uname)
 
+case $systype in
+
+
+  Darwin)
+  #If Darwin, pbcopy should be built-in.
+  cat responsetemp.fil | pbcopy
+    ;;
+
+  Linux)
+  #If Linux you need to install xclip and the handle is specified here.
+  cat responsetemp.fil | xclip -selection c
+    ;;
+
+
+esac
+
+#Lastly lets clean up
 rm responsetemp.fil
