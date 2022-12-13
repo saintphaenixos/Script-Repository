@@ -33,6 +33,15 @@ Write-Host "==== Starting GPUpdate ====" -ForegroundColor Red -BackgroundColor W
 #Before we get serious, lets run a GPUpdate:
 gpupdate /force
 
+#Connect to WiFi if there is a wireless network adapter
+$wirelesNetworkAdapters = Get-NetAdapter -Physical -name "Wi*Fi*"
+if ($null -ne $wirelesNetworkAdapters) {
+  Write-Host "==== Connect to PimaDot1x ====" -ForegroundColor Red -BackgroundColor White
+  netsh wlan add profile filename=$PSScriptRoot\Wi-Fi-PimaDot1X.xml
+  netsh wlan connect name=PimaDot1X
+  Start-Sleep -Seconds 5
+}
+
 #Alright lets list the cycles in an array and write out to the terminal that we are starting the cycles
 Write-Host "==== Starting Configuration Manager Cycles ====" -ForegroundColor Red -BackgroundColor White
 $ConfigManCycles = @(
@@ -53,7 +62,9 @@ $ConfigManCycles = @(
 # The Process Loop
 ######################################################################
 
-# here we have a for loop that runs on an incrementing timer, it then runs through the cycles in the array piece by piece and outputs all the output to null, with the exception of the names. It shows what cycle we are on, and clears the screen repeatedly after each, to show motion on the screen and make it easier to see what it is doing. It likewise checks for a pending reboot and will reboot as it needs to to help with the update process, though it only does this if the CPU usage of the computer is under 10% and network bandwidth is under 1% for half a minute.
+# here we have a for loop that runs on an incrementing timer, it then runs through the cycles in the array piece by piece and outputs all the output to null, with the exception of the names. 
+# It shows what cycle we are on, and clears the screen repeatedly after each, to show motion on the screen and make it easier to see what it is doing. 
+# It likewise checks for a pending reboot and will reboot as it needs to to help with the update process, though it only does this if the CPU usage of the computer is under 10% and network bandwidth is under 1% for half a minute.
 
 #READY, SET, GO!
 
@@ -75,7 +86,7 @@ for ($timer = 1; $timer -le 500; $timer++) {
   }
   catch {}
 
-# If a reboot is pending and CPU Useage is under 10%, and network bandwidth is under 1% for half a minute, reboot computer
+  # If a reboot is pending and CPU Useage is under 10%, and network bandwidth is under 1% for half a minute, reboot computer
   if ($pendingReboot) {
     $cpuUseage = Get-CimInstance win32_processor | Measure-Object -Property LoadPercentage -Average
     if ($cpuUseage.Average -le 10) {
