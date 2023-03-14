@@ -38,17 +38,17 @@ if ($null -ne $wirelesNetworkAdapters) {
 
 # Setup Config Manager hash table to be used to run cycles
 $configMgrCycles = @{
-  'Application Deployment Evaluation Cycle' = '00000000-0000-0000-0000-000000000121' 
-  'Discovery Data Collection Cycle' = '00000000-0000-0000-0000-000000000003' 
-  'File Collection Cycle' = '00000000-0000-0000-0000-000000000010' 
-  'Hardware Inventory Cycle' = '00000000-0000-0000-0000-000000000001' 
-  'Machine Policy Retrieval Cycle' = '00000000-0000-0000-0000-000000000021' 
-  'Machine Policy Evaluation Cycle' = '00000000-0000-0000-0000-000000000022' 
-  'Software Inventory Cycle' = '00000000-0000-0000-0000-000000000002' 
-  'Software Metering Usage Report Cycle' = '00000000-0000-0000-0000-000000000031' 
-  'Software Updates Deployment Evaluation Cycle' = '00000000-0000-0000-0000-000000000114' 
-  'Software Update Scan Cycle' = '00000000-0000-0000-0000-000000000113' 
-  'Windows Installers Source List Update Cycle' = '00000000-0000-0000-0000-000000000032' 
+  'Application Deployment Evaluation Cycle' = '{00000000-0000-0000-0000-000000000121}' 
+  'Discovery Data Collection Cycle' = '{00000000-0000-0000-0000-000000000003}' 
+  'File Collection Cycle' = '{00000000-0000-0000-0000-000000000010}' 
+  'Hardware Inventory Cycle' = '{00000000-0000-0000-0000-000000000001}' 
+  'Machine Policy Retrieval Cycle' = '{00000000-0000-0000-0000-000000000021}' 
+  'Machine Policy Evaluation Cycle' = '{00000000-0000-0000-0000-000000000022}' 
+  'Software Inventory Cycle' = '{00000000-0000-0000-0000-000000000002}' 
+  'Software Metering Usage Report Cycle' = '{00000000-0000-0000-0000-000000000031}' 
+  'Software Updates Deployment Evaluation Cycle' = '{00000000-0000-0000-0000-000000000114}' 
+  'Software Update Scan Cycle' = '{00000000-0000-0000-0000-000000000113}' 
+  'Windows Installers Source List Update Cycle' = '{00000000-0000-0000-0000-000000000032}' 
 }
 
 # Main loop
@@ -117,7 +117,7 @@ for ($cycleCounter = 1; $cycleCounter -le 500; $cycleCounter++) {
 
   # Run Configuration Manager Cycles to update and synchronize the device with the Configuration Manager.
   Write-Host "==== Starting Configuration Manager Cycles ====" -ForegroundColor Red -BackgroundColor White
-  ForEach ($Cycle in $configMgrCycles) {
+  ForEach ($Cycle in $configMgrCycles.GetEnumerator()) {
     write-host "Working on $($Cycle.Name)" -ForegroundColor Green
     Invoke-WMIMethod -ComputerName $env:COMPUTERNAME -Namespace root\ccm -Class SMS_CLIENT -Name TriggerSchedule $Cycle.Value | Out-Null
   }
