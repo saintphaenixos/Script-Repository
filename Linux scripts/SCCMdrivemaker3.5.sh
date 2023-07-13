@@ -11,7 +11,7 @@
 
 #Lets check to make sure we have all the software installed that we need:
 
-for program in parallel fatresize; do
+for program in parallel fatresize moreutils; do
   installed=$(command -v $program)
   [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt update && sudo apt install $program || echo "$program is installed"
 done
@@ -31,6 +31,10 @@ while fuser -s "/home/kduback/Downloads/SCCMstick.img.gz"; do :; done
 
 #Lastly lets do a file system check just in case.
 cat drivelist.temp | time parallel -j+0 --progress "dosfsck -p -t -w /dev/{}1"
+
+#Next we're gonna copy over the scripts we need: Currently not working.
+#echo "Writing West Scripts to Drive before compression:"
+#rsync --info=progress2 -r /home/kduback/Downloads/Ventoy.Export/West\ Scripts/* /media/kduback/{}/West\ Scripts/
 
 #clean up the list.
 rm drivelist.temp

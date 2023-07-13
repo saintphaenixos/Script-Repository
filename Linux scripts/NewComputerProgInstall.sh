@@ -26,7 +26,7 @@ done
 
 #We need to switch back to a normal user now so Oh-My-Zsh installs properly:
 echo "Now we need to switch back to your normal user, please input that name now (CASE SENSITIVE!), and then password."
-Read Username
+read Username
 su $Username
 
 #Now lets do some other things, like install oh-my-zsh:
