@@ -2,7 +2,7 @@
 # It was originally written by Kent DuBack II on 2.18.22 for Pima Community College.
 
 ######################################################################
-#Pleasantry Variables:
+#Default Pleasantry Variables:
 ######################################################################
 
 #This section is for writing out our pleasantries at the end of the ticket:
@@ -15,6 +15,19 @@ $hoursofoperation = "IT Service Desk Hours: Mon-Thu: 7am-7:30pm, Fri: 7am - 5pm,
 $myname = "CHANGEME"
 
 ######################################################################
+#Modified Pleasantry Variables:
+######################################################################
+
+#This section is for writing out our customized pleasantries at the end of the ticket, these can be changed by the user by using the -modify(EndPleasantry|ModHoursOfOperation or ModMyName flags.)
+
+$ModEndPleasantry = "Thank you for contacting Pima's IT Department If you have any further questions on the issue, please give us a call at 520-206-4900 (Or just Extension:4900 on a Pima phone) or respond to this email, and it'll automatically re-open the ticket. We Are always available via phone during these business hours:"
+
+$ModHoursOfOperation = "IT Service Desk Hours: Mon-Thu: 7am-7:30pm, Fri: 7am - 5pm, Sat: 8am - 2pm, Sun: Closed"
+
+#Put your name here:
+$ModMyName = "CHANGEME"
+
+######################################################################
 #Color Function for creating the popup messages, as well as setting the color of the terminal:
 ######################################################################
 
@@ -24,7 +37,7 @@ function Write-Color() {
       [parameter(Mandatory=$false,ValueFromPipeline=$True,ValueFromRemainingArguments=$True)][string]$Text,
       [parameter(Mandatory=$false,Position=1)][ValidateSet("Black","DarkBlue","DarkGreen","DarkCyan","DarkRed","DarkMagenta","DarkYellow","Gray","DarkGray","Blue","Green","Cyan","Red","Magenta","Yellow","White")]$ForegroundColor,
       [parameter(Mandatory=$false,Position=2)][ValidateSet("Black","DarkBlue","DarkGreen","DarkCyan","DarkRed","DarkMagenta","DarkYellow","Gray","DarkGray","Blue","Green","Cyan","Red","Magenta","Yellow","White")]$BackgroundColor
-)
+  )
   if([string]::IsNullOrEmpty($Text)) {
       throw [System.ArgumentException] "Input in the form of a string is required, piped or as a parameter."
   }
@@ -49,6 +62,57 @@ Set-ConsoleColor 'DarkGray' 'Blue'
 #Set-PSReadLineOption -Colors @{ Default = "$e[48;2;255;255;255m" + "$e[38;2;0;81;153m" }
 
 </#>
+
+######################################################################
+#Lets create a function to replace the pleasantries with custom ones, and to prompt how to do that. We'll also read parameters passed to the script here.
+######################################################################
+
+# reading the 1st parameter with the script to see if we have to change any of the pleasantry texts.
+Param(
+    [parameter(Mandatory=$false,Position=1)][ValidateSet("-EndPleasantry","-Myname","-HoursOfOperation","-SetDefaults")]$Changepleasantries
+)
+
+# Attempting to change the ending pleasantry:
+
+switch -wildcard ($Changepleasantries) {
+  "-EndPleasantry" {
+    #clear the screen for prominence
+    clear
+    $ChangeEndPleasantry = Read-Host "please enter the new End Pleasantry here, you'll want to be detailed and include these: A thank you statement for contacting us for aid, mentioning that if the user has any further questions to reach out to us, as well as mention that if they response to this email/ticket response that it will re-open the ticket for our attention."
+
+      function Change-EndPleasantry() {
+        if([string]::IsNullOrEmpty($ChangeEndPleasantry)) {
+          throw [System.ArgumentException] "Please enter a Proper Ending Pleasantry for your Response, it can't be blank."
+        }
+        else {
+          $line = Get-Content $PSScriptRoot\GenerateResponse.ps1 | Select-String $ModEndPleasantry | Select-Object -ExpandProperty Line
+          $content = Get-Content $PSScriptRoot\GenerateResponse.ps1
+          $content | ForEach-Object {$_ -replace $line,"$ChangeEndPleasantry"} | Set-Content c:\temp\test.txt
+        }
+      }
+  }
+
+  "-Myname" {
+    #clear the screen for prominence
+    clear
+    $ChangeMyname = Read-Host "please enter the new End Pleasantry here, you'll want to be detailed and include these: A thank you statement for contacting us for aid, mentioning that if the user has any further questions to reach out to us, as well as mention that if they respons to this email/ticket response that it will re-open the ticket for our attention."
+
+      function Change-EndPleasantry() {
+        if([string]::IsNullOrEmpty($ChangeMyname)) {
+          throw [System.ArgumentException] "Please enter a Proper Ending for your Response, it can't be blank."
+        }
+        else {
+          $line = Get-Content $PSScriptRoot\GenerateResponse.ps1 | Select-String $ModEndPleasantry | Select-Object -ExpandProperty Line
+          $content = Get-Content $PSScriptRoot\GenerateResponse.ps1
+          $content | ForEach-Object {$_ -replace $line,"$ChangeMyname"} | Set-Content c:\temp\test.txt
+        }
+      }
+  }
+
+
+}
+
+
 
 ######################################################################
 #Lets clear the screen, and read the ticket input:
