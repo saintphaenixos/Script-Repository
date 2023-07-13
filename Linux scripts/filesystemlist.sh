@@ -14,8 +14,7 @@ chartreuse2() {
 
 # A case statement for determining how to sort the output data:
 
-while true ;do
-  case $# in
+  case ${@} in
 
     -Filesystem|-filesystem)
       SortOption=1
@@ -111,25 +110,27 @@ while true ;do
             hopefully many more useful and interesting tools for the
             layman to use.
       "
+      exit
       ;;
 
     "")
       SortOption=1
+      break
       ;;
 
     *)
       echo "No Flags, or invalid flags detected: running without flags.
       Please use -help or -Help to get valid flags."
-      exit
+      SortOption=1
+      break
       ;;
   esac
-done
 
-# list all file systems and mounted hard drives, and store in variable
+# list all file systems and mounted hard drives, and store in a variable
 Output=$(df -HT | grep '^/dev' | awk '{print $1,$2,$3,$4,$5,$6,$7}')
 
-# sort by file system type, and store in variable
-SortedOutput=$(echo "$Output" | sort -nrk $SortOption -t ' ')
+# sort by file system type, and store in a variable
+SortedOutput=$(echo "$Output" | sort -nrk "$SortOption" -t ' ')
 
 # print out formatted results
 chartreuse2 "Filesystem            Type    Size  Used Avail Use% Mounted on"
