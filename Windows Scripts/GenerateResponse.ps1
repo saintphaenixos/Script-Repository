@@ -69,19 +69,19 @@ Set-ConsoleColor 'DarkGray' 'Blue'
 
 # First lets set some variables:
 $PowershellRoot = 'C:\Windows\system32\WindowsPowerShell\v1.0\'
-$Destination = "C:\Users\$USER\Desktop\"
-$InstalledStatus.EndPleasantry = Test-Path -Path "C:\Users\$USER\Desktop\Generate Response Modify Pleasantry.lnk" -PathType leaf
-$InstalledStatus.MyName = Test-Path -Path "C:\Users\$USER\Desktop\Generate Response Modify My Name.lnk" -PathType leaf
-$InstalledStatus.HoursOfOperation = Test-Path -Path "C:\Users\$USER\Desktop\Generate Response Modify Hours.lnk" -PathType leaf
-$InstalledStatus.SetDefaults = Test-Path -Path "C:\Users\$USER\Desktop\Generate Response Return to Defaults.lnk" -PathType leaf
-$InstalledStatus.Access = Test-Path -Path "C:\Users\$USER\Desktop\Generate Response Access.lnk" -PathType leaf
-$ScriptLocationStatus = Test-Path -Path "C:\Users\$USER\Desktop\Generate Response.ps1" -PathType leaf
+$Destination = "C:\Users\$Env:USERNAME\Desktop\"
+$InstalledStatus.EndPleasantry = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Modify Pleasantry.lnk" -PathType leaf
+$InstalledStatus.MyName = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Modify My Name.lnk" -PathType leaf
+$InstalledStatus.HoursOfOperation = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Modify Hours.lnk" -PathType leaf
+$InstalledStatus.SetDefaults = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Return to Defaults.lnk" -PathType leaf
+$InstalledStatus.Access = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Access.lnk" -PathType leaf
+$ScriptLocationStatus = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1" -PathType leaf
 $URLTitle = "Response Generator"
 
 #First lets send the script to the desktop:
 if ($ScriptLocationStatus -eq 'False') {
   echo "Moving Script from current directory to the desktop, please continue using it from there."
-  Move-Item -Path "$PSScriptRoot\Generate Response.ps1" -Destination "C:\Users\$USER\Desktop\Generate Response.ps1"
+  Move-Item -Path "$PSScriptRoot\Generate Response.ps1" -Destination "C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1"
   sleep 10
   exit
 }
@@ -91,7 +91,7 @@ function Create-ModPleasantryShortcut {
   $Shell = New-Object -ComObject ("WScript.Shell")
   $ShortCut = $Shell.CreateShortcut("$Destination\$URLTitle.lnk")
   $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
-  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$USER\Desktop\Generate Response.ps1 -EndPleasantry"
+  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 -EndPleasantry"
   $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
   $ShortCut.WindowStyle = 1;
   $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
@@ -103,7 +103,7 @@ function Create-ModHoursOfOperationShortcut {
   $Shell = New-Object -ComObject ("WScript.Shell")
   $ShortCut = $Shell.CreateShortcut("$Destination\$URLTitle.lnk")
   $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
-  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$USER\Desktop\Generate Response.ps1 -HoursOfOperation"
+  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 -HoursOfOperation"
   $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
   $ShortCut.WindowStyle = 1;
   $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
@@ -115,7 +115,7 @@ function Create-ModMyNameShortcut {
   $Shell = New-Object -ComObject ("WScript.Shell")
   $ShortCut = $Shell.CreateShortcut("$Destination\$URLTitle.lnk")
   $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
-  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$USER\Desktop\Generate Response.ps1 -Myname"
+  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 -Myname"
   $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
   $ShortCut.WindowStyle = 1;
   $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
@@ -127,7 +127,7 @@ function Create-DefaultsShortcut {
   $Shell = New-Object -ComObject ("WScript.Shell")
   $ShortCut = $Shell.CreateShortcut("$Destination\$URLTitle.lnk")
   $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
-  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$USER\Desktop\Generate Response.ps1 --SetDefaults"
+  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 --SetDefaults"
   $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
   $ShortCut.WindowStyle = 1;
   $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
@@ -139,7 +139,7 @@ function Create-AccessShortcut {
   $Shell = New-Object -ComObject ("WScript.Shell")
   $ShortCut = $Shell.CreateShortcut("$Destination\$URLTitle.lnk")
   $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
-  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$USER\Desktop\Generate Response.ps1 --SetDefaults"
+  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 --SetDefaults"
   $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
   $ShortCut.WindowStyle = 1;
   $ShortCut.Hotkey = "ALT+CTRL+K"
