@@ -163,13 +163,13 @@ if (-not ($InstalledStatusEndPleasantry -and $InstalledStatusMyName -and $Instal
 ######################################################################
 
 # reading the 1st parameter with the script to see if we have to change any of the pleasantry texts.
-Param(
-    [parameter(Mandatory=$false,Position=1)][ValidateSet("-EndPleasantry","-Myname","-HoursOfOperation","-SetDefaults")]$Changepleasantries
-)
+#Param(
+#    [parameter(Mandatory=$false,Position=1)][ValidateSet("-EndPleasantry","-Myname","-HoursOfOperation","-SetDefaults")]$Changepleasantries
+#)
 
 # Attempting to change the ending pleasantry:
 
-switch -wildcard ($Changepleasantries) {
+switch -wildcard ($args[0]) {
   "-EndPleasantry" {
     #clear the screen for prominence
     clear
