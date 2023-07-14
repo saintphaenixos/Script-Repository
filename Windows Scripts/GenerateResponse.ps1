@@ -80,7 +80,7 @@ $ScriptLocationStatus = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate
 #First lets send the script to the desktop:
 if ($ScriptLocationStatus -eq 'False') {
   echo "Moving Script from current directory to the desktop, please continue using it from there."
-  Move-Item -Path "$PSScriptRoot\Generate Response.ps1" -Destination "C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1"
+  Move-Item -Path "$PSCommandPath" -Destination "C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1"
   sleep 10
   exit
 }
