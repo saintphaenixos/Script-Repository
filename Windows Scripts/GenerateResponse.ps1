@@ -70,10 +70,10 @@ Set-ConsoleColor 'DarkGray' 'Blue'
 # First lets set some variables:
 $PowershellRoot = 'C:\Windows\system32\WindowsPowerShell\v1.0\'
 $Destination = "C:\Users\$Env:USERNAME\Desktop\"
-$InstalledStatusEndPleasantry = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Modify Pleasantry.lnk" -PathType leaf
-$InstalledStatusMyName = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Modify My Name.lnk" -PathType leaf
-$InstalledStatusHoursOfOperation = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Modify Hours.lnk" -PathType leaf
-$InstalledStatusSetDefaults = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Return to Defaults.lnk" -PathType leaf
+$InstalledStatusEndPleasantry = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Modify Pleasantry.lnk" -PathType leaf
+$InstalledStatusMyName = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Modify My Name.lnk" -PathType leaf
+$InstalledStatusHoursOfOperation = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Modify Hours of Operation.lnk" -PathType leaf
+$InstalledStatusSetDefaults = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Return to Defaults.lnk" -PathType leaf
 $InstalledStatusAccess = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Access.lnk" -PathType leaf
 $ScriptLocationStatus = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1" -PathType leaf
 
@@ -136,7 +136,7 @@ function Create-DefaultsShortcut {
 
 function Create-AccessShortcut {
   $Shell = New-Object -ComObject ("WScript.Shell")
-  $ShortCut = $Shell.CreateShortcut("$Destination\Generate Response.lnk")
+  $ShortCut = $Shell.CreateShortcut("$Destination\Generate Response Access.lnk")
   $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
   $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1"
   $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
