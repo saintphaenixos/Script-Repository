@@ -74,6 +74,7 @@ $InstalledStatus.EndPleasantry = Test-Path -Path "C:\Users\$USER\Desktop\Generat
 $InstalledStatus.MyName = Test-Path -Path "C:\Users\$USER\Desktop\Generate Response Modify My Name.lnk" -PathType leaf
 $InstalledStatus.HoursOfOperation = Test-Path -Path "C:\Users\$USER\Desktop\Generate Response Modify Hours.lnk" -PathType leaf
 $InstalledStatus.SetDefaults = Test-Path -Path "C:\Users\$USER\Desktop\Generate Response Return to Defaults.lnk" -PathType leaf
+$InstalledStatus.Access = Test-Path -Path "C:\Users\$USER\Desktop\Generate Response Access.lnk" -PathType leaf
 $ScriptLocationStatus = Test-Path -Path "C:\Users\$USER\Desktop\Generate Response.ps1" -PathType leaf
 $URLTitle = "Response Generator"
 
@@ -94,7 +95,7 @@ function Create-ModPleasantryShortcut {
   $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
   $ShortCut.WindowStyle = 1;
   $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
-  $ShortCut.Description = "";
+  $ShortCut.Description = "A Shortcut to Modify the Ending Pleasantry in the script.";
   $ShortCut.Save()
 }
 
@@ -106,7 +107,7 @@ function Create-ModHoursOfOperationShortcut {
   $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
   $ShortCut.WindowStyle = 1;
   $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
-  $ShortCut.Description = "";
+  $ShortCut.Description = "A Shortcut to Modify the House of Operation in the script.";
   $ShortCut.Save()
 }
 
@@ -118,7 +119,7 @@ function Create-ModMyNameShortcut {
   $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
   $ShortCut.WindowStyle = 1;
   $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
-  $ShortCut.Description = "";
+  $ShortCut.Description = "A Shortcut to Modify Users name in the script.";
   $ShortCut.Save()
 }
 
@@ -130,9 +131,32 @@ function Create-DefaultsShortcut {
   $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
   $ShortCut.WindowStyle = 1;
   $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
-  $ShortCut.Description = "";
+  $ShortCut.Description = "A Shortcut to set all text in the script to defaults.";
   $ShortCut.Save()
 }
+
+function Create-AccessShortcut {
+  $Shell = New-Object -ComObject ("WScript.Shell")
+  $ShortCut = $Shell.CreateShortcut("$Destination\$URLTitle.lnk")
+  $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
+  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$USER\Desktop\Generate Response.ps1 --SetDefaults"
+  $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
+  $ShortCut.WindowStyle = 1;
+  $ShortCut.Hotkey = "ALT+CTRL+K"
+  $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
+  $ShortCut.Description = "A Shortcut that allows the user to use the keyboard shortcut ctrl + alt + k to open the script.";
+  $ShortCut.Save()
+}
+
+if (-not ($InstalledStatus.EndPleasantry -and $InstalledStatus.MyName -and $InstalledStatus.HoursOfOperation -and $InstalledStatus.SetDefaults -and $InstalledStatus.Access)) {
+  echo "Creating Desktop Shortcuts for Easy Script Use."
+  Create-ModPleasantryShortcut
+  Create-ModHoursOfOperationShortcut
+  Create-ModMyNameShortcut
+  Create-DefaultsShortcut
+  Create-AccessShortcut
+}
+
 
 ######################################################################
 #Lets create a function to replace the pleasantries with custom ones, and to prompt how to do that. We'll also read parameters passed to the script here.
