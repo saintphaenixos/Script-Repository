@@ -7,12 +7,12 @@
 
 #This section is for writing out our pleasantries at the end of the ticket:
 
-$endpleasantry = "Thank you for contacting Pima's IT Department If you have any further questions on the issue, please give us a call at 520-206-4900 (Or just Extension:4900 on a Pima phone) or respond to this email, and it'll automatically re-open the ticket. We Are always available via phone during these business hours:"
+$EndPleasantry = "Thank you for contacting Pima's IT Department If you have any further questions on the issue, please give us a call at 520-206-4900 (Or just Extension:4900 on a Pima phone) or respond to this email, and it'll automatically re-open the ticket. We Are always available via phone during these business hours:"
 
-$hoursofoperation = "IT Service Desk Hours: Mon-Thu: 7am-7:30pm, Fri: 7am - 5pm, Sat: 8am - 2pm, Sun: Closed"
+$HoursOfOperation = "IT Service Desk Hours: Mon-Thu: 7am-7:30pm, Fri: 7am - 5pm, Sat: 8am - 2pm, Sun: Closed"
 
 #Put your name here:
-$myname = "CHANGEME"
+$MyName = "CHANGEME"
 
 ######################################################################
 #Modified Pleasantry Variables:
@@ -87,9 +87,10 @@ switch -wildcard ($Changepleasantries) {
         else {
           $line = Get-Content $PSScriptRoot\GenerateResponse.ps1 | Select-String $ModEndPleasantry | Select-Object -ExpandProperty Line
           $content = Get-Content $PSScriptRoot\GenerateResponse.ps1
-          $content | ForEach-Object {$_ -replace $line,"$ChangeEndPleasantry"} | Set-Content c:\temp\test.txt
+          $content | ForEach-Object {$_ -replace $line,"$ChangeEndPleasantry"} | Set-Content $PSScriptRoot\GenerateResponse.ps1
         }
       }
+      Change-EndPleasantry
   }
 
   "-Myname" {
@@ -97,18 +98,46 @@ switch -wildcard ($Changepleasantries) {
     clear
     $ChangeMyname = Read-Host "please enter the new End Pleasantry here, you'll want to be detailed and include these: A thank you statement for contacting us for aid, mentioning that if the user has any further questions to reach out to us, as well as mention that if they respons to this email/ticket response that it will re-open the ticket for our attention."
 
-      function Change-EndPleasantry() {
+      function Change-MyName() {
         if([string]::IsNullOrEmpty($ChangeMyname)) {
           throw [System.ArgumentException] "Please enter a Proper Ending for your Response, it can't be blank."
         }
         else {
-          $line = Get-Content $PSScriptRoot\GenerateResponse.ps1 | Select-String $ModEndPleasantry | Select-Object -ExpandProperty Line
+          $line = Get-Content $PSScriptRoot\GenerateResponse.ps1 | Select-String $ModMyName | Select-Object -ExpandProperty Line
           $content = Get-Content $PSScriptRoot\GenerateResponse.ps1
-          $content | ForEach-Object {$_ -replace $line,"$ChangeMyname"} | Set-Content c:\temp\test.txt
+          $content | ForEach-Object {$_ -replace $line,"$ChangeMyname"} | Set-Content $PSScriptRoot\GenerateResponse.ps1
+        }
+      }
+      Change-MyName
+  }
+
+  "-HoursOfOperation" {
+    #clear the screen for prominence
+    clear
+    $ChangeHoursOfOperation = Read-Host "please enter the new End Pleasantry here, you'll want to be detailed and include these: A thank you statement for contacting us for aid, mentioning that if the user has any further questions to reach out to us, as well as mention that if they respons to this email/ticket response that it will re-open the ticket for our attention."
+
+      function Change-HouseOfOperation() {
+        if([string]::IsNullOrEmpty($ChangeHoursOfOperation)) {
+          throw [System.ArgumentException] "Please enter a Proper Ending for your Response, it can't be blank."
+        }
+        else {
+          $line = Get-Content $PSScriptRoot\GenerateResponse.ps1 | Select-String $ModHoursOfOperation | Select-Object -ExpandProperty Line
+          $content = Get-Content $PSScriptRoot\GenerateResponse.ps1
+          $content | ForEach-Object {$_ -replace $line,"$ChangeHoursOfOperation"} | Set-Content $PSScriptRoot\GenerateResponse.ps1
+        }
+      }
+      Change-HouseOfOperation
+  }
+
+  "-SetDefaults" {
+      function Set-Defaults() {
+          #Set Hours of Operation back to default
+          $line = Get-Content $PSScriptRoot\GenerateResponse.ps1 | Select-String $HoursOfOperation | Select-Object -ExpandProperty Line
+          $content = Get-Content $PSScriptRoot\GenerateResponse.ps1
+          $content | ForEach-Object {$_ -replace $line,"$ChangeHoursOfOperation"} | Set-Content $PSScriptRoot\GenerateResponse.ps1
         }
       }
   }
-
 
 }
 
