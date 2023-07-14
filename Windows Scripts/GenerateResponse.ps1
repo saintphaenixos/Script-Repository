@@ -78,7 +78,7 @@ $InstalledStatusAccess = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generat
 $ScriptLocationStatus = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1" -PathType leaf
 
 #First lets send the script to the desktop:
-if ($ScriptLocationStatus -eq 'False') {
+if (-not $ScriptLocationStatus) {
   echo "Moving Script from current directory to the desktop, please continue using it from there."
   Move-Item -Path "$PSCommandPath" -Destination "C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1"
   sleep 10
@@ -90,8 +90,8 @@ function Create-ModPleasantryShortcut {
   $Shell = New-Object -ComObject ("WScript.Shell")
   $ShortCut = $Shell.CreateShortcut("$Destination\Modify Pleasantry.lnk")
   $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
-  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 -EndPleasantry"
-  $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
+  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File `"C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 -EndPleasantry`""
+  $ShortCut.WorkingDirectory = "$PowershellRoot";
   $ShortCut.WindowStyle = 1;
   $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
   $ShortCut.Description = "A Shortcut to Modify the Ending Pleasantry in the script.";
@@ -102,8 +102,8 @@ function Create-ModHoursOfOperationShortcut {
   $Shell = New-Object -ComObject ("WScript.Shell")
   $ShortCut = $Shell.CreateShortcut("$Destination\Modify Hours of Operation.lnk")
   $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
-  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 -HoursOfOperation"
-  $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
+  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File `"C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 -HoursOfOperation`""
+  $ShortCut.WorkingDirectory = "$PowershellRoot";
   $ShortCut.WindowStyle = 1;
   $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
   $ShortCut.Description = "A Shortcut to Modify the House of Operation in the script.";
@@ -114,8 +114,8 @@ function Create-ModMyNameShortcut {
   $Shell = New-Object -ComObject ("WScript.Shell")
   $ShortCut = $Shell.CreateShortcut("$Destination\Modify My Name.lnk")
   $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
-  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 -Myname"
-  $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
+  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File `"C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 -Myname`""
+  $ShortCut.WorkingDirectory = "$PowershellRoot";
   $ShortCut.WindowStyle = 1;
   $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
   $ShortCut.Description = "A Shortcut to Modify Users name in the script.";
@@ -126,8 +126,8 @@ function Create-DefaultsShortcut {
   $Shell = New-Object -ComObject ("WScript.Shell")
   $ShortCut = $Shell.CreateShortcut("$Destination\Return to Defaults.lnk")
   $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
-  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 --SetDefaults"
-  $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
+  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File `"C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 --SetDefaults`""
+  $ShortCut.WorkingDirectory = "$PowershellRoot";
   $ShortCut.WindowStyle = 1;
   $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
   $ShortCut.Description = "A Shortcut to set all text in the script to defaults.";
@@ -138,8 +138,8 @@ function Create-AccessShortcut {
   $Shell = New-Object -ComObject ("WScript.Shell")
   $ShortCut = $Shell.CreateShortcut("$Destination\Generate Response Access.lnk")
   $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
-  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1"
-  $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
+  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File `"C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1`""
+  $ShortCut.WorkingDirectory = "$PowershellRoot";
   $ShortCut.WindowStyle = 1;
   $ShortCut.Hotkey = "ALT+CTRL+K"
   $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
