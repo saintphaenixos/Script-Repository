@@ -91,6 +91,8 @@ switch -wildcard ($Changepleasantries) {
         }
       }
       Change-EndPleasantry
+      echo "End Pleasantry Changed to: $ChangeEndPleasantry"
+      exit
   }
 
   "-Myname" {
@@ -109,6 +111,8 @@ switch -wildcard ($Changepleasantries) {
         }
       }
       Change-MyName
+      echo "Name Changed to: $ChangeMyname"
+      exit
   }
 
   "-HoursOfOperation" {
@@ -127,15 +131,28 @@ switch -wildcard ($Changepleasantries) {
         }
       }
       Change-HouseOfOperation
+      echo "Hours Changed to: $ChangeHoursOfOperation"
+      exit
   }
 
   "-SetDefaults" {
       function Set-Defaults() {
           #Set Hours of Operation back to default
-          $line = Get-Content $PSScriptRoot\GenerateResponse.ps1 | Select-String $HoursOfOperation | Select-Object -ExpandProperty Line
+          $line = Get-Content $PSScriptRoot\GenerateResponse.ps1 | Select-String $ModHoursOfOperation | Select-Object -ExpandProperty Line
           $content = Get-Content $PSScriptRoot\GenerateResponse.ps1
-          $content | ForEach-Object {$_ -replace $line,"$ChangeHoursOfOperation"} | Set-Content $PSScriptRoot\GenerateResponse.ps1
+          $content | ForEach-Object {$_ -replace $line,"$HoursOfOperation"} | Set-Content $PSScriptRoot\GenerateResponse.ps1
+
+          $line = Get-Content $PSScriptRoot\GenerateResponse.ps1 | Select-String $ModEndPleasantry | Select-Object -ExpandProperty Line
+          $content = Get-Content $PSScriptRoot\GenerateResponse.ps1
+          $content | ForEach-Object {$_ -replace $line,"$EndPleasantry"} | Set-Content $PSScriptRoot\GenerateResponse.ps1
+
+          $line = Get-Content $PSScriptRoot\GenerateResponse.ps1 | Select-String $ModMyName | Select-Object -ExpandProperty Line
+          $content = Get-Content $PSScriptRoot\GenerateResponse.ps1
+          $content | ForEach-Object {$_ -replace $line,"$MyName"} | Set-Content $PSScriptRoot\GenerateResponse.ps1
         }
+        Set-Defaults
+        echo "resetting the variables to defaults."
+        exit
       }
   }
 
