@@ -1,4 +1,4 @@
-# This is a port of a bash script designed to create a response for a ticket, and put it into your clipboard, after typing in the needed information about what the request was for and what was done. It uses interactive prompts to ask for the information and then outputs the completed text to the clipboard so it can be pasted into TDX.
+# This is a port of a bash script designed to create a response for a ticket, and put it into your clipboard, after typing in the needed information about what the request was for and what was done. It uses interactive prompts to ask for the information and then outputs the completed text to the clipboard so it can be pasted into TDX. It has methods to modify the pleasantries to the users custom desires, and keeps a default copy of these pleasantries to return them to defaults if need be. It also creates several shortcuts on the windows desktop so that a keystroke can open the response generator for the user.
 # It was originally written by Kent DuBack II on 2.18.22 for Pima Community College.
 
 ######################################################################
@@ -64,6 +64,77 @@ Set-ConsoleColor 'DarkGray' 'Blue'
 </#>
 
 ######################################################################
+#Creating the Shortcuts to use this with a keystroke, as well as open it for editing.
+######################################################################
+
+# First lets set some variables:
+$PowershellRoot = 'C:\Windows\system32\WindowsPowerShell\v1.0\'
+$Destination = "C:\Users\$USER\Desktop\"
+$InstalledStatus.EndPleasantry = Test-Path -Path "C:\Users\$USER\Desktop\Generate Response Modify Pleasantry.lnk" -PathType leaf
+$InstalledStatus.MyName = Test-Path -Path "C:\Users\$USER\Desktop\Generate Response Modify My Name.lnk" -PathType leaf
+$InstalledStatus.HoursOfOperation = Test-Path -Path "C:\Users\$USER\Desktop\Generate Response Modify Hours.lnk" -PathType leaf
+$InstalledStatus.SetDefaults = Test-Path -Path "C:\Users\$USER\Desktop\Generate Response Return to Defaults.lnk" -PathType leaf
+$ScriptLocationStatus = Test-Path -Path "C:\Users\$USER\Desktop\Generate Response.ps1" -PathType leaf
+$URLTitle = "Response Generator"
+
+#First lets send the script to the desktop:
+if ($ScriptLocationStatus -eq 'False') {
+  echo "Moving Script from current directory to the desktop, please continue using it from there."
+  Move-Item -Path "$PSScriptRoot\Generate Response.ps1" -Destination "C:\Users\$USER\Desktop\Generate Response.ps1"
+  sleep 10
+  exit
+}
+
+# Now lets create a function to create the separate URL's:
+function Create-ModPleasantryShortcut {
+  $Shell = New-Object -ComObject ("WScript.Shell")
+  $ShortCut = $Shell.CreateShortcut("$Destination\$URLTitle.lnk")
+  $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
+  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$USER\Desktop\Generate Response.ps1 -EndPleasantry"
+  $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
+  $ShortCut.WindowStyle = 1;
+  $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
+  $ShortCut.Description = "";
+  $ShortCut.Save()
+}
+
+function Create-ModHoursOfOperationShortcut {
+  $Shell = New-Object -ComObject ("WScript.Shell")
+  $ShortCut = $Shell.CreateShortcut("$Destination\$URLTitle.lnk")
+  $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
+  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$USER\Desktop\Generate Response.ps1 -HoursOfOperation"
+  $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
+  $ShortCut.WindowStyle = 1;
+  $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
+  $ShortCut.Description = "";
+  $ShortCut.Save()
+}
+
+function Create-ModMyNameShortcut {
+  $Shell = New-Object -ComObject ("WScript.Shell")
+  $ShortCut = $Shell.CreateShortcut("$Destination\$URLTitle.lnk")
+  $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
+  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$USER\Desktop\Generate Response.ps1 -Myname"
+  $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
+  $ShortCut.WindowStyle = 1;
+  $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
+  $ShortCut.Description = "";
+  $ShortCut.Save()
+}
+
+function Create-DefaultsShortcut {
+  $Shell = New-Object -ComObject ("WScript.Shell")
+  $ShortCut = $Shell.CreateShortcut("$Destination\$URLTitle.lnk")
+  $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
+  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$USER\Desktop\Generate Response.ps1 --SetDefaults"
+  $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
+  $ShortCut.WindowStyle = 1;
+  $ShortCut.IconLocation = "$PowershellRoot\powershell.exe, 0";
+  $ShortCut.Description = "";
+  $ShortCut.Save()
+}
+
+######################################################################
 #Lets create a function to replace the pleasantries with custom ones, and to prompt how to do that. We'll also read parameters passed to the script here.
 ######################################################################
 
@@ -95,26 +166,6 @@ switch -wildcard ($Changepleasantries) {
       exit
   }
 
-  "-Myname" {
-    #clear the screen for prominence
-    clear
-    $ChangeMyname = Read-Host "please enter the new End Pleasantry here, you'll want to be detailed and include these: A thank you statement for contacting us for aid, mentioning that if the user has any further questions to reach out to us, as well as mention that if they respons to this email/ticket response that it will re-open the ticket for our attention."
-
-      function Change-MyName() {
-        if([string]::IsNullOrEmpty($ChangeMyname)) {
-          throw [System.ArgumentException] "Please enter a Proper Ending for your Response, it can't be blank."
-        }
-        else {
-          $line = Get-Content $PSScriptRoot\GenerateResponse.ps1 | Select-String $ModMyName | Select-Object -ExpandProperty Line
-          $content = Get-Content $PSScriptRoot\GenerateResponse.ps1
-          $content | ForEach-Object {$_ -replace $line,"$ChangeMyname"} | Set-Content $PSScriptRoot\GenerateResponse.ps1
-        }
-      }
-      Change-MyName
-      echo "Name Changed to: $ChangeMyname"
-      exit
-  }
-
   "-HoursOfOperation" {
     #clear the screen for prominence
     clear
@@ -132,6 +183,26 @@ switch -wildcard ($Changepleasantries) {
       }
       Change-HouseOfOperation
       echo "Hours Changed to: $ChangeHoursOfOperation"
+      exit
+  }
+
+  "-Myname" {
+    #clear the screen for prominence
+    clear
+    $ChangeMyname = Read-Host "please enter the new End Pleasantry here, you'll want to be detailed and include these: A thank you statement for contacting us for aid, mentioning that if the user has any further questions to reach out to us, as well as mention that if they respons to this email/ticket response that it will re-open the ticket for our attention."
+
+      function Change-MyName() {
+        if([string]::IsNullOrEmpty($ChangeMyname)) {
+          throw [System.ArgumentException] "Please enter a Proper Ending for your Response, it can't be blank."
+        }
+        else {
+          $line = Get-Content $PSScriptRoot\GenerateResponse.ps1 | Select-String $ModMyName | Select-Object -ExpandProperty Line
+          $content = Get-Content $PSScriptRoot\GenerateResponse.ps1
+          $content | ForEach-Object {$_ -replace $line,"$ChangeMyname"} | Set-Content $PSScriptRoot\GenerateResponse.ps1
+        }
+      }
+      Change-MyName
+      echo "Name Changed to: $ChangeMyname"
       exit
   }
 
@@ -157,8 +228,6 @@ switch -wildcard ($Changepleasantries) {
   }
 
 }
-
-
 
 ######################################################################
 #Lets clear the screen, and read the ticket input:
