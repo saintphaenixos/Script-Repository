@@ -76,7 +76,6 @@ $InstalledStatusHoursOfOperation = Test-Path -Path "C:\Users\$Env:USERNAME\Deskt
 $InstalledStatusSetDefaults = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Return to Defaults.lnk" -PathType leaf
 $InstalledStatusAccess = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Access.lnk" -PathType leaf
 $ScriptLocationStatus = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1" -PathType leaf
-$URLTitle = "Response Generator"
 
 #First lets send the script to the desktop:
 if ($ScriptLocationStatus -eq 'False') {
@@ -89,7 +88,7 @@ if ($ScriptLocationStatus -eq 'False') {
 # Now lets create a function to create the separate URL's:
 function Create-ModPleasantryShortcut {
   $Shell = New-Object -ComObject ("WScript.Shell")
-  $ShortCut = $Shell.CreateShortcut("$Destination\$URLTitle.lnk")
+  $ShortCut = $Shell.CreateShortcut("$Destination\Modify Pleasantry.lnk")
   $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
   $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 -EndPleasantry"
   $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
@@ -101,7 +100,7 @@ function Create-ModPleasantryShortcut {
 
 function Create-ModHoursOfOperationShortcut {
   $Shell = New-Object -ComObject ("WScript.Shell")
-  $ShortCut = $Shell.CreateShortcut("$Destination\$URLTitle.lnk")
+  $ShortCut = $Shell.CreateShortcut("$Destination\Modify Hours of Operation.lnk")
   $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
   $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 -HoursOfOperation"
   $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
@@ -113,7 +112,7 @@ function Create-ModHoursOfOperationShortcut {
 
 function Create-ModMyNameShortcut {
   $Shell = New-Object -ComObject ("WScript.Shell")
-  $ShortCut = $Shell.CreateShortcut("$Destination\$URLTitle.lnk")
+  $ShortCut = $Shell.CreateShortcut("$Destination\Modify My Name.lnk")
   $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
   $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 -Myname"
   $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
@@ -125,7 +124,7 @@ function Create-ModMyNameShortcut {
 
 function Create-DefaultsShortcut {
   $Shell = New-Object -ComObject ("WScript.Shell")
-  $ShortCut = $Shell.CreateShortcut("$Destination\$URLTitle.lnk")
+  $ShortCut = $Shell.CreateShortcut("$Destination\Return to Defaults.lnk")
   $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
   $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 --SetDefaults"
   $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
@@ -137,9 +136,9 @@ function Create-DefaultsShortcut {
 
 function Create-AccessShortcut {
   $Shell = New-Object -ComObject ("WScript.Shell")
-  $ShortCut = $Shell.CreateShortcut("$Destination\$URLTitle.lnk")
+  $ShortCut = $Shell.CreateShortcut("$Destination\Generate Response.lnk")
   $ShortCut.TargetPath="$PowershellRoot\powershell.exe"
-  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1 --SetDefaults"
+  $ShortCut.Arguments="-noexit -ExecutionPolicy Bypass -File C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1"
   $ShortCut.WorkingDirectory = "$PowershellRoot\v1.0";
   $ShortCut.WindowStyle = 1;
   $ShortCut.Hotkey = "ALT+CTRL+K"
