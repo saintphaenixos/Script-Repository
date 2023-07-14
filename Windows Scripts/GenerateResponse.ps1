@@ -70,11 +70,11 @@ Set-ConsoleColor 'DarkGray' 'Blue'
 # First lets set some variables:
 $PowershellRoot = 'C:\Windows\system32\WindowsPowerShell\v1.0\'
 $Destination = "C:\Users\$Env:USERNAME\Desktop\"
-$InstalledStatus.EndPleasantry = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Modify Pleasantry.lnk" -PathType leaf
-$InstalledStatus.MyName = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Modify My Name.lnk" -PathType leaf
-$InstalledStatus.HoursOfOperation = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Modify Hours.lnk" -PathType leaf
-$InstalledStatus.SetDefaults = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Return to Defaults.lnk" -PathType leaf
-$InstalledStatus.Access = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Access.lnk" -PathType leaf
+$InstalledStatusEndPleasantry = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Modify Pleasantry.lnk" -PathType leaf
+$InstalledStatusMyName = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Modify My Name.lnk" -PathType leaf
+$InstalledStatusHoursOfOperation = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Modify Hours.lnk" -PathType leaf
+$InstalledStatusSetDefaults = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Return to Defaults.lnk" -PathType leaf
+$InstalledStatusAccess = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response Access.lnk" -PathType leaf
 $ScriptLocationStatus = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1" -PathType leaf
 $URLTitle = "Response Generator"
 
@@ -148,7 +148,7 @@ function Create-AccessShortcut {
   $ShortCut.Save()
 }
 
-if (-not ($InstalledStatus.EndPleasantry -and $InstalledStatus.MyName -and $InstalledStatus.HoursOfOperation -and $InstalledStatus.SetDefaults -and $InstalledStatus.Access)) {
+if (-not ($InstalledStatusEndPleasantry -and $InstalledStatusMyName -and $InstalledStatusHoursOfOperation -and $InstalledStatusSetDefaults -and $InstalledStatusAccess)) {
   echo "Creating Desktop Shortcuts for Easy Script Use."
   Create-ModPleasantryShortcut
   Create-ModHoursOfOperationShortcut
@@ -248,9 +248,7 @@ switch -wildcard ($Changepleasantries) {
         Set-Defaults
         echo "resetting the variables to defaults."
         exit
-      }
   }
-
 }
 
 ######################################################################
