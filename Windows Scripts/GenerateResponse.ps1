@@ -79,7 +79,7 @@ $ScriptLocationStatus = Test-Path -Path "C:\Users\$Env:USERNAME\Desktop\Generate
 
 #First lets send the script to the desktop:
 if (-not $ScriptLocationStatus) {
-  echo "Moving Script from current directory to the desktop, please continue using it from there."
+  Write-Color Red white "Moving Script from current directory to the desktop, please continue using it from there."
   Move-Item -Path "$PSCommandPath" -Destination "C:\Users\$Env:USERNAME\Desktop\Generate Response.ps1"
   sleep 10
   exit
@@ -148,7 +148,7 @@ function Create-AccessShortcut {
 }
 
 if (-not ($InstalledStatusEndPleasantry -and $InstalledStatusMyName -and $InstalledStatusHoursOfOperation -and $InstalledStatusSetDefaults -and $InstalledStatusAccess)) {
-  echo "Creating Desktop Shortcuts for Easy Script Use."
+  Write-Color blue white "Creating Desktop Shortcuts for Easy Script Use."
   Create-ModPleasantryShortcut
   Create-ModHoursOfOperationShortcut
   Create-ModMyNameShortcut
