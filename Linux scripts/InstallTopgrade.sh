@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 #DO NOT RUN THIS SCRIPT AS ROOT! LETS ENSURE THAT HERE:
 [[ "$UID" == 0 ]] && echo -e "This script cannot be run as root! \n exiting..." && exit 1
@@ -8,14 +8,14 @@
 
 #Lets download the latest copy of Topgrade:
 
-curl -sL https://api.github.com/repos/topgrade-rs/topgrade/releases/latest | grep "browser_download_url.*x86_64-unknown-linux-gnu.tar.gz" | cut -d : -f 2,3 | tr -d \" | wget -i - -P /home/$USER
+curl -sL https://api.github.com/repos/topgrade-rs/topgrade/releases/latest | grep "browser_download_url.*x86_64-unknown-linux-gnu.tar.gz" | cut -d : -f 2,3 | tr -d \" | wget -i - -P /tmp
 
 #Now lets unpack it and get ready to move it.
 
-TOPGRADEARCHIVE=$(ls | grep topgrade*.gz)
+TOPGRADEARCHIVE=$(ls /tmp | grep "topgrade")
 echo "$TOPGRADEARCHIVE"
 
-tar -xvf "/home/$USER/$TOPGRADEARCHIVE"
-rm "$TOPGRADEARCHIVE"
+tar -xvf "/tmp/$TOPGRADEARCHIVE" -C /tmp
+rm "/tmp/$TOPGRADEARCHIVE"
 
-sudo mv /home/$USER/topgrade /bin/topgrade
+sudo mv /tmp/topgrade /bin/topgrade
