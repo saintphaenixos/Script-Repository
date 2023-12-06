@@ -20,20 +20,19 @@ tmuxsessionify() {
 
 # Specify the tmux session name
 Session_Name="GUIXUpgradeSession"
-Session_Name2="GUIXBuilderUpgradeSession"
 
 # Specify the commands to run in sequence
 GUIXCommands=("guix pull" "hash guix" "guix upgrade" "guix gc" "guix gx --delete-generations")
-GUIXBuildcommands=("sudo -i guix pull" "systemctl restart guix-daemon.service")
 
 # Run the commands in sequence in the tmux session
 tmuxsessionify $Session_Name "${GUIXCommands[@]}"
-echo "we'll need to run the next one as root"
-sudo tmuxsessionify $Session_Name2 "${GUIXBuildCommands[@]}"
+
+#Lets also export the paths while we are at it, so the Binaries are available in terminal sessions.
+export PATH="$HOME/.config/guix/current/bin:$PATH"
+export INFOPATH="$HOME/.config/guix/current/share/info:$INFOPATH"
 
 echo "Commands are running in the background in a tmux session."
 echo "To view the first session, run: tmux attach-session -t $Session_Name"
-echo "To view the second session, run: tmux attach-session -t $Session_Name2"
 
 ######################
 #oldscript for archival purposes:
