@@ -1,7 +1,10 @@
 #!/usr/local/bin/zsh
 
 #Lets make sure that we are running as root before we start:
-[ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1
+if [[ "$UID" -gt 0 ]]; then
+  echo -e "This script must be run as root! \n exiting..."
+  exit 1
+fi
 
 #This script is to be run, once pf has been disabled/configured on the install, as well as resolv.conf with 8.8.8.8 and 8.8.4.4. Once complete, and zsh and have been installed this can be run.
 
