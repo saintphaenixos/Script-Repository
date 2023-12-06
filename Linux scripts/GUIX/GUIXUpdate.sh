@@ -5,6 +5,43 @@
 #DO NOT RUN THIS SCRIPT AS ROOT! LETS ENSURE THAT HERE:
 [[ "$UID" == 0 ]] && echo -e "This script cannot be run as root! \n exiting..." && exit 1
 
+tmuxsessionify() {
+    # Create a new tmux session with the specified name
+    tmux new-session -d -s $1
+
+    # Run the specified commands in the tmux session
+    for command in "$2"; do
+        tmux send-keys -t $1 "$command" C-m
+    done
+
+    # Detach the tmux session
+    tmux detach-client -s $1
+}
+
+# Specify the tmux session name
+Session_Name="GUIXUpgradeSession"
+Session_Name2="GUIXBuilderUpgradeSession"
+
+# Specify the commands to run in sequence
+GUIXCommands=("guix pull" "hash guix" "guix upgrade" "guix gc" "guix gx --delete-generations")
+GUIXBuildcommands=("sudo -i guix pull" "systemctl restart guix-daemon.service")
+
+# Run the commands in sequence in the tmux session
+tmuxsessionify $Session_Name "${GUIXCommands[@]}"
+tmuxsessionify $Session_Name2 "${GUIXBuildCommands[@]}"
+
+echo "Commands are running in the background in a tmux session."
+echo "To view the first session, run: tmux attach-session -t $Session_Name"
+echo "To view the second session, run: tmux attach-session -t $Session_Name2"
+
+######################
+#oldscript for archival purposes:
+######################
+
+#A neat little trick with an if statement to block out a bunch of lines in a shell script.
+if false
+then
+
 #Update GUIX:
 guix pull
 hash guix
@@ -27,3 +64,5 @@ sudo -i guix pull
 
 #Restart the Daemon
 systemctl restart guix-daemon.service
+
+fi
