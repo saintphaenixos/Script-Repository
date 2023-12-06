@@ -18,7 +18,7 @@ springgreen4() {
 }
 
 ###################################################################
-# Lets do some pre-game checks to ensure that zsh and oh-my-zsh is installed:
+# Lets do some pre-script checks to ensure that zsh and oh-my-zsh is installed:
 ###################################################################
 
 #Lets check to make sure we have zsh and git installed:
