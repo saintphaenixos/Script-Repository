@@ -2,8 +2,8 @@
 
 #This is a script to update GUIX in place on a machine that has already had it installed.
 
-#DO NOT RUN THIS SCRIPT AS ROOT! LETS ENSURE THAT HERE:
-[[ "$UID" == 0 ]] && echo -e "This script cannot be run as root! \n exiting..." && exit 1
+#Lets check if you are root first, as you need to be root for this:
+[ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1
 
 tmuxsessionify() {
     # Create a new tmux session with the specified name
