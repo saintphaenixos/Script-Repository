@@ -28,7 +28,8 @@ GUIXBuildcommands=("sudo -i guix pull" "systemctl restart guix-daemon.service")
 
 # Run the commands in sequence in the tmux session
 tmuxsessionify $Session_Name "${GUIXCommands[@]}"
-tmuxsessionify $Session_Name2 "${GUIXBuildCommands[@]}"
+echo "we'll need to run the next one as root"
+sudo tmuxsessionify $Session_Name2 "${GUIXBuildCommands[@]}"
 
 echo "Commands are running in the background in a tmux session."
 echo "To view the first session, run: tmux attach-session -t $Session_Name"
