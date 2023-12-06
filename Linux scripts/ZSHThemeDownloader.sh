@@ -35,7 +35,8 @@ done
 if [ -d ~/.oh-my-zsh ]; then
 	springgreen4 "oh-my-zsh is installed, continuing..."
 else
- 	springgreen4 "oh-my-zsh is not installed, please install oh-my-zsh"
+ 	springgreen4 "oh-my-zsh is not installed, please install oh-my-zsh, exiting..."
+  exit 1
 fi
 
 ###################################################################

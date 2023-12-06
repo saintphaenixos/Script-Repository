@@ -24,9 +24,5 @@ wget -O- curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin
 chmod +x /tmp/FISHinstall.sh
 fish /tmp/FISHinstall.sh
 
-# Now lets set my favorite zsh theme.
-git clone https://github.com/badouralix/oh-my-via.git $ZSH/custom/themes/oh-my-via
-sed -i 's,ZSH_THEME=".*",ZSH_THEME="oh-my-via/via",g' ~/.zshrc
-
-# Lastly lets source our .zshrc and get everything into our active session:
-source ~/.zshrc
+# Now lets add my favorite fish package.
+omf install fish_logo
