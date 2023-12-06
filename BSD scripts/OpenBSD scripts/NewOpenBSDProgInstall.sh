@@ -11,7 +11,6 @@ fi
 #lets install our needed programs.
 #Lets go ahead and create an array of all the programs we'll want installed, we'll do this from a file:
 Openbsdprogs=$(find / openbsd.programs 2>/dev/null | grep /openbsd.programs)
-Programs=$(</$Openbsdprogs)
 
 #Now lets install everything.
 for program in $(<$Openbsdprogs) ; do
