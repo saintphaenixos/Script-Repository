@@ -18,7 +18,7 @@ aqua "Choose Installation Mode:"
 aqua "1. GUI Install"
 aqua "2. CLI Install"
 
-read -p "Enter your choice (1 or 2): " choice
+read -p "Enter your choice (1 or 2): " Choice
 
 case $Choice in
     1)
