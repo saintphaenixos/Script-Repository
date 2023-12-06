@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/local/bin/zsh
 
 #Lets make sure that we are running as root before we start:
 [ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1
