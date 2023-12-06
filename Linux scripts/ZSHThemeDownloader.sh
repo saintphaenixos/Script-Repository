@@ -41,7 +41,7 @@ git clone https://github.com/badouralix/oh-my-via.git $ZSH/custom/themes/oh-my-v
 git clone https://github.com/romkatv/powerlevel10k.git $ZSH/custom/themes/powerlevel10k
 
 # Zeroastro ZSH Theme: https://github.com/zeroastro/zeroastro-zsh-theme
-git clone https://github.com/zeroastro/zeroastro-zsh-theme.git $ZSH/custom/themes/Zeroastro
+git clone https://github.com/zeroastro/zeroastro-zsh-theme.git $ZSH/custom/themes/zeroastro
 
 ###################################################################
 
