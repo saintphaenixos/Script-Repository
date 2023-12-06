@@ -14,3 +14,18 @@ for program in $Programs ; do
   installed=$(command -v $program)
   [[ -z "$installed" ]] && echo "$program is not installed" && pkg_add $program || echo "$program is installed"
 done
+
+###################################################################
+
+#We need to switch back to a normal user now so Oh-My-Zsh installs properly:
+echo "Now we need to switch back to your normal user, please input that name now (CASE SENSITIVE!), and then password."
+read Username
+su $Username
+
+#Lets halt it here if last command failed.
+if [[ ${PIPESTATUS[-1]} -ne 0 ]]; then
+  echo "The last command returned an error, exiting script."
+fi
+
+#Now lets do some other things, like install oh-my-zsh:
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
