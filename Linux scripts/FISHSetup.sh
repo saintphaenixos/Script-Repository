@@ -5,7 +5,6 @@
 # Lets check if computer has APT which means it can support this installation.
 if command -v apt >/dev/null 2>&1; then
     echo "apt is installed, this is likely a Debian Based system, continuing installation."
-    exit 0
 else
     echo "Error: apt is not installed on this system exiting installation.."
     exit 1  # Exit with an error
