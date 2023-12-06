@@ -3,7 +3,22 @@
 #DO NOT RUN THIS SCRIPT AS ROOT! LETS ENSURE THAT HERE:
 [ "$UID" == 0 ] && echo -e "This script cannot be run as root! \n exiting..." && exit 1
 
-#First lets do our first repository update:
+#First lets do our first repository update and warn the user this can take hours:
+echo "Are you sure you wish to proceed? This step can take hours! If so continue"
+read -p 'Enter "yes" if you are certain, anything else will exit the script!' Choice
+
+case $Choice in
+    yes)
+        # GUI installation variables:
+        echo "Continuing the script!"
+        sleep 3
+        ;;
+    *)
+        echo "Exiting the script."
+        exit 0
+        ;;
+esac
+
 guix pull
 
 #Now lets update our bash profile for the latest version of GUIX:
