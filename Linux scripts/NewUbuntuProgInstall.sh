@@ -12,6 +12,16 @@ aqua() {
     fi
 }
 
+#Lets give us the Username to return to when we get to install Oh-My-Zsh later in the script.
+read -p "What is your original username before using doas?" $Username
+id $Username
+
+#Now lets check to see if this user exists, as a form of error protection.
+if [ $? -ne 0 ]; then
+    echo "Error: User doesn't exist. Exiting script."
+    exit 1
+fi
+
 #Lets go ahead and create an array of all the programs we'll want installed, we'll do this from a file depending on the desired type of installation:
 
 aqua "Choose Installation Mode:"
@@ -58,8 +68,7 @@ done
 ###################################################################
 
 #We need to switch back to a normal user now so Oh-My-Zsh installs properly:
-echo "Now we need to switch back to your normal user, please input that name now (CASE SENSITIVE!), and then password."
-read Username
+echo "Now we need to switch back to your normal user, please input password for $Username."
 su $Username
 
 #Now lets do some other things, like install oh-my-zsh:
