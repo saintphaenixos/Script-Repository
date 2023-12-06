@@ -3,23 +3,56 @@
 #Lets make sure that we are running as root before we start:
 [ "$UID" -gt 0 ] && echo -e "This script must be run as root! \n exiting..." && exit 1
 
-#Lets go ahead and create an array of all the programs we'll want installed, we'll do this from a file:
-Programs=$(<./newcomputer.programs)
-SnapPrograms=$(<./newcomputer.snapish)
+#lets also create a color function for outputting prettier text:
+aqua() {
+    if (( $# == 0 )) ; then
+        xargs -r -I{} echo -e "\e[38;5;14m"{}"\e[0m" < /dev/stdin
+    else
+        echo -e "\e[38;5;14m${@}\e[0m"
+    fi
+}
+
+#Lets go ahead and create an array of all the programs we'll want installed, we'll do this from a file depending on the desired type of installation:
+
+aqua "Choose Installation Mode:"
+aqua "1. GUI Install"
+aqua "2. CLI Install"
+
+read -p "Enter your choice (1 or 2): " choice
+
+case $Choice in
+    1)
+        # GUI installation variables:
+        Programs=$(<./newcomputer.programs)
+        SnapPrograms=$(<./newcomputer.snapish)
+        ;;
+    2)
+        # CLI installation variables:
+        Programs=$(<./newubuntucli.programs)
+        SnapPrograms=$(<./newubuntucli.snapish)
+        ;;
+    *)
+        echo "Invalid choice. Exiting."
+        exit 1
+        ;;
+esac
+
+aqua "You have chosen $Choice"
+
 
 #lastly lets update the apps list so it doesn't have to be done repeatedly:
 sudo apt update
 
 #Now lets install everything.
-for program in $Programs ; do
-  installed=$(command -v $program)
-  [[ -z "$installed" ]] && echo "$program is not installed" && sudo apt --yes install $program || echo "$program is installed"
+for Program in $Programs ; do
+  Installed=$(command -v $program)
+  [[ -z "$Installed" ]] && echo "$Program is not installed" && sudo apt --yes install $Program || echo "$Program is installed"
 done
 
 #Now lets do the same for snap programs:
 for SnapProgram in $SnapPrograms ; do
-  installed=$(command -v $SnapProgram)
-  [[ -z "$installed" ]] && echo "$SnapProgram is not installed" && yes | sudo snap install $SnapProgram --classic || echo "$SnapProgram is installed"
+  Installed=$(command -v $SnapProgram)
+  [[ -z "$Installed" ]] && echo "$SnapProgram is not installed" && yes | sudo snap install $SnapProgram --classic || echo "$SnapProgram is installed"
 done
 
 ###################################################################
