@@ -47,6 +47,7 @@ git clone https://github.com/zeroastro/zeroastro-zsh-theme.git $ZSH/custom/theme
 
 # Now we'll create a switch statement to set any of these as our default zsh Theme:
 
+echo ""
 springgreen4 "Choose your ZSH Theme:"
 springgreen4 "1. AgnosterZak"
 springgreen4 "2. Alien"
@@ -57,6 +58,7 @@ springgreen4 "6. Oh-My-Via"
 springgreen4 "7. Powerlevel10K"
 springgreen4 "8. Zeroastro"
 springgreen4 "9. None for now, just installing."
+echo ""
 
 read -p "Enter your choice (1 through 9): " Choice
 
@@ -71,15 +73,15 @@ case $Choice in
         ;;
     3)
         # Blokkzh:
-        sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="blokkzh/blokkzh"' ~/.zshrc
+        sed -i 's,ZSH_THEME=".*",ZSH_THEME="blokkzh/blokkzh",g' ~/.zshrc
         ;;
     4)
         # Bullet-Train:
-        sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="bullet-train/bullet-train"' ~/.zshrc
+        sed -i 's,ZSH_THEME=".*",ZSH_THEME="bullet-train/bullet-train",g' ~/.zshrc
         ;;
     5)
         # Headline:
-        sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="headline/headline"' ~/.zshrc
+        sed -i 's,ZSH_THEME=".*",ZSH_THEME="headline/headline",g' ~/.zshrc
         ;;
     6)
         # Oh-My-Via:
@@ -87,11 +89,11 @@ case $Choice in
         ;;
     7)
         # Powerlevel10K:
-        sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k/powerlevel10k"' ~/.zshrc
+        sed -i 's,ZSH_THEME=".*",ZSH_THEME="powerlevel10k/powerlevel10k",g' ~/.zshrc
         ;;
     8)
         # Zeroastro:
-        sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="zeroastro/zeroastro"' ~/.zshrc
+        sed -i 's,ZSH_THEME=".*",ZSH_THEME="zeroastro/zeroastro",g' ~/.zshrc
         ;;
     *)
         echo "User input 9 or invalid input, not editing current Oh-My-Zsh Theme."
@@ -99,6 +101,8 @@ case $Choice in
         ;;
 esac
 
+echo ""
 
 # Lastly lets source our .zshrc and get everything into our active session:
+zsh
 source ~/.zshrc
