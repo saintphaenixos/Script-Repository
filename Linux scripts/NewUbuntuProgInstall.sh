@@ -13,7 +13,7 @@ aqua() {
 }
 
 #Lets give us the Username to return to when we get to install Oh-My-Zsh later in the script.
-read -p "What is your original username before using doas?" $Username
+read -p "What is your original username before elevating?" $Username
 id $Username
 
 #Now lets check to see if this user exists, as a form of error protection.
@@ -68,7 +68,7 @@ done
 ###################################################################
 
 #We need to switch back to a normal user now so Oh-My-Zsh installs properly:
-echo "Now we need to switch back to your normal user, please input password for $Username."
+aqua "Now we need to switch back to your normal user, please input password for $Username."
 su $Username
 
 #Now lets do some other things, like install oh-my-zsh:
