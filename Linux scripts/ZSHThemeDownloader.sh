@@ -3,6 +3,10 @@
 # DO NOT RUN THIS SCRIPT AS ROOT! LETS ENSURE THAT HERE:
 [[ "$UID" == 0 ]] && echo -e "This script cannot be run as root! \n exiting..." && exit 1
 
+###################################################################
+# A simple script to download the various themes that I like to have installed for Oh-My-Zsh:
+###################################################################
+
 # Lets create a function for some colored text:
 
 springgreen4() {
@@ -13,7 +17,26 @@ springgreen4() {
     fi
 }
 
-# A simple script to download the various themes that I like to have installed for Oh-My-Zsh:
+###################################################################
+# Lets do some pre-game checks to ensure that zsh and oh-my-zsh is installed:
+###################################################################
+
+#Lets check to make sure we have zsh and git installed:
+
+springgreen4 "Lets check to see if we have our needed programs installed for this."
+
+for program in zsh git; do
+  installed=$(command -v $program)
+  [[ -z "$installed" ]] && echo "$program is not installed" && echo "$program needs to be installed, please install first." && exit 1 || echo "$program is installed"
+done
+
+# then lets check to see if oh-my-zsh is installed.
+
+if [ -d ~/.oh-my-zsh ]; then
+	springgreen4 "oh-my-zsh is installed, continuing..."
+else
+ 	springgreen4 "oh-my-zsh is not installed, please install oh-my-zsh"
+fi
 
 ###################################################################
 #now lets start downloading themes, they'll each go to the $ZSH/custom/themes folder in their own named folder.
@@ -47,7 +70,7 @@ git clone https://github.com/zeroastro/zeroastro-zsh-theme.git $ZSH/custom/theme
 
 # Now we'll create a switch statement to set any of these as our default zsh Theme:
 
-echo ""
+springgreen4 ""
 springgreen4 "Choose your ZSH Theme:"
 springgreen4 "1. AgnosterZak"
 springgreen4 "2. Alien"
@@ -58,7 +81,7 @@ springgreen4 "6. Oh-My-Via"
 springgreen4 "7. Powerlevel10K"
 springgreen4 "8. Zeroastro"
 springgreen4 "9. None for now, just installing."
-echo ""
+springgreen4 ""
 
 read -p "Enter your choice (1 through 9): " Choice
 

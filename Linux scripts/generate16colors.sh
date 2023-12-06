@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#This is a temporary script I used to generate another script for a more complicated form of the colorlibrary known as 256colorlibrary.sh
+#This is a temporary script I used to generate another script for a more complicated form of the colorlibrary known as 256colorlibrary.sh located in the sourceable folder.
 
 colors=(29 30 31 32 33 34 35 36 37 90 91 92 93 94 95 96 97)
 bgcolors=(49 40 41 42 43 44 45 46 47 100 101 102 103 104 105 106 107)
