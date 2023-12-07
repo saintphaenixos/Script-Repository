@@ -18,13 +18,13 @@ echo "This shouldn't be needed between X.1 or X.12 releases, only for major rele
 read -p "What version of NetBSD are we going to? e.g. 9.5, 10.4 or 15.2?  " $BSDVer
 
 # Now lets run the upgrade preparations:
-su root -c "/usr/pkgsrc/sysutils/sysupgrade fetch https://cdn.NetBSD.org/pub/NetBSD/NetBSD-$BSDVer/amd64"
-su root -c "/usr/pkgsrc/sysutils/sysupgrade kernel"
-su root -c "/usr/pkgsrc/sysutils/sysupgrade modules"
-su root -c "/usr/pkgsrc/sysutils/sysupgrade sets"
-su root -c "/usr/pkgsrc/sysutils/sysupgrade etcupdate"
-su root -c "/usr/pkgsrc/sysutils/sysupgrade postinstall"
-su root -c "/usr/pkgsrc/sysutils/sysupgrade clean"
+su root -c "/usr/pkg/sbin/sysupgrade fetch https://cdn.NetBSD.org/pub/NetBSD/NetBSD-$BSDVer/amd64"
+su root -c "/usr/pkg/sbin/sysupgrade kernel"
+su root -c "/usr/pkg/sbin/sysupgrade modules"
+su root -c "/usr/pkg/sbin/sysupgrade sets"
+su root -c "/usr/pkg/sbin/sysupgrade etcupdate"
+su root -c "/usr/pkg/sbin/sysupgrade postinstall"
+su root -c "/usr/pkg/sbin/sysupgrade clean"
 reboot
 
 echo "Don't forget to run UpgradeNetBSD.sh afterward!"

@@ -16,4 +16,4 @@ read -p "What version of NetBSD are we going to? e.g. 8.9, 9.0 or 5.6  " BSDVer
 
 
 # Now lets run the upgrade:
-su root -c "/usr/pkgsrc/sysutils/sysupgrade auto https://cdn.NetBSD.org/pub/NetBSD/NetBSD-$BSDVer/amd64"
+su root -c "/usr/pkg/sbin/sysupgrade auto https://cdn.NetBSD.org/pub/NetBSD/NetBSD-$BSDVer/amd64"
