@@ -12,7 +12,7 @@ fi
 
 # Lets get some variables read so we know what version of FreeBSD we are going to:
 
-read -p "What version of FreeBSD are we going to? e.g. 8.9, 9.0 or 5.6  " BSDVer
+read -p "What version of FreeBSD are we going to? e.g. 11.0, 11.5 or 15.6  " BSDVer
 
 
 # Now lets run the upgrade:
