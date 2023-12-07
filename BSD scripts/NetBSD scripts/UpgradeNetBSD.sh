@@ -12,8 +12,8 @@ fi
 
 # Lets get some variables read so we know what version of Dragonfly we are going to:
 
-read -p "What version of NetBSD are we going to? e.g. 8.9, 9.0 or 5.6" $BSDVer
+read -p "What version of NetBSD are we going to? e.g. 8.9, 9.0 or 5.6" BSDVer
 
 
 # Now lets run the upgrade:
-sysupgrade auto https://cdn.NetBSD.org/pub/NetBSD/NetBSD-$BSDVer/amd64
+./usr/pkgsrc/sysutils/sysupgrade auto https://cdn.NetBSD.org/pub/NetBSD/NetBSD-$BSDVer/amd64
