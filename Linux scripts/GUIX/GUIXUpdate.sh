@@ -22,7 +22,7 @@ tmuxsessionify() {
 Session_Name="GUIXUpgradeSession"
 
 # Specify the commands to run in sequence
-GUIXCommands=("guix pull" "hash guix" "guix upgrade" "guix gc" "guix gx --delete-generations")
+GUIXCommands=("guix pull && hash guix && guix upgrade && guix gc && guix gx --delete-generations")
 
 # Run the commands in sequence in the tmux session
 tmuxsessionify $Session_Name "${GUIXCommands[@]}"

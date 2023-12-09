@@ -22,7 +22,7 @@ tmuxsessionify() {
 Session_Name="GUIXBuilderUpgradeSession"
 
 # Specify the commands to run in sequence
-GUIXBuildCommands=("sudo -i guix pull" "systemctl restart guix-daemon.service")
+GUIXBuildCommands=("sudo -i guix pull && sudo systemctl restart guix-daemon.service")
 
 # Run the commands in sequence in the tmux session
 tmuxsessionify $Session_Name "${GUIXBuildCommands[@]}"
