@@ -27,8 +27,10 @@ fi
 aqua "Choose Installation Mode:"
 aqua "1. GUI Install"
 aqua "2. CLI Install"
+aqua "3. Fun Program Install"
+aqua "4. Fun Program Install"
 
-read -p "Enter your choice (1 or 2): " Choice
+read -p "Enter your choice (1, 2, 3, or 4): " Choice
 
 case $Choice in
     1)
@@ -40,6 +42,10 @@ case $Choice in
         # CLI installation variables:
         Programs=$(<./newubuntucli.programs)
         SnapPrograms=$(<./newubuntucli.snapish)
+        ;;
+    3)
+        # Fun installation variables:
+        Programs=$(<./newubuntufun.programs)
         ;;
     *)
         echo "Invalid choice. Exiting."
