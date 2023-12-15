@@ -28,7 +28,6 @@ aqua "Choose Installation Mode:"
 aqua "1. GUI Install"
 aqua "2. CLI Install"
 aqua "3. Fun Program Install"
-aqua "4. Fun Program Install"
 
 read -p "Enter your choice (1, 2, 3, or 4): " Choice
 
